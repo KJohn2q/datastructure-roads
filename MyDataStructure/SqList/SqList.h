@@ -29,12 +29,24 @@ Status DestroyList(SqList *L);
  */
 Status CreateList(SqList *L, int n);
 
+/*
+ *  清空线性表 
+ */
 Status ClearList(SqList *L);
 
+/*
+ *  线性表是否为空 
+ */ 
 Status ListEmpty(SqList L);
 
+/*
+ *  线性表的长度 
+ */ 
 int ListLength(SqList L);
 
+/*
+ *  返回线性表的值 
+ */ 
 Status GetElem(SqList L, int i, ElemType *e);
 
 /*
@@ -42,14 +54,30 @@ Status GetElem(SqList L, int i, ElemType *e);
  */
 int LocateElem(SqList L, ElemType e, Status(Compare)(ElemType, ElemType));
 
+/*
+ *  返回给定值的前驱 
+ */ 
 Status PriorElem(SqList L, ElemType cur_e, ElemType *pre_e);
 
+/*
+ *  返回给定值的后继 
+ */
 Status NextElem(SqList L, ElemType cur_e, ElemType *next_e);
 
+
+/*
+ *  在i位置插入e 
+ */ 
 Status ListInsert(SqList *L, int i, ElemType e);
 
+/*
+ *  在i位置删除元素 
+ */
 Status ListDelete(SqList *L, int i, ElemType *e);
 
+/*
+ *  遍历打印线性表中的元素 
+ */ 
 void ListTraverse(SqList L, void (Visit)(ElemType));
 
 /*
@@ -61,6 +89,17 @@ Status Compare(ElemType, ElemType);
  *  打印给定元素的值 
  */ 
 void Visit(ElemType);
+
+/*
+ *  取 A = A和B的并集 
+ */
+void Union(SqList *La, SqList Lb);
+
+/*
+ * 已知线性表LA和LB中的数据按值非递减有序排列
+ * 将LA和LB合并为一个新的线性表LC，且LC中的数据元素仍按值非递减有序排列 
+ */
+void MergeList(SqList La, SqList Lb, SqList *Lc); 
 
 #endif
 

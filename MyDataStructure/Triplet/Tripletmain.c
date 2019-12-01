@@ -1,4 +1,4 @@
-#include "triplet.c"
+#include "Triplet.h"
 
 int main()
 {

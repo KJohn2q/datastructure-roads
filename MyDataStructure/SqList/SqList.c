@@ -3,7 +3,7 @@
 
 Status InitList(SqList *L) 
 {
-	(*L).elem = malloc(LIST_INIT_SIZE * sizeof((SqList)(*L)));
+	(*L).elem = (ElemType *) malloc(LIST_INIT_SIZE * sizeof((SqList)(*L)));
 	if ((*L).elem == NULL) {
 		exit(OVERFLOW);
 	}
@@ -90,7 +90,7 @@ int LocateElem(SqList L, ElemType e, Status (Compare)(ElemType, ElemType))
 		i++;
 	}
 	
-	if (i <= L.length) {
+	if (i < L.length) {
 		return i + 1;
 	}
 	else {
@@ -199,6 +199,65 @@ void ListTraverse(SqList L, void (Visit)(ElemType))
 		Visit(*p++);
 	} 
 }
+
+/*
+ *  取 A = A和B的并集 
+ */
+void Union(SqList *La, SqList Lb) 
+{
+	int La_len = (*La).length;
+	int Lb_len = Lb.length;
+	int i = 0;
+	ElemType e;
+	Status s = 0;
+	
+	for (; i < Lb_len; i++) {
+		GetElem(Lb, i + 1, &e);
+		if (!LocateElem(*La, e, Compare)) {
+			s = ListInsert(La, ++La_len, e);
+		}
+	}
+	
+} 
+
+/*
+ * 已知线性表LA和LB中的数据按值非递减有序排列
+ * 将LA和LB合并为一个新的线性表LC，且LC中的数据元素仍按值非递减有序排列 
+ */
+void MergeList(SqList La, SqList Lb, SqList *Lc)
+{
+	InitList(Lc);
+	int i = 1, j = 1; 
+	int k = 0;
+	int La_len = ListLength(La);  // La线性表长度 
+	int Lb_len = ListLength(Lb); // Lb线性表长度 
+	ElemType ai,bj;
+	
+	while ((i <= La_len) && (j <= Lb_len)) {
+		GetElem(La, i, &ai); 
+		GetElem(Lb, j, &bj);
+		
+		if (ai <= bj) {
+			ListInsert(Lc, ++k, ai);
+			i++;
+		} else {
+			ListInsert(Lc, ++k, bj);
+			j++;
+		}
+	}
+	
+	while (i <= La_len) {
+		GetElem(La, i++, &ai);
+		ListInsert(Lc, ++k, ai);
+	}
+	
+	while (j <= Lb_len) {
+		GetElem(Lb, j++, &bj);
+		ListInsert(Lc, ++k, bj);
+	}
+	
+}
+
 
 /*
  *  比较函数 
