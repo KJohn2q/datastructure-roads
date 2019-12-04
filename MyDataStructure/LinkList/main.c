@@ -8,13 +8,15 @@ int main(int argc, char *argv[]) {
 	LinkList L;
 	Status s;
 	int len = 0;
+	int pos = 0;
+	ElemType e;
 	
 	/* 初始化单链表 */
 	s = InitList(&L);
 	printf("初始化链表%d\n", s);
 	/* 创建链表 */
 	s = CreateList(L, 3);
-	printf("创建链表d\n", s);
+	printf("创建链表%d\n", s);
 	/* 链表长度 */
 	len = ListLength(L);
 	printf("链表长度为：%d\n", len);
@@ -25,5 +27,27 @@ int main(int argc, char *argv[]) {
 	s = ClearList(L); 
 	printf("清空链表%d\n", s);
 	*/
+	/* 查看链表中指定位置的值 
+	GetElem(L, 0, &e);	
+	printf("链表中第二个元素的值是：%d", e);
+	*/
+	/* 查看指定值在链表中的位置 
+	pos = LocateElem(L, 3, Compare);
+	printf("链表中元素为3的位置是%d", pos);
+	*/ 
+	/* 查看链表中指定元素的前驱 
+	PriorElem(L, 3, &e);
+	printf("链表中指定元素的前驱是%d\n", e);
+	*/
+	/* 查看链表中指定元素的后缀
+	NextElem(L, 3, &e);
+	printf("链表中指定元素的后缀是%d\n", e);
+	*/ 
+	s = ListInsert(L, 2, 5);
+	printf("插入元素%d\n", s);
+	ListTraverse(L, Visit); 
+	s = ListDelete(L, 3, &e);
+	printf("插入元素%d\n", e);
+	ListTraverse(L, Visit); 
 	return 0;
 }

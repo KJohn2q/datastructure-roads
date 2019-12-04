@@ -107,7 +107,7 @@ Status GetElem(LinkList L, int i, ElemType *e)
 	LinkList p;
 	int j = 0;
 	
-	if (i < 1; i > ListLength(L)) {
+	if (i < 1 || i > ListLength(L)) {
 		return ERROR;
 	}
 	
@@ -131,11 +131,11 @@ int LocateElem(LinkList L, ElemType e, Status (Compare)(ElemType, ElemType))
 	LinkList p;
 	int i = 0;
 	
-	if (ListEmpty(L)) {
+	if (L == NULL || L->next == NULL) {
 		return ERROR;
 	}
 	
-	p = p->next;
+	p = L->next;
 	i = 1;
 	
 	while (p != NULL && !Compare(p->data, e)) {
@@ -156,11 +156,12 @@ int LocateElem(LinkList L, ElemType e, Status (Compare)(ElemType, ElemType))
 Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e)
 {
 	LinkList p;
+	int i = 1;
 	
 	p = L->next;
 	
 	/* 如果是第一个元素，则没有前驱 */
-	if (p->next->data == cur_e) {
+	if (p->data == cur_e) {
 		return ERROR;
 	}
 	
@@ -180,6 +181,7 @@ Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e)
 Status NextElem(LinkList L, ElemType cur_e, ElemType *next_e)
 {
 	LinkList p;
+	int i = 1;
 	
 	p = L->next;
 	
@@ -241,7 +243,7 @@ Status ListInsert(LinkList L, int i, ElemType e)
  */
 Status ListDelete(LinkList L, int  i, ElemType *e)
 {
-	LinkList p;
+	LinkList p,q;
 	int j = 0;
 	
 	p = L->next;
@@ -256,9 +258,11 @@ Status ListDelete(LinkList L, int  i, ElemType *e)
 		return ERROR;
 	}
 	else {
-		p->next = p->next->next;
-		*e = p->next->data;
-		free(p->next);
+		q = p->next;
+		p->next = q->next;
+		q->next = NULL;
+		*e = q->data;
+		free(q);
 	}
 	
 	return OK;
