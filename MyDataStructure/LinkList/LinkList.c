@@ -214,10 +214,6 @@ Status ListInsert(LinkList L, int i, ElemType e)
         return ERROR;
     }
     
-    if (i < 2 || i > ListLength(L) + 1 ) {
-    	return ERROR;
-	}
-    
     p = L;
 	
 	while (p != NULL && j < i - 1) {
@@ -246,24 +242,25 @@ Status ListDelete(LinkList L, int  i, ElemType *e)
 	LinkList p,q;
 	int j = 0;
 	
-	p = L->next;
-	j = 1;
+	if (L == NULL || L->next == NULL) {
+		return ERROR;
+	}
 	
-	while (p != NULL && j < i - 1) {
+	p = L;
+	j = 0;
+	
+	while (p->next != NULL && j < i - 1) {
 		p = p->next;
 		++j;
 	}
 	
-	if (p == NULL || j > i) {
+	if (p->next == NULL || j > i - 1) {
 		return ERROR;
 	}
-	else {
-		q = p->next;
-		p->next = q->next;
-		q->next = NULL;
-		*e = q->data;
-		free(q);
-	}
+	q = p->next;
+	p->next = q->next;
+	*e = q->data;
+	free(q);
 	
 	return OK;
 } 

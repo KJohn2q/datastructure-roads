@@ -43,11 +43,11 @@ int main(int argc, char *argv[]) {
 	NextElem(L, 3, &e);
 	printf("链表中指定元素的后缀是%d\n", e);
 	*/ 
-	s = ListInsert(L, 2, 5);
+	s = ListInsert(L, 5, 5);
 	printf("插入元素%d\n", s);
 	ListTraverse(L, Visit); 
-	s = ListDelete(L, 3, &e);
-	printf("插入元素%d\n", e);
+	s = ListDelete(L, 5, &e);
+	printf("删除元素%d\n", e);
 	ListTraverse(L, Visit); 
 	return 0;
 }
