@@ -1,7 +1,7 @@
 #include "SLinkList.h"
 
 /*
- * ³õÊ¼»¯¾²Ì¬Á´±í 
+ * åˆå§‹åŒ–é™æ€é“¾è¡¨
  */ 
 Status InitList(SqList *L)
 {
