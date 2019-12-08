@@ -15,68 +15,68 @@ typedef struct{
 /*
  *  构造一个空的静态链表 
  */
-Status InitList(SqList *L);
+Status InitList(SLinkList *s);
 
 /*
  *  销毁静态链表 
  */
-Status DestroyList(SqList *L);
+Status DestroyList(SLinkList *s);
 
 /*
  *  输入n个数，创建静态链表 
  */
-Status CreateList(SqList *L, int n);
+Status CreateList(SLinkList s, int n);
 
 /*
  *  清空静态链表 
  */
-Status ClearList(SqList *L);
+Status ClearList(SLinkList s);
 
 /*
  *  静态链表是否为空 
  */ 
-Status ListEmpty(SqList L);
+Status ListEmpty(SLinkList s);
 
 /*
  *  静态链表的长度 
  */ 
-int ListLength(SqList L);
+int ListLength(SLinkList s);
 
 /*
  *  返回静态链表的值 
  */ 
-Status GetElem(SqList L, int i, ElemType *e);
+Status GetElem(SLinkList s, int i, ElemType *e);
 
 /*
  *  返回第一个与给定值相等的元素 
  */
-int LocateElem(SqList L, ElemType e, Status(Compare)(ElemType, ElemType));
+int LocateElem(SLinkList s, ElemType e, Status(Compare)(ElemType, ElemType));
 
 /*
  *  返回给定值的前驱 
  */ 
-Status PriorElem(SqList L, ElemType cur_e, ElemType *pre_e);
+Status PriorElem(SLinkList s, ElemType cur_e, ElemType *pre_e);
 
 /*
  *  返回给定值的后继 
  */
-Status NextElem(SqList L, ElemType cur_e, ElemType *next_e);
+Status NextElem(SLinkList s, ElemType cur_e, ElemType *next_e);
 
 
 /*
  *  在i位置插入e 
  */ 
-Status ListInsert(SqList *L, int i, ElemType e);
+Status ListInsert(SLinkList *s, int i, ElemType e);
 
 /*
  *  在i位置删除元素 
  */
-Status ListDelete(SqList *L, int i, ElemType *e);
+Status ListDelete(SLinkList *s, int i, ElemType *e);
 
 /*
  *  遍历打印静态链表中的元素 
  */ 
-void ListTraverse(SqList L, void (Visit)(ElemType));
+void ListTraverse(SLinkList s, void (Visit)(ElemType));
 
 /*
  *  比较函数 
