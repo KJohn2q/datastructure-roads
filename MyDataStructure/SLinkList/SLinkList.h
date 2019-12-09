@@ -13,6 +13,24 @@ typedef struct{
 }SLinkList[MAXSIZE];
 
 /*
+ *  初始化备用空间 
+ *  将一维数组space中各分量链成一个备用链表,space[0].cur为头指针 
+ */
+void InitSpace(SLinkList *space);
+
+/*
+ *  申请空间 
+ * 若备用空间链表非空，则返回分配的节点下标，否则返回0 
+ */ 
+int Malloc(SLinkList *space);
+
+/*
+ *  回收空间 
+ *  将下标为k的空闲节点回收到备用链表 
+ */ 
+void Free(SLinkList *space, int k);
+
+/*
  *  构造一个空的静态链表 
  */
 Status InitList(SLinkList *s);

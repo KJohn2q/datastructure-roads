@@ -1,8 +1,8 @@
 #include "SLinkList.h"
 
 /*
- * åˆå§‹åŒ–é™æ€é“¾è¡¨
- */ 
+ *  ¹¹ÔìÒ»¸ö¿ÕµÄ¾²Ì¬Á´±í 
+ */
 Status InitList(SqList *L)
 {
 		
