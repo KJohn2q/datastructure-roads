@@ -1,5 +1,5 @@
-#ifndef "CLINKLIST_H"
-#define "CLINKLIST_H"
+#ifndef CLINKLIST_H
+#define CLINKLIST_H
 
 #include "../common.h"
 
@@ -8,12 +8,17 @@ typedef int ElemType;
 typedef struct CLNode {
 	ElemType data;
 	struct CLNode* next;
-} CLNode, * CLinkList;
+} CLNode, *CLinkList;
 
 /*
  *  初始化 
  */
-Status InitList(CLinkList* C);
+Status InitList(CLinkList *C);
+
+/*
+ *  创建链表 
+ */
+Status CreateList(CLinkList *C);
 
 /*
  *  销毁 

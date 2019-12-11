@@ -4,7 +4,7 @@
 /*
  *  初始化 
  */
-Status InitList(CLinkList* C)
+Status InitList(CLinkList *C)
 {
 	(*C) = (CLinkList) malloc(sizeof(CLNode));
 	
@@ -12,7 +12,7 @@ Status InitList(CLinkList* C)
 		exit(OVERFLOW);
 	}
 	
-	*C->next = NULL;
+	(*C)->next = *C;
 	
 	return OK;
 }
@@ -52,13 +52,13 @@ Status ClearList(CLinkList C) {
 	
 	p = C->next;
 	
-	while (p != NULL) {
+	while (p != C) {
 		pre = p;
 		p = p->next;
 		free(pre);
 	}
 	
-	C->next = NULL;
+	C->next = C;
 	
 	return OK;
 }
@@ -68,7 +68,7 @@ Status ClearList(CLinkList C) {
  */
 Status ListEmpty(CLinkList C)
 {
-	return (C == NULL && C->next == NULL) ? TRUE : FALSE;
+	return (C == NULL && C->next == C) ? TRUE : FALSE;
 }
 
 /*
@@ -79,7 +79,7 @@ int ListLength(CLinkList C)
 	CLinkList p = NULL;
 	int i = 1;
 	
-	if (C == NULL || C->next == NULL) {
+	if (C == NULL || C->next == C) {
 		return 0;
 	}
 	
@@ -101,7 +101,7 @@ Status GetElem(CLinkList C, int i, ElemType* e)
 	CLinkList p = NULL;
 	int j = 1;
 	
-	if (C == NULL || C->next == NULL) {
+	if (C == NULL || C->next == C) {
 		return ERROR;
 	}	
 	
@@ -128,7 +128,7 @@ int LocateElem(CLinkList C, ElemType e, Status(Compare)(ElemType, ElemType))
 {
 	CLinkList p = NULL;
 	int i = 0;
-	if (C == NULL || C->next == NULL) {
+	if (C == NULL || C->next == C) {
 		return ERROR;
 	}	
 	
@@ -149,34 +149,152 @@ int LocateElem(CLinkList C, ElemType e, Status(Compare)(ElemType, ElemType))
 /*
  *  前驱 
  */
-Status PriorElem(CLinkList C, ElemType cur_e, ElemType* pre_e);
+Status PriorElem(CLinkList C, ElemType cur_e, ElemType* pre_e)
+{
+	CLinkList p = NULL;
+	
+	if (C == NULL || C->next == C) {
+		return ERROR;
+	}
+	
+	p = C->next;
+	
+	while (p != C && p->next->data != cur_e) {
+		p = p->next;
+	}
+	
+	// 到头，未找到与cur_e相等的元素 
+	if (p == C) {
+		return ERROR;
+	}
+	
+	*pre_e = p->data;
+	return OK;
+}
 
 /*
  *  后缀 
  */ 
-Status NextElem(CLinkList C, ElemType cur_e, ElemType* next_e);
+Status NextElem(CLinkList C, ElemType cur_e, ElemType* next_e)
+{
+	CLinkList p = NULL;
+	
+	if (C == NULL || C->next == C) {
+		return ERROR;
+	}
+	
+	p = C->next;
+	
+	while (p->next != C && p->data != cur_e) {
+		p = p->next;
+	}
+	
+	if (p->next == C) {
+		return ERROR;
+	}
+	
+	*next_e = p->next->data;
+	return OK;
+}
 
 /*
  *  插入 
+ *  在i位置处插入元素e 
  */
-Status ListInsert(CLinkList C, int i, ElemType e);
+Status ListInsert(CLinkList C, int i, ElemType e)
+{
+	CLinkList p = NULL,cnode = NULL;
+	int j = 0;
+	
+	if (C == NULL) {
+		return ERROR;
+	}
+	
+	p = C;
+	
+	while (p->next != C && j < i - 1) {
+		p = p->next;
+		++j;
+	}
+	
+	// 遍历到头了或没有找到第i个元素
+	// 考虑只有头结点的情况 
+	if (p->next == C) || j > i - 1) {
+		return ERROR;
+	}
+	
+	cnode = (CLinkList) malloc(sizeof(CLNode));
+	
+	if (cnode == NULL) {
+		exit(OVERFLOW);
+	}
+	
+	cnode->data = e;
+	cnode->next = p->next;
+	p->next = cnode;
+	
+	return OK;
+}
 
 /*
  *  删除 
  */ 
-Status ListDelete(CLinkList C, int i, ElemType* e);
+Status ListDelete(CLinkList C, int i, ElemType* e)
+{
+	CLinkList p = NULL,q = NULL;
+	int j = 1;
+	
+	if (C == NULL || C->next == C) {
+		return ERROR;
+	}
+	
+	p = C->next;
+	
+	while (p != C && j < i - 1) {
+		p = p->next;
+		++j;
+	}
+	
+	if (p == C || j > i - 1) {
+		return ERROR;
+	}
+	
+	q = p->next;
+	p->next = q->next;
+	*e = q->data;
+	q->next = NULL;
+	free(q);
+	
+	return OK;
+}
 
 /*
  *  遍历 
  */ 
-void ListTraverse(CLinkList C, void(Visit)(ElemType)); 
+void ListTraverse(CLinkList C, void(Visit)(ElemType))
+{
+	CLinkList p = NULL;
+	
+	p = C->next;
+	
+	while (p != C) {
+		Visit(p->data);
+		p = p->next;
+	}
+} 
 
 /*
  * 比较函数 
  */ 
-Status Compare(ElemType, ElemType);
+Status Compare(ElemType data, ElemType e) 
+{
+	return data == e ? TRUE : FALSE;
+}
 
 /*
  * 打印数据 
  */
-void Visit(ElemType);
+void Visit(ElemType data)
+{
+	printf("%d ", data);
+}
