@@ -18,12 +18,12 @@ Status InitList(CLinkList *C);
 /*
  *  创建链表 
  */
-Status CreateList(CLinkList *C);
+Status CreateList(CLinkList C, int n);
 
 /*
  *  销毁 
  */ 
-Status DestroyList(CLinkList* C);
+Status DestroyList(CLinkList *C);
 
 /*
  * 清空 

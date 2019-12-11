@@ -20,7 +20,7 @@ Status InitList(CLinkList *C)
 /*
  *  销毁 
  */ 
-Status DestroyList(CLinkList* C)
+Status DestroyList(CLinkList *C)
 {
  	CLinkList p = NULL;
  	
@@ -28,15 +28,41 @@ Status DestroyList(CLinkList* C)
 		exit(OVERFLOW);
 	}
 	
-	p = *C;
-	
-	while (p != NULL) {
-		p = (*C)->next;
-		free(*C);
-		*C = p;
+	while ((*C) != (*C)) {
+		p = *C;
+		*C = (*C)->next;
+		free(p);		
 	}
 	
 	*C = NULL;
+	
+	return OK;
+}
+
+/*
+ *  创建一个有n个值的链表 
+ */
+Status CreateList(CLinkList C, int n)
+{
+	CLinkList p = NULL,node = NULL;
+	int i = 0;
+	
+	if (C == NULL) {
+		return ERROR;
+	}
+	
+	p = C;
+	
+	for (i = 1; i <= n; i++) {
+		node = (CLinkList) malloc(sizeof(CLNode));
+		node->data = 2 * i;
+		
+		p->next = node;
+		p = p->next; 
+	}
+	
+	p->next = C;
+	
 	return OK;
 }
 
@@ -65,10 +91,11 @@ Status ClearList(CLinkList C) {
 
 /*
  * 判断是否为空 
+ * 判断条件：头结点为空或者头结点的next域指向自身 
  */
 Status ListEmpty(CLinkList C)
 {
-	return (C == NULL && C->next == C) ? TRUE : FALSE;
+	return (C == NULL || C->next == C) ? TRUE : FALSE;
 }
 
 /*
@@ -77,7 +104,7 @@ Status ListEmpty(CLinkList C)
 int ListLength(CLinkList C) 
 {
 	CLinkList p = NULL;
-	int i = 1;
+	int i = 0;
 	
 	if (C == NULL || C->next == C) {
 		return 0;
@@ -127,7 +154,7 @@ Status GetElem(CLinkList C, int i, ElemType* e)
 int LocateElem(CLinkList C, ElemType e, Status(Compare)(ElemType, ElemType))
 {
 	CLinkList p = NULL;
-	int i = 0;
+	int i = 1;
 	if (C == NULL || C->next == C) {
 		return ERROR;
 	}	
@@ -219,7 +246,7 @@ Status ListInsert(CLinkList C, int i, ElemType e)
 	
 	// 遍历到头了或没有找到第i个元素
 	// 考虑只有头结点的情况 
-	if (p->next == C) || j > i - 1) {
+	if (p->next == C || j > i - 1) {
 		return ERROR;
 	}
 	
@@ -242,20 +269,20 @@ Status ListInsert(CLinkList C, int i, ElemType e)
 Status ListDelete(CLinkList C, int i, ElemType* e)
 {
 	CLinkList p = NULL,q = NULL;
-	int j = 1;
+	int j = 0;
 	
 	if (C == NULL || C->next == C) {
 		return ERROR;
 	}
 	
-	p = C->next;
+	p = C;
 	
-	while (p != C && j < i - 1) {
+	while (p->next != C && j < i - 1) {
 		p = p->next;
 		++j;
 	}
 	
-	if (p == C || j > i - 1) {
+	if (p->next == C || j > i - 1) {
 		return ERROR;
 	}
 	
