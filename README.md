@@ -1,4 +1,4 @@
-# Title
+# Description
 
 > This reposity is record my datastructure studying roads.
 
@@ -13,5 +13,6 @@
 |     链表     |  LinkList  |  完成  |
 |   静态链表   | SLinkList  |  完成  |
 |   循环链表   | CLinkList  |  完成  |
-| 双向循环链表 | DuLinkList | 未完成 |
+| 双向循环链表 | DuLinkList |  完成  |
+| 栈(顺序存储) |  SqStack   | 未完成 |
 
