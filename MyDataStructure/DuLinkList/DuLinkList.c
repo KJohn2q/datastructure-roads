@@ -100,7 +100,7 @@ int ListLength(DuLinkList D)
 Status GetElem(DuLinkList D, int i, ElemType *e)
 {
 	DuLinkList p;
-	int j = 0;
+	int j = 1;
 	
 	if (D == NULL || D->next == D || D->prior == D) {
 		return ERROR;
@@ -128,7 +128,7 @@ Status GetElem(DuLinkList D, int i, ElemType *e)
 int LocateElem(DuLinkList D, ElemType e, Status (Compare)(ElemType, ElemType))
 {
 	DuLinkList p;
-	int i = 0;
+	int i = 1;
 	
 	if (D == NULL || D->next == D || D->prior == D) {
 		return ERROR;
@@ -141,11 +141,11 @@ int LocateElem(DuLinkList D, ElemType e, Status (Compare)(ElemType, ElemType))
 		++i;
 	}
 	
-	if (p == D) {
-		return ERROR;
+	if (p != D) {
+		return i;
+	} else {
+		return 0;
 	}
-	
-	return i;
 }
 
 /*
@@ -160,6 +160,13 @@ Status PriorElem(DuLinkList D, ElemType cur_e, ElemType *e)
 	}
 	
 	p = D->next;
+	
+	// 第一个元素没有前驱 
+	if (p->data == cur_e) {
+		return ERROR;
+	}
+	
+	p = p->next;
 	
 	while (p != D && p->data != cur_e) {
 		p = p->next;
@@ -185,13 +192,14 @@ Status NextElem(DuLinkList D, ElemType cur_e, ElemType *e)
 		return ERROR;
 	}
 	
-	p = D->next;
+	p = D;
 	
-	while (p != D && p->data != cur_e) {
+	while (p->next != D && p->data != cur_e) {
 		p = p->next;
 	}
 	
-	if (p == D) {
+	// 最后一个元素没有后继 
+	if (p->next == D) {
 		return ERROR;
 	}
 	
@@ -206,20 +214,12 @@ Status NextElem(DuLinkList D, ElemType cur_e, ElemType *e)
 Status ListInsert(DuLinkList D, int i, ElemType e)
 {
 	DuLinkList p,node;
-	int j = 0;
 	
-	if (D == NULL || D->next == D || D->prior == D) {
+	if (D == NULL) {
 		return ERROR;
 	}
 	
-	p = D->next;
-	
-	while (p != D && j < i) {
-		p = p->next;
-		++j;
-	}
-	
-	if (p == D || j > i) {
+	if ((p = GetElemP(D, i)) == NULL) {
 		return ERROR;
 	}
 	
@@ -244,26 +244,26 @@ Status ListInsert(DuLinkList D, int i, ElemType e)
 Status ListDelete(DuLinkList D, int i, ElemType *e)
 {
 	DuLinkList p,node;
-	int j = 0;
+	int j = 1;
 	
 	if (D == NULL || D->next == D || D->prior == D) {
 		return ERROR;
 	}
 	
-	p = D->next;
+	if ((p = GetElemP(D, i)) == NULL) {
+		return ERROR;
+	} 
 	
-	while (p != D && j < i) {
-		p = p->next;
-		++j;
-	}
-	
-	if (p == D || j > i) {
+	if (p == D) {
 		return ERROR;
 	}
 	
+	*e = p->data;
+	
 	p->prior->next = p->next;
 	p->next->prior = p->prior;
-	*e = p->data;
+	
+	free(p);
 	
 	return OK;
 }
@@ -286,7 +286,45 @@ Status ListTraverse(DuLinkList D, void (Visit)(ElemType))
 		p = p->next;
 	}
 	
+	printf("\n");
+	
 	return OK;
+}
+
+/*
+ *  获取循环链表中第i个元素的引用
+ *  
+ *  注意
+ *  1. 加static的含义是当前函数只在DuLinkList中使用，不会被别的文件引用
+ *  2. 假设链表长度为len,且需要获取第len+1个元素的引用时，由于这里是循环链表，所以返回的是头结点 
+ */
+static DuLinkList GetElemP(DuLinkList D, int i) 
+{
+	DuLinkList p;
+	int count;
+	
+	if (D == NULL) {
+		return ERROR;
+	}
+	
+	p = D;
+	count = 0;
+	
+	while (p->next != D && count < i) {
+		p = p->next;
+		++count;
+	}
+	
+	if (count = i) {
+		return p;
+	}
+	
+	// 至此，说明p->next == L,此时需要判断i是否过大 
+	if (count + 1 < i) {
+		return NULL;
+	}
+	
+	return D; 
 }
  
 Status Compare(ElemType data, ElemType e)
