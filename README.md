@@ -14,5 +14,6 @@
 |   静态链表   | SLinkList  |  完成  |
 |   循环链表   | CLinkList  |  完成  |
 | 双向循环链表 | DuLinkList |  完成  |
-| 栈(顺序存储) |  SqStack   | 未完成 |
+| 栈(顺序存储) |  SqStack   |  完成  |
+| 栈(链式存储) | LinkStack  | 未完成 |
 
