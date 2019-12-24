@@ -81,7 +81,7 @@ int QueueLength(LinkQueue Q)
 	QueuePtr p;
 	int i = 0;
 	
-	if (Q.front == Q.rear) {
+	if (Q.front == NULL || Q.front == Q.rear) {
 		return ERROR;
 	}
 	
@@ -100,7 +100,7 @@ int QueueLength(LinkQueue Q)
  */ 
 Status GetHead(LinkQueue Q, QElemType *e)
 {
-	if (Q.front == Q.rear) {
+	if (Q.front == NULL || Q.front == Q.rear) {
 		return ERROR;
 	}
 	
@@ -116,7 +116,7 @@ Status EnQueue(LinkQueue *Q, QElemType e)
 {
 	QueuePtr node;
 	
-	if (Q == NULL) {
+	if (Q == NULL || Q->front == NULL) {
 		return ERROR;
 	}
 	
@@ -141,7 +141,7 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
 {
 	QueuePtr p;
 	
-	if (Q == NULL || Q->front == Q->rear) {
+	if (Q == NULL || Q->front == NULL || Q->front == Q->rear) {
 		return ERROR;
 	}
 	
@@ -160,7 +160,7 @@ Status QueueTraverse(LinkQueue Q, void (Visit)(ElemType))
 {
 	QueuePtr p;
 	
-	if (Q.front == Q.rear) {
+	if (Q.front == NULL || Q.front == Q.rear) {
 		return ERROR;
 	}
 	
