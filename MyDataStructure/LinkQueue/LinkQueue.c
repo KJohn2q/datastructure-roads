@@ -26,7 +26,7 @@ Status DestroyQueue(LinkQueue *Q)
 {	
 	QueuePtr p,q;
 	
-	if (Q == NULL) {
+	if (Q == NULL || Q->front == NULL) {
 		return ERROR;
 	}
 	
@@ -37,6 +37,8 @@ Status DestroyQueue(LinkQueue *Q)
 		p = p->next;
 		free(q);
 	}
+	
+	Q->front = Q->rear = NULL;
 	
 	return OK;
 }
@@ -100,11 +102,11 @@ int QueueLength(LinkQueue Q)
  */ 
 Status GetHead(LinkQueue Q, QElemType *e)
 {
-	if (Q.front == NULL || Q.front == Q.rear) {
+	if (Q.front == NULL || Q.front == NULL || Q.front == Q.rear) {
 		return ERROR;
 	}
 	
-	*e = Q.front->data;
+	*e = Q.front->next->data;
 	
 	return OK;
 }
@@ -145,11 +147,11 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
 		return ERROR;
 	}
 	
-	p = Q->front;
-	Q->front = Q->front->next;
-	free(p);
+	p = Q->front->next;
+	Q->front->next = p->next;
 	*e = p->data;
-	
+	free(p);
+		
 	return OK; 
 }
 
@@ -160,13 +162,13 @@ Status QueueTraverse(LinkQueue Q, void (Visit)(ElemType))
 {
 	QueuePtr p;
 	
-	if (Q.front == NULL || Q.front == Q.rear) {
+	if (Q.front == NULL || Q.front == NULL || Q.front == Q.rear) {
 		return ERROR;
 	}
 	
-	p = Q.front;
+	p = Q.front->next;
 	
-	printf("=====链队列遍历======"); 
+	printf("=====链队列遍历======\n"); 
 	
 	while (p != NULL) {
 		Visit(p->data);
