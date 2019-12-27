@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "../common.h"
 
-#define MAXQUEUESIZE 10
+#define MAXQUEUESIZE 100
 
 typedef int QElemType;
 

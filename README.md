@@ -18,7 +18,7 @@
 |    栈(链式存储)    | LinkStack  |  完成  |
 |   队列(顺序存储)   |  SqQueue   |  完成  |
 |   队列(链式存储)   | LinkQueue  |  完成  |
-| 循环队列(顺序存储) |   CQueue   | 未完成 |
+| 循环队列(顺序存储) |   CQueue   |  完成  |
 |  二叉树(顺序存储)  |  SqBiTree  | 未完成 |
 |  二叉树(链式存储)  | LinkBiTree | 未完成 |
 
