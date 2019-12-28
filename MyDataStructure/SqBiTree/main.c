@@ -1,8 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "SqBiTree.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+void print(SqBiTree T) 
+{
+	int i;
+	
+	for (i = 0; i < 10; i++) {
+		printf("%d ", T[i]);
+	}	
+}
+
 
 int main(int argc, char *argv[]) {
+	SqBiTree T;
+	Status s;
+	
+	s = InitTree(T);
+	printf("³õÊ¼»¯¶þ²æÊ÷%d\n", s);
+	
+	CreateTree(T);
+	
+	
 	return 0;
 }
