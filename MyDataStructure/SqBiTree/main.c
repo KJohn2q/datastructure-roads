@@ -22,9 +22,10 @@ int main(int argc, char *argv[]) {
 	
 	CreateTree(T);
 	
-	/* 二叉树深度 */
+	/* 二叉树深度 
 	len = BiTreeDepth(T);
 	printf("二叉树的深度为%d\n", len);
+	*/
 	/*  获取根元素 
 	s = Root(T, &e);
 	printf("获取根元素%d, 根元素的值为%d\n", s, e);
@@ -42,10 +43,14 @@ int main(int argc, char *argv[]) {
 	s = Assign(T, p, 25);
 	printf("二叉树中设置p位置结点的值%d\n", s);
 	*/
+	/* 
 	s = LevelOrderTraverse(T, Visit);
-	printf("\n");
-		
+	printf("\n");	
 	printf("层序遍历%d\n", s);
+	*/
+	s = PreOrderTraverse(T, Visit);
+	printf("\n");	
+	printf("先序遍历%d\n", s);
 	
 	return 0;
 }

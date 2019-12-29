@@ -6,7 +6,7 @@
 #include <math.h>
 #include "../common.h"
 
-#define MAX_TREE_SIZE 5  // 二叉树的最大结点数 
+#define MAX_TREE_SIZE 100  // 二叉树的最大结点数 
 
 typedef int TElemType;
 

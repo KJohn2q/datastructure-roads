@@ -197,66 +197,199 @@ Status Assign(SqBiTree T, position p, TElemType value)
  * 初始条件：二叉树T存在，e是T中某个结点
  * 操作结果：若e是T的非根结点，则返回它的双亲，否则返回“空 ” 
  */
-TElemType Parent(SqBiTree T, TElemType e);
+TElemType Parent(SqBiTree T, TElemType e)
+{
+	int i;
+	
+	if (T[0] == NIL) {
+		return ERROR;
+	}
+	
+	// 从第一个非根结点开始 
+	for (i = 1; i < MAX_TREE_SIZE; i++) {
+		if (T[i] == e) {
+			return T[(i + 1)/2 - 1];
+		}
+	}
+	
+	return NIL;
+} 
 
 /*
  * 初始条件：二叉树T存在，e是T中某个结点
  * 操作结果：返回e的左孩子。若e无左孩子，则返回“空” 
  */ 
-TElemType LeftChild(SqBiTree T, TElemType e);
+TElemType LeftChild(SqBiTree T, TElemType e)
+{
+	int i;
+	
+	if (T[0] == NIL) {
+		return ERROR;
+	}
+	
+	for (i = 0; i < MAX_TREE_SIZE; i++) {
+		if (T[i] == e) {
+			return T[(i + 1) * 2 + 1];	
+		}
+	}
+	
+	return NIL;
+} 
 
 /*
  * 初始条件：二叉树T存在，e是T中某个结点 
  * 操作结果：返回e的右孩子。若e无右孩子，则返回“空” 
  */
-TElemType RightChild(SqBiTree T, TElemType e);
+TElemType RightChild(SqBiTree T, TElemType e)
+{
+	int i;
+	
+	if (T[0] == NIL) {
+		return ERROR;
+	}
+	
+	for (i = 0; i < MAX_TREE_SIZE; i++) {
+		if (T[i] == e) {
+			return T[(i + 1) * 2 + 2];	
+		}
+	}
+	
+	return NIL;
+}
 
 /*
  * 初始条件：二叉树T存在，e是T中某个结点 
  * 操作结果：返回e的左兄弟。若e是T的左孩子或无左兄弟，则返回“空” 
  */
-TElemType LeftSibling(SqBiTree T, TElemType e);
+TElemType LeftSibling(SqBiTree T, TElemType e)
+{
+	int i;
+	
+	if (T[0] == NIL) {
+		return ERROR;
+	}
+	
+	for (i = 0; i < MAX_TREE_SIZE; i++) {
+		if (T[i] == e && i % 2 == 0) {
+			return T[i - 1];	
+		}
+	}
+	
+	return NIL;
+}
 
 /*
  * 初始条件：二叉树T存在，e是T中某个结点
  * 操作结果：返回e的右兄弟。若e是T的右孩子或无右兄弟，则返回“空” 
  */
-TElemType RightSibling(SqBiTree T, TElemType e);
+TElemType RightSibling(SqBiTree T, TElemType e)
+{
+	int i;
+	
+	if (T[0] == NIL) {
+		return ERROR;
+	}
+	
+	for (i = 0; i < MAX_TREE_SIZE; i++) {
+		if (T[i] == e && i % 2 != 0) {
+			return T[i + 1];	
+		}
+	}
+	
+	return NIL;
+}
 
 /*
- * 把从q的j节点开始的子树移为从T的i节点开始的子树 
+ *  PreOrderTraverse()调用 
  */
-void Move(SqBiTree q, int j, SqBiTree T, int i);
-
-/*
- * 初始条件：二叉树T存在，p指向T中某个结点，LR为0或1，非空二叉树c与T不相交且右子树为空 
- * 操作结果：根据LR为0或1，插入c为T中p结点的左或右子树。p结点的原有左或右子树则成为c的右子树 
- */ 
-Status InsertChild(SqBiTree T, TElemType p, Status LR, SqBiTree c); 
-
-/*
- * 初始条件：二叉树T存在，p指向T中某个结点，LR为0或1
- * 操作结果：根据LR为0或1，删除T中p所指结点的左或右子树 
- */
-Status DeleteChild(SqBiTree T, TElemType p, Status LR); 
+void PreTraverse(SqBiTree T, int index, void (Visit)(TElemType)) {
+	Visit(T[index]);
+	
+	if (T[2 * index + 1] != NIL) {
+		PreTraverse(T, 2 * index + 1, Visit);
+	}
+	
+	if (T[2 * index + 2] != NIL) {
+		PreTraverse(T, 2 * index + 2, Visit);
+	}
+}
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：先序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status PreOrderTraverse(SqBiTree T, void (Visit)(TElemType));
+Status PreOrderTraverse(SqBiTree T, void (Visit)(TElemType))
+{
+	// 遍历顺序：根-左-右
+	if (T[0] == NIL) {
+		return ERROR;
+	} 
+	
+	PreTraverse(T, 0, Visit);
+	
+	return OK;
+}
+
+/*
+ *  InOrderTraverse()调用 
+ */
+void InTraverse(SqBiTree T, int index, void (Visit)(TElemType)) {	
+	if (T[2 * index + 1] != NIL) {
+		InTraverse(T, 2 * index + 1, Visit);
+	}
+	
+	Visit(T[index]);
+	
+	if (T[2 * index + 2] != NIL) {
+		InTraverse(T, 2 * index + 2, Visit);
+	}
+}
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：中序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status InOrderTraverse(SqBiTree T, void (Visit)(TElemType));
+Status InOrderTraverse(SqBiTree T, void (Visit)(TElemType))
+{
+	// 遍历顺序：左-根-右 
+	if (T[0] == NIL) {
+		return ERROR;
+	} 
+	
+	InTraverse(T, 0, Visit);
+	
+	return OK;
+}
+
+/*
+ *  PostOrderTraverse()调用 
+ */
+void PostTraverse(SqBiTree T, int index, void (Visit)(TElemType)) {	
+	if (T[2 * index + 1] != NIL) {
+		PostTraverse(T, 2 * index + 1, Visit);
+	}
+		
+	if (T[2 * index + 2] != NIL) {
+		PostTraverse(T, 2 * index + 2, Visit);
+	}
+	
+	Visit(T[index]);
+}
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：后序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status PostOrderTraverse(SqBiTree T, void (Visit)(TElemType));
+Status PostOrderTraverse(SqBiTree T, void (Visit)(TElemType))
+{
+	if (T[0] == NIL) {
+		return ERROR;
+	} 
+	
+	PostTraverse(T, 0, Visit);
+	
+	return OK;	
+} 
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
