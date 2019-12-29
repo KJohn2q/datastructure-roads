@@ -6,7 +6,7 @@
 #include <math.h>
 #include "../common.h"
 
-#define MAX_TREE_SIZE 100  // 二叉树的最大结点数 
+#define MAX_TREE_SIZE 5  // 二叉树的最大结点数 
 
 typedef int TElemType;
 
@@ -120,23 +120,25 @@ Status DeleteChild(SqBiTree T, TElemType p, Status LR);
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：先序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status PreOrderTraverse(SqBiTree T, void Visit());
+Status PreOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：中序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status InOrderTraverse(SqBiTree T, void Visit());
+Status InOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：后序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status PostOrderTraverse(SqBiTree T, void Visit());
+Status PostOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 
 /*
  * 初始条件：二叉树T存在，Visit是对结点操作的应用函数
  * 操作结果：层序遍历T，对每个结点调用函数Visit一次且仅一次，一旦visit()失败，则操作失败 
  */
-Status LevelOrderTraverse(SqBiTree T, void Visit());
+Status LevelOrderTraverse(SqBiTree T, void (Visit)(TElemType));
+
+void Visit(TElemType e);
 #endif
