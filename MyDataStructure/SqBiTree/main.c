@@ -43,14 +43,23 @@ int main(int argc, char *argv[]) {
 	s = Assign(T, p, 25);
 	printf("二叉树中设置p位置结点的值%d\n", s);
 	*/
-	/* 
+	/* 层序遍历 
 	s = LevelOrderTraverse(T, Visit);
 	printf("\n");	
 	printf("层序遍历%d\n", s);
 	*/
-	s = PreOrderTraverse(T, Visit);
+	/* 先序遍历 
+	s = PrelOrderTraverse(T, Visit);
 	printf("\n");	
 	printf("先序遍历%d\n", s);
-	
+	*/
+	/* 中序遍历 
+	s = InOrderTraverse(T, Visit);
+	printf("\n");	
+	printf("中序遍历%d\n", s);
+	*/
+	s = PostOrderTraverse(T, Visit);
+	printf("\n");	
+	printf("后序遍历%d\n", s);
 	return 0;
 }

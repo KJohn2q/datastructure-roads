@@ -1,28 +1,36 @@
-# Description
+# 描述
 
-> This reposity is record my datastructure studying roads.
+> 该项目是为了记录我的数据结构学习之路。
 
-## Step
+## 步骤
 
 把所有基础数据结构实现一遍
 
-|      数据结构      |    名称    |  状态  |
-| :----------------: | :--------: | :----: |
-|       三元组       |  Triplet   |  完成  |
-|       线性表       |   SqList   |  完成  |
-|        链表        |  LinkList  |  完成  |
-|      静态链表      | SLinkList  |  完成  |
-|      循环链表      | CLinkList  |  完成  |
-|    双向循环链表    | DuLinkList |  完成  |
-|    栈(顺序存储)    |  SqStack   |  完成  |
-|    栈(链式存储)    | LinkStack  |  完成  |
-|   队列(顺序存储)   |  SqQueue   |  完成  |
-|   队列(链式存储)   | LinkQueue  |  完成  |
-| 循环队列(顺序存储) |   CQueue   |  完成  |
-|  二叉树(顺序存储)  |  SqBiTree  | 未完成 |
-|  二叉树(链式存储)  | LinkBiTree | 未完成 |
+|       数据结构       |    名称    |  状态  |
+| :------------------: | :--------: | :----: |
+|        三元组        |  Triplet   |  完成  |
+|        线性表        |   SqList   |  完成  |
+|         链表         |  LinkList  |  完成  |
+|       静态链表       | SLinkList  |  完成  |
+|       循环链表       | CLinkList  |  完成  |
+|     双向循环链表     | DuLinkList |  完成  |
+|     栈(顺序存储)     |  SqStack   |  完成  |
+|     栈(链式存储)     | LinkStack  |  完成  |
+|    队列(顺序存储)    |  SqQueue   |  完成  |
+|    队列(链式存储)    | LinkQueue  |  完成  |
+|  循环队列(顺序存储)  |   CQueue   |  完成  |
+| 完全二叉树(顺序存储) |  SqBiTree  |  完成  |
+|   二叉树(链式存储)   | LinkBiTree | 未完成 |
 
-## Structure
+把所有排序实现一遍
+
+|   排序   |    名称    |  状态  |
+| :------: | :--------: | :----: |
+| 冒泡排序 | BubbleSort | 未完成 |
+| 插入排序 | InsertSort | 未完成 |
+| 快速排序 | QuickSort  | 未完成 |
+
+
 
 
 
