@@ -1,6 +1,8 @@
 #ifndef BITREE_H
 #define BITREE_H
 
+#include "../common.h"
+
 typedef int TElemType; 
 
 typedef struct BiTNode {

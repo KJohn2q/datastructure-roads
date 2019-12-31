@@ -1,11 +1,13 @@
 #include "BiTree.h"
 
+TElemType NIL = ' ';
+
 /*
  * 构造空二叉树T 
  */
-Status InitBiTree(BiTree *T);
+Status InitBiTree(BiTree *T)
 {
-	T = NULL; 
+	*T = NULL; 
 	return OK;
 }
 
@@ -15,20 +17,20 @@ Status InitBiTree(BiTree *T);
  */
 Status DestroyBiTree(BiTree *T)
 {
-	if (T == NULL) {
+	if (*T == NULL) {
 		// 二叉树不存在
 		return ERROR; 
 	}
 	
-	if (T) {
-		if (T->lchild) {
-			DestroyBiTree(T->lchild);
+	if (*T) {
+		if ((*T)->lchild) {
+			DestroyBiTree(&(*T)->lchild);
 		}
-		if (T->rchild) {
-			DestroyBiTree(T->rchild);
+		if ((*T)->rchild) {
+			DestroyBiTree(&(*T)->rchild);
 		}
-		free(T);
-		T = NULL;
+		free((*T));
+		*T = NULL;
 	}
 	
 	return OK;
@@ -40,7 +42,26 @@ Status DestroyBiTree(BiTree *T)
  */
 Status CreateBiTree(BiTree *T)
 {
+	TElemType e;
 	
+	// 输入结点的值 
+	scanf("%d", &e);
+
+	if (e == NIL) {
+		*T = NULL;
+	}
+	else {
+		*T = (BiTree) malloc(sizeof(BiTNode));
+		if (!*T) {
+			// 无可用内存
+			exit(OVERFLOW); 
+		}
+		(*T)->data = e; // 生成根结点
+		CreateBiTree(&(*T)->lchild);
+		CreateBiTree(&(*T)->rchild); 
+	}
+	
+	return OK;
 }
 
 
@@ -48,37 +69,89 @@ Status CreateBiTree(BiTree *T)
  * 初始条件：二叉树T存在
  * 操作结果：若T为空二叉树，则返回TRUE，否则FALSE 
  */
-Status BiTreeEmpty(BiTree T); 
+Status BiTreeEmpty(BiTree T)
+{
+	return T == NULL ? TRUE:FALSE;	
+}
 
 /*
  * 初始条件：二叉树T存在 
  * 操作结果：返回T的深度 
  */
-int BiTreeDepth(BiTree T);
+int BiTreeDepth(BiTree T)
+{
+	int i, j;
+	if (!T) {
+		return ERROR;
+	}
+	i = T->lchild != NULL ? BiTreeDepth(T->lchild) : 0;
+	j = T->rchild != NULL ? BiTreeDepth(T->rchild) : 0;
+	
+	return i > j ? i + 1 : j + 1;
+}
 
 /*
  * 初始条件：二叉树T存在
  * 操作结果：返回T的根 
  */
-TElemType ROOT(BiTree T);
+TElemType ROOT(BiTree T)
+{
+	if (!T) {
+		return ERROR;
+	}
+	return T->data;
+}
 
 /*
  * 初始条件：二叉树T存在，p指向T中某个结点
  * 操作结果：返回p所指结点的值 
  */
-TElemType Value(BiTree p);
+TElemType Value(BiTree p)
+{
+	if (!p) {
+		return ERROR;
+	}
+	return p->data;
+}
 
 /*
- * 初始条件：二叉树T存在，e是T中某个结点
- * 操作结果：结点e赋值为value 
+ * 初始条件：二叉树T存在，p是T中某个结点
+ * 操作结果：结点p赋值为value 
  */
-Status Assign(BiTree p, TElemType value); 
+Status Assign(BiTree p, TElemType value)
+{
+	if (!p) {
+		return ERROR;
+	}
+	p->data = value;
+	return OK;
+}
 
 /*
  * 初始条件：二叉树T存在，e是T中某个结点
  * 操作结果：若e是T的非根结点，则返回它的双亲，否则返回“空” 
  */
-TElemType Parent(BiTree T, TElemType e); 
+TElemType Parent(BiTree T, TElemType e)
+{
+	if (!T) {
+		return ERROR;
+	}
+	
+	if (T->lchild) {
+		if (T->lchild->data == e) {
+			return T->data;
+		} 
+		return Parent(T->lchild, e);
+	}
+	else if (T->rchild) {
+		if (T->rchild->data == e) {
+			return T->data;
+		}
+		return Parent(T->rchild, e);
+	}
+	
+	return NIL;
+}
 
 /*
  * 初始条件： 二叉树T存在，e是T中某个结点
