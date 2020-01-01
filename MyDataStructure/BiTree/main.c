@@ -14,5 +14,7 @@ int main(int argc, char *argv[]) {
 	*/
 	CreateBiTree(&T);
 	
+	PreOrderTraverse(T, Visit);
+	
 	return 0;
 }
