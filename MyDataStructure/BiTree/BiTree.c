@@ -1,6 +1,6 @@
 #include "BiTree.h"
 
-TElemType NIL = ' ';
+TElemType NIL = 0;
 
 /*
  * ¹¹Ôì¿Õ¶ş²æÊ÷T 
@@ -322,8 +322,8 @@ Status InOrderTraverse(BiTree T, void (Visit)(TElemType e))
 		return NIL;
 	}
 	
-	Visit(T->data);
 	InOrderTraverse(T->lchild, Visit);
+	Visit(T->data);	
 	InOrderTraverse(T->rchild, Visit);
 }
 
@@ -337,9 +337,9 @@ Status PostOrderTraverse(BiTree T, void (Visit)(TElemType e))
 		return NIL;
 	}
 	
-	Visit(T->data);
 	PostOrderTraverse(T->lchild, Visit);
 	PostOrderTraverse(T->rchild, Visit);
+	Visit(T->data);	
 }
 
 /*

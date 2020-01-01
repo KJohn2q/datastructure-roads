@@ -12,9 +12,10 @@ int main(int argc, char *argv[]) {
 	s = InitBiTree(&T);
 	printf("³õÊ¼»¯¶þ²æÊ÷%d\n", s);
 	*/
-	CreateBiTree(&T);
+	s = CreateBiTree(&T);
+	printf("%d\n", s);
 	
-	PreOrderTraverse(T, Visit);
+	PostOrderTraverse(T, Visit);
 	
 	return 0;
 }
