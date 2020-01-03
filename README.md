@@ -28,7 +28,7 @@
 | :------: | :--------: | :----: |
 | 冒泡排序 | BubbleSort |  完成  |
 | 插入排序 | InsertSort | 未完成 |
-| 快速排序 | QuickSort  | 未完成 |
+| 快速排序 | QuickSort  |  完成  |
 | 选择排序 | SelectSort | 未完成 |
 | 归并排序 | MergeSort  | 未完成 |
 
