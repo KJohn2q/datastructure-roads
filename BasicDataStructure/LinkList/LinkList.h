@@ -89,6 +89,21 @@ Status Compare(ElemType, ElemType);
  */ 
 void Visit(ElemType data);
 
+/*
+ * 链表翻转 
+ */
+LinkList ListReverse(LinkList L);
+
+/*
+ * 链表翻转主例程 
+ */
+void LReverse(LinkList *L); 
+
+/*
+ * 迭代实现链表翻转 
+ */
+void IterationInvertList(LinkList *L); 
+
 #endif
 
 

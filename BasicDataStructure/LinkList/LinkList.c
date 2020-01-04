@@ -306,6 +306,8 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 		Visit(p->data);
 		p = p->next;	
 	}
+	
+	printf("\n");
 } 
 
 /*
@@ -323,6 +325,59 @@ void Visit(ElemType data)
 {
 	printf("%d ", data);
 }
+
+/*
+ * 链表翻转递归操作 
+ */
+LinkList ListReverse(LinkList L)
+{
+	if (L->next == NULL) {
+		return L;
+	}
+	LinkList newL = ListReverse(L->next);
+	
+	L->next->next = L;
+	L->next = NULL;
+	
+	return newL;
+} 
+
+/*
+ * 链表翻转主例程 
+ */
+void LReverse(LinkList *L) 
+{
+	LinkList newL;
+	
+	newL = ListReverse((*L)->next);
+	(*L)->next = newL;
+}
+
+/*
+ * 迭代实现链表翻转 
+ */
+void IterationInvertList(LinkList *L)
+{
+	LinkList pre, cur;
+	LinkList next;
+	
+	pre = (*L)->next;
+	cur = pre->next;
+	
+	pre->next = NULL;
+	
+	while (cur != NULL) {
+		next = cur->next;
+		cur->next = pre;
+		pre = cur;
+		cur = next;
+	}
+	
+	(*L)->next = pre;
+}
+ 
+
+
 
 
 
