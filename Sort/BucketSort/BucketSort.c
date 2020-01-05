@@ -7,7 +7,7 @@
  */
 void BucketSort(int arr[], int n)
 {
-	int i;
+	int i, j;
 	int Count[MAX];
 	
 	// Count数组初始化 
@@ -20,7 +20,7 @@ void BucketSort(int arr[], int n)
 	} 
 	
 	for (i = 0; i < MAX; i++) {
-		if (Count[i] > 0) {
+		for (j = 0; j < Count[i]; j++) {
 			printf("%d ", i);
 		}
 	}
