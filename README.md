@@ -34,7 +34,7 @@
 | 归并排序 | MergeSort  |  完成  |
 | 桶式排序 | BucketSort |  完成  |
 | 基数排序 | RadixSort  |  完成  |
-| 希尔排序 | ShellSort  | 未完成 |
+| 希尔排序 | ShellSort  |  完成  |
 |  堆排序  |  HeapSort  | 未完成 |
 
 
