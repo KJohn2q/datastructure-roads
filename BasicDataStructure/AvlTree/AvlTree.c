@@ -94,6 +94,91 @@ AvlTree Insert(AvlTree T, TElemType e)
 	return T;
 } 
 
+// 删除结点（e是结点值），返回根结点 
+AvlTree Delete(AvlTree T, TElemType e)
+{
+	Position p;
+	
+	if ((p = Find(T, e)) != NULL) {
+		T = DeleteNode(T, p);
+	}
+	
+	T->height = Max(Height(T->left), Height(T->right)) + 1;
+	
+	return T;
+}
+
+// 删除结点（p是结点的位置），返回根结点 
+AvlTree DeleteNode(AvlTree T, Position p)
+{
+	Position tepCell;
+	
+	// 根为空 或者没有要删除的结点  直接返回NULL 
+	if (T == NULL || p == NULL) {
+		return NULL;
+	}
+	
+	if (p->data < T->data) {
+		T->left = DeleteNode(T->left, p);
+		
+		// 删除结点后，若AVL树失去平衡，则进行相应的调节 
+		if (Height(T->right) - Height(T->left) == 2) {
+			tepCell = T->left;
+			
+			if (Height(tepCell->left) > Height(tepCell->right)) {
+				T = DoubleRotateWithLeft(T);
+			} else {
+				T = SingleRotateWithRight(T);
+			}
+		} 
+	}
+	else if (p->data > T->data) {
+		T->right = DeleteNode(T->right, p);
+		
+		// 删除结点后，若AVL树失去平衡，则进行相应的调节 
+		if ((Height(T->left) - Height(T->right)) == 2) {
+			tepCell = T->right;
+			
+			if (Height(tepCell->right) > Height(tepCell->left)) {
+				T = DoubleRotateWithRight(T);
+			} else {
+				T = SingleRotateWithLeft(T);
+			}
+		}
+	}
+	else {
+		// T是对应要删除的结点 
+		
+		// T的左右孩子都非空
+		if ((T->left) && (T->right)) {
+			if (Height(T->left) > Height(T->right)) {
+				// 如果T的左子树比右子树高
+				// 则（1)找出T的左子树的最大结点
+				// (2) 将该最大结点的值赋给T
+				// (3) 删除该最大结点
+				// 采用这种方式的好处是：删除左子树的最大结点后，AVL树仍然是平衡的 
+				tepCell = FindMax(T->left);
+				T->data = tepCell->data;
+				T->left = DeleteNode(T->left, tepCell);
+			} else {
+				// 如果T的左子树不比右子树高(即它们相等，或右子树比左子树高1)
+				// 则（1)找出T的右子树的最小结点
+				// (2) 将该最大结点的值赋给T
+				// (3) 删除该最小结点
+				// 采用这种方式的好处是：删除右子树的最小结点后，AVL树仍然是平衡的 
+				tepCell = FindMin(T->right);
+				T->data = tepCell->data;
+				T->right = DeleteNode(T->right, tepCell);
+			}
+		}
+		else {
+			tepCell = T;
+			T = T->left ? T->left : T->right;
+			free(tepCell);
+		}
+	}
+} 
+
 static int Height(Position P)
 {
 	if (P == NULL) {
@@ -168,36 +253,3 @@ void Visit(TElemType data)
 	printf("%d ", data);
 }
 
-AvlTree Delete(AvlTree T, TElemType e)
-{
-	Position tempCell;
-	if (T == NULL) {
-		return NULL; 
-	}
-	
-	if (e < T->data) {
-		T->left = Delete(T->left, e);
-	} 
-	else if (e > T->data) {
-		T->right = Delete(T->right, e);
-	}
-	else {
-		// e = T->data
-		// 找到要删除的结点
-		if (!T->left && !T->right) {
-			// 叶子结点
-		}
-		else if (T->left && !T->right) {
-			// 只有左结点 
-		}
-		else if (T->right && !T->left) {
-			// 只有右结点 
-		}
-		else {
-			// 既有左结点 也有右结点
-			 
-		}
-		
-		
-	}
-}

@@ -23,7 +23,11 @@ Position FindMax(AvlTree T);
 
 AvlTree Insert(AvlTree T, TElemType e);
 
+// 删除结点（e是结点值），返回根结点 
 AvlTree Delete(AvlTree T, TElemType e);
+
+// 删除结点（p是结点的位置），返回根结点 
+AvlTree DeleteNode(AvlTree T, Position p);
 
 static int Height(Position P);
 

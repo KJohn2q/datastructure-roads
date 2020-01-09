@@ -12,6 +12,8 @@ int main(int argc, char *argv[]) {
 		T = Insert(T, arr[i]);
 	}
 	
+	T = Delete(T, 6);
+	
 	TreeTraverse(T);
 	
 	return 0;
