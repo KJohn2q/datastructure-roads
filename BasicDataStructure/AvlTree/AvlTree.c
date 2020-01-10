@@ -177,6 +177,8 @@ AvlTree DeleteNode(AvlTree T, Position p)
 			free(tepCell);
 		}
 	}
+	
+	return T;
 } 
 
 static int Height(Position P)
@@ -239,10 +241,10 @@ static int Max(int m, int n)
 
 void TreeTraverse(AvlTree T)
 {
-	if (T != NULL) {
+	if (T != NULL) {	
+		Visit(T->data);	
+		 
 		TreeTraverse(T->left);
-		
-		Visit(T->data);	 
 		
 		TreeTraverse(T->right);			
 	}
