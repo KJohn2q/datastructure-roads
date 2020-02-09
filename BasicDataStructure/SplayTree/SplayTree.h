@@ -8,19 +8,20 @@ typedef int TElemType;
 
 typedef struct SplayNode {
 	TElemType data;
-	typedef SplayNode* left;
-	typedef SplayNode* right;
-}SplayNode, *SplayTree;
+	struct SplayNode* left;
+	struct SplayNode* right;
+} SplayNode, *SplayTree;
 
 typedef struct SplayNode *Position;
 
-SplayTree Initialize(void);
 SplayTree MakeEmpty(SplayTree T);
 SplayTree Splay(Position x, TElemType e);
 SplayTree Find(SplayTree T, TElemType e);
-SplayTree FindMin(SplayTree T);
-SplayTree FindMax(SplayTree T);
 SplayTree Insert(SplayTree T, TElemType e);
 SplayTree Delete(SplayTree T, TElemType e); 
+
+Position SingleRotateWithRight(Position K1);
+Position SingleRotateWithRight(Position K2);
+
 
 #endif
