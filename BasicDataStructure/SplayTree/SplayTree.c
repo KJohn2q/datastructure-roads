@@ -2,7 +2,7 @@
 
 SplayTree MakeEmpty(SplayTree T)
 {
-	if (T) {
+	if (T != NULL) {
 		MakeEmpty(T->left);
 		MakeEmpty(T->right);
 		free(T);
@@ -65,7 +65,7 @@ SplayTree Splay(Position x, TElemType e)
 				x = SingleRotateWithRight(x);
 			
 			LeftTreeMax->right = x;
-			LeftTreeMx = x;
+			LeftTreeMax = x;
 			x = x->right;
 		}
 		
@@ -89,12 +89,13 @@ SplayTree Insert(SplayTree T, TElemType e)
 	Position node;
 	
 	node = malloc(sizeof(SplayNode));
+	node->data = e;
 	
 	if (!node) {
 		exit(OVERFLOW);
 	}
 	
-	if (!T) {
+	if (T == NULL) {
 		node->left = node->right = NULL;
 		T = node;
 	}
@@ -106,7 +107,7 @@ SplayTree Insert(SplayTree T, TElemType e)
 			T->left = NULL;
 			T = node;
 		}
-		else if(T->data < e)
+		else if(T->data < e) {
 			node->right = T->right;
 			node->left = T;
 			T->right = NULL;
@@ -120,4 +121,35 @@ SplayTree Insert(SplayTree T, TElemType e)
 	node = NULL;
 	return T;
 }
-SplayTree Delete(SplayTree T, TElemType e); 
+
+SplayTree Delete(SplayTree T, TElemType e)
+{
+	Position node;
+	
+	if (!T) {
+		T = Splay(T, e);
+		if (e == T->data) {
+			if (!T->left) {
+				node = T->right;
+			}
+			else {
+				node = T->left;
+				node = Splay(node, e);
+				node->right = T->right;
+			}
+			free(T);
+			T = node;
+		}
+	}
+	 
+	return T;
+} 
+
+void PrintTree(SplayTree T)
+{
+	if (T != NULL) {
+		PrintTree(T->left);
+		printf("%d ", T->data);
+		PrintTree(T->right);
+	}
+}

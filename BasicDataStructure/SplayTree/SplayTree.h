@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../common.h"
 
 typedef int TElemType;
 
@@ -19,6 +20,7 @@ SplayTree Splay(Position x, TElemType e);
 SplayTree Find(SplayTree T, TElemType e);
 SplayTree Insert(SplayTree T, TElemType e);
 SplayTree Delete(SplayTree T, TElemType e); 
+void PrintTree(SplayTree T);
 
 Position SingleRotateWithRight(Position K1);
 Position SingleRotateWithRight(Position K2);
