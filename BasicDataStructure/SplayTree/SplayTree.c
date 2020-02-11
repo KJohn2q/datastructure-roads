@@ -50,33 +50,34 @@ SplayTree Splay(Position x, TElemType e)
 	
 	while (e != x->data) {
 		if (e < x->data) {
-			if (!x->left) break;
-			if (e < x->left->data) 
+			if (x->left == NULL) break;
+			if (e < x->left->data)  
 				x = SingleRotateWithLeft(x);
-			
+			if (x->left == NULL) break;
+				
 			/* Á´½ÓÓÒÊ÷ */
 			RightTreeMin->left = x;
 			RightTreeMin = x;
 			x = x->left;
 		}
-		if (e > x->data) {
-			if (!x->right) break;
+		else {	
+			if (x->right == NULL) break;		
 			if (e > x->right->data) 
 				x = SingleRotateWithRight(x);
-			
+				
+			if (x->right == NULL) break;	
 			LeftTreeMax->right = x;
 			LeftTreeMax = x;
 			x = x->right;
-		}
-		
-		LeftTreeMax->right = x->left;
-		RightTreeMin->left = x->right;
-		
-		x->left = Header.right;
-		x->right = Header.left;
-		
-		return x; 
+		}	
 	}
+	LeftTreeMax->right = x->left;
+	RightTreeMin->left = x->right;
+	
+	x->left = Header.right;
+	x->right = Header.left;
+	
+	return x; 
 } 
 
 SplayTree Find(SplayTree T, TElemType e)
@@ -126,10 +127,10 @@ SplayTree Delete(SplayTree T, TElemType e)
 {
 	Position node;
 	
-	if (!T) {
+	if (T) {
 		T = Splay(T, e);
 		if (e == T->data) {
-			if (!T->left) {
+			if (T->left == NULL) {
 				node = T->right;
 			}
 			else {

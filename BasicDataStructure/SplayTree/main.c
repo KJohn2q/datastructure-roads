@@ -9,13 +9,12 @@ int main(int argc, char *argv[]) {
 	
 	
 	T = Insert(T, 5);
-	
-	PrintTree(T);
-	exit(0);
 	T = Insert(T, 10);
 	T = Insert(T, 4);
 	T = Insert(T, 3);
 	
+	T = Delete(T, 4);
 	
+	PrintTree(T);
 	return 0;
 }
