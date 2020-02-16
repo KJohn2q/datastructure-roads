@@ -40,9 +40,7 @@ Position SingleRotateWithRight(Position K1)
 SplayTree Splay(Position x, TElemType e)
 {
 	SplayNode Header;
-	
-	/* LeftTreeMax 为比x小的树 */
-	/* RightTreeMin 为比e大的树 */ 
+
 	Position LeftTreeMax, RightTreeMin;
 	
 	Header.left = Header.right = NULL;
