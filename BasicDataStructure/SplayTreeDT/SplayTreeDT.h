@@ -17,7 +17,7 @@ typedef struct SplayNode {
 typedef struct SplayNode *Position;
 
 SplayTree MakeEmpty(SplayTree T);
-SplayTree Splay(Position x, TElemType e);
+SplayTree Splay(Position x);
 SplayTree Find(SplayTree T, TElemType e);
 SplayTree Insert(SplayTree T, TElemType e);
 SplayTree Delete(SplayTree T, TElemType e);
