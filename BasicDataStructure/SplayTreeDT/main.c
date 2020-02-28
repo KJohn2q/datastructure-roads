@@ -6,10 +6,15 @@ int main(int argc, char *argv[]) {
 	SplayTree T;
 	
 	T = MakeEmpty(T);
-	T = Insert(T, 11);
 	T = Insert(T, 13);
+	
+	T = Insert(T, 11);
+	
 	T = Insert(T, 14);
+	
 	T = Insert(T, 12);
+	PrintTree(T);
+	
 	T = Insert(T, 17);
 	T = Insert(T, 16);
 	T = Insert(T, 20);
@@ -17,7 +22,7 @@ int main(int argc, char *argv[]) {
 	T = Insert(T, 18);
 	T = Insert(T, 15); 
 	
-	PrintTree(T);
+//	PrintTree(T);
 	
 	return 0;
 }

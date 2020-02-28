@@ -20,93 +20,90 @@ SplayTree Splay(Position x)
 {
 	Position K,K2;
 	
-	K = x;
-	
 	while (x->parent) {
-		if (x->parent->parent != NULL) {
+		if (!x->parent->parent) {
 			if (x == x->parent->left) {
-				K = SingleRotateWithLeft(x);
+				x = SingleRotateWithLeft(x->parent);
 			}
 			else {
-				K = SingleRotateWithRight(x);
+				x = SingleRotateWithRight(x->parent);
 			}	
 		}
 		else {
 			// zig-zig
 			if (x == x->parent->left && x->parent == x->parent->parent->left) {
-				K2 = SingleRotateWithLeft(x->parent);
-				K = SingleRotateWithLeft(K2->left); 
+				SingleRotateWithLeft(x->parent->parent);
+				SingleRotateWithLeft(x->parent);
 			}
 			// zag-zig
 			if (x == x->parent->left && x->parent == x->parent->parent->right) {
-				K2 = SingleRotateWithLeft(x);
-				K = SingleRotateWithRight(K2); 
+				SingleRotateWithLeft(x->parent);
+				SingleRotateWithRight(x->parent); 
 			}
 			// zig-zag
 			if (x == x->parent->right && x->parent == x->parent->parent->left) {
-				K2 = SingleRotateWithRight(x);
-				K = SingleRotateWithLeft(K2); 
+				SingleRotateWithRight(x->parent);
+				SingleRotateWithLeft(x->parent); 
 			}
 			// zag-zag
-			if (x == x->parent->left && x->parent == x->parent->parent->right) {
-				K2 = SingleRotateWithLeft(x->parent);
-				K = SingleRotateWithLeft(K2->right); 
+			if (x == x->parent->right && x->parent == x->parent->parent->right) {
+				SingleRotateWithRight(x->parent->parent);
+				SingleRotateWithRight(x->parent);
 			}
 		}
-	}	
+	}
 	
-	return K;
+	return x;
 }
 
 SplayTree Find(SplayTree T, TElemType e)
 {
-	return Splay(T);
+	while (T != NULL && T->data != e) {
+		if (e < T->data && T->left != NULL) {
+			T = T->left;
+		}
+		else if (e > T->data && T->right != NULL) {
+			T = T->right;
+		}
+	}
+	
+	return T;
 }
 
-SplayTree Insert(SplayTree T, TElemType e)
+SplayTree Insert(SplayTree T, TElemType e) 
 {
 	Position node;
+	Position y = NULL;
 	
 	node = malloc(sizeof(SplayNode));
+	node->data = e;
 	
 	if (!node) {
 		exit(OVERFLOW);
-	}
-	
-	node->data = e;
-	
-	if (T == NULL) {
-		node->left = node->right = node->parent = NULL;
-		T = node;
 	} 
-	else {
+	
+	while (T != NULL) {
+		y = T;
 		if (e < T->data) {
-			node->left = T->left;
-			node->right = T;
-			
-			T->left = NULL;
-			T->parent = node;
-			T = node;
-		}
-		else if(e > T->data) {
-			node->right = T->right;
-			node->left = T;
-			
-			T->right = NULL;
-			T->parent = node;
-			T = node;
-		}
-		else {
-			T = Splay(T);
-			return T;
+			T = T->left;
+		} else {
+			T = T->right;
 		}
 	}
 	
-	node = NULL;
+	if (y == NULL) {
+		y = node;
+	} else if (e < y->data) {
+		y->left = node;
+	} else {
+		y->right = node;
+	}
 	
-	T = Splay(T);
+	T = Splay(node); 
+	
 	return T;
 }
+
 
 SplayTree Delete(SplayTree T, TElemType e);
 
@@ -119,35 +116,51 @@ void PrintTree(SplayTree T)
 	}
 }
 
-Position SingleRotateWithLeft(Position K2)
+Position SingleRotateWithLeft(Position x)
 {
-	Position K1;
-
-    K1 = K2->left;
-    
-    K2->left = K1->right;
-    K1->right->parent = K2; 
-    K1->right = K2;
-    
-    K1->parent = K2->parent;
-    K2->parent = K1;
-
-    return K1;  /* New root */
+	Position y;
+	
+	y = x->left;
+	x->left = y->right;
+	
+	if (y->right != NULL) {
+		y->right->parent = x;
+	}
+	y->parent = x->parent;
+	if (x == x->parent->left) {
+		x->parent->left = y;
+	}
+	else if (x == x->parent->right) {
+		x->parent->right = y;
+	}
+	y->right = x;
+	x->parent = y;
+	
+	return y;
 }
 
-Position SingleRotateWithRight(Position K1)
+Position SingleRotateWithRight(Position x)
 {
-	Position K2;
-
-    K2 = K1->right;
-    
-    K1->right = K2->left;
-    K2->left->parent = K1;
-    K2->left = K1;
-    
-    K2->parent = K1->parent;
-    K1->parent = K2;
-
-    return K2;  /* New root */
+	Position y;
+	
+	y = x->right;
+	x->right = y->left;
+	if (y->left != NULL) {
+		y->left->parent = x;
+	}
+	
+	y->parent = x->parent;
+	if (x == x->parent->left) {
+		x->parent->left = y;
+	} else if (x == x->parent->right) {
+		x->parent->right = y;
+	}
+	
+	y->left = x;
+	x->parent = y;
+	
+	return y;
 }
+
+
 
