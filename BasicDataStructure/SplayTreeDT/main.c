@@ -3,26 +3,32 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
-	SplayTree T;
+	// Ê÷µÄ¸ù 
+	SplayTree T = NULL;
 	
-	T = MakeEmpty(T);
-	T = Insert(T, 13);
+//	T = MakeEmpty(T);	
+	Insert(13);
 	
-	T = Insert(T, 11);
+	Insert(11);	
 	
-	T = Insert(T, 14);
+	Insert(14);
 	
-	T = Insert(T, 12);
-	PrintTree(T);
 	
-	T = Insert(T, 17);
-	T = Insert(T, 16);
-	T = Insert(T, 20);
-	T = Insert(T, 21);
-	T = Insert(T, 18);
-	T = Insert(T, 15); 
+	Insert(12);
 	
-//	PrintTree(T);
+	Insert(17);
+	
+	/*
+	Insert(16);
+	PrintTree();
+	
+	Insert(20);
+	Insert(21);
+	Insert(18);
+	Insert(15); 
+
+	PrintTree();
+	*/
 	
 	return 0;
 }

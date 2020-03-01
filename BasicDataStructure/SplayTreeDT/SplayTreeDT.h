@@ -16,15 +16,16 @@ typedef struct SplayNode {
 
 typedef struct SplayNode *Position;
 
-SplayTree MakeEmpty(SplayTree T);
-SplayTree Splay(Position x);
-SplayTree Find(SplayTree T, TElemType e);
-SplayTree Insert(SplayTree T, TElemType e);
-SplayTree Delete(SplayTree T, TElemType e);
-void PrintTree(SplayTree T);
+SplayTree MakeEmpty();
+void Splay(Position x);
+Position Find(TElemType e);
+void Insert(TElemType e);
+void Delete(TElemType e);
+void PrintTree();
+void PrintTreeSingle(Position x);
 
-Position SingleRotateWithLeft(Position K2);
-Position SingleRotateWithRight(Position K1);
+void SingleRotateWithLeft(Position K2);
+void SingleRotateWithRight(Position K1);
 
 
 

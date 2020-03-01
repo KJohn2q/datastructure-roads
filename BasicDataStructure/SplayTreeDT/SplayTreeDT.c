@@ -1,5 +1,7 @@
 #include "SplayTreeDT.h"
 
+SplayTree T;
+
 SplayTree MakeEmpty(SplayTree T)
 {
 	if (!T) {
@@ -16,17 +18,15 @@ SplayTree MakeEmpty(SplayTree T)
 	return NULL;
 }
 
-SplayTree Splay(Position x)
-{
-	Position K,K2;
-	
+void Splay(Position x)
+{	
 	while (x->parent) {
 		if (!x->parent->parent) {
 			if (x == x->parent->left) {
-				x = SingleRotateWithLeft(x->parent);
+				SingleRotateWithLeft(x->parent);
 			}
 			else {
-				x = SingleRotateWithRight(x->parent);
+				SingleRotateWithRight(x->parent);
 			}	
 		}
 		else {
@@ -52,11 +52,9 @@ SplayTree Splay(Position x)
 			}
 		}
 	}
-	
-	return x;
 }
 
-SplayTree Find(SplayTree T, TElemType e)
+Position Find(TElemType e)
 {
 	while (T != NULL && T->data != e) {
 		if (e < T->data && T->left != NULL) {
@@ -70,53 +68,61 @@ SplayTree Find(SplayTree T, TElemType e)
 	return T;
 }
 
-SplayTree Insert(SplayTree T, TElemType e) 
+void Insert(TElemType e) 
 {
 	Position node;
 	Position y = NULL;
+	Position x = T;
 	
 	node = malloc(sizeof(SplayNode));
 	node->data = e;
+	node->left = node->right = node->parent = NULL;
 	
 	if (!node) {
 		exit(OVERFLOW);
 	} 
 	
-	while (T != NULL) {
-		y = T;
-		if (e < T->data) {
-			T = T->left;
+	while (x != NULL) {
+		y = x;
+		if (e < x->data) {
+			x = x->left;
 		} else {
-			T = T->right;
+			x = x->right;
 		}
 	}
 	
+	node->parent = y;
 	if (y == NULL) {
-		y = node;
+		T = node;
 	} else if (e < y->data) {
 		y->left = node;
 	} else {
 		y->right = node;
-	}
-	
-	T = Splay(node); 
-	
-	return T;
+	}	
+	Splay(node); 
 }
 
 
-SplayTree Delete(SplayTree T, TElemType e);
+void Delete(TElemType e);
 
-void PrintTree(SplayTree T) 
+void PrintTree() 
 {
-	if (T != NULL) {
-		PrintTree(T->left);
-		printf("%d ", T->data);
-		PrintTree(T->right);
+	PrintTreeSingle(T);
+}
+
+void PrintTreeSingle(Position x) 
+{
+	if (x != NULL) {
+		if (x->left != NULL)
+			PrintTreeSingle(x->left);
+		printf("%d ", x->data);
+		
+		if (x->right != NULL) 
+			PrintTreeSingle(x->right);
 	}
 }
 
-Position SingleRotateWithLeft(Position x)
+void SingleRotateWithLeft(Position x)
 {
 	Position y;
 	
@@ -127,19 +133,20 @@ Position SingleRotateWithLeft(Position x)
 		y->right->parent = x;
 	}
 	y->parent = x->parent;
-	if (x == x->parent->left) {
+	
+	if (x->parent == NULL) {
+		T = y;
+	} else if (x == x->parent->left) {
 		x->parent->left = y;
 	}
-	else if (x == x->parent->right) {
+	else {
 		x->parent->right = y;
 	}
 	y->right = x;
 	x->parent = y;
-	
-	return y;
 }
 
-Position SingleRotateWithRight(Position x)
+void SingleRotateWithRight(Position x)
 {
 	Position y;
 	
@@ -150,16 +157,18 @@ Position SingleRotateWithRight(Position x)
 	}
 	
 	y->parent = x->parent;
-	if (x == x->parent->left) {
+	
+	if (x->parent == NULL) {
+		T = y;
+	}
+	else if (x == x->parent->left) {
 		x->parent->left = y;
-	} else if (x == x->parent->right) {
+	} else {
 		x->parent->right = y;
 	}
 	
 	y->left = x;
 	x->parent = y;
-	
-	return y;
 }
 
 
