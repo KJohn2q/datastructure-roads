@@ -17,15 +17,17 @@ typedef struct SplayNode {
 typedef struct SplayNode *Position;
 
 SplayTree MakeEmpty();
-void Splay(Position x);
-Position Find(TElemType e);
-void Insert(TElemType e);
-void Delete(TElemType e);
+void Splay(SplayTree *T, Position x);
+Position NewNode(TElemType data);
+Position Find(SplayTree T, TElemType e);
+Position FindMax(SplayTree T);
+void Insert(SplayTree *T, TElemType e);
+void Delete(SplayTree *T, TElemType e);
 void PrintTree();
 void PrintTreeSingle(Position x);
 
-void SingleRotateWithLeft(Position K2);
-void SingleRotateWithRight(Position K1);
+void SingleRotateWithLeft(SplayTree *T, Position x);
+void SingleRotateWithRight(SplayTree *T, Position x);
 
 
 

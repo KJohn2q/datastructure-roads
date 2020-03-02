@@ -1,7 +1,5 @@
 #include "SplayTreeDT.h"
 
-SplayTree T;
-
 SplayTree MakeEmpty(SplayTree T)
 {
 	if (!T) {
@@ -18,43 +16,59 @@ SplayTree MakeEmpty(SplayTree T)
 	return NULL;
 }
 
-void Splay(Position x)
+Position NewNode(TElemType data) {
+  Position n = malloc(sizeof(SplayNode));
+  n->data = data;
+  n->parent = NULL;
+  n->right = NULL;
+  n->left = NULL;
+
+  return n;
+}
+
+void Splay(SplayTree *T, Position x)
 {	
+	Position p;
+	Position g;
+	
 	while (x->parent) {
 		if (!x->parent->parent) {
 			if (x == x->parent->left) {
-				SingleRotateWithLeft(x->parent);
+				SingleRotateWithLeft(T, x->parent);
 			}
 			else {
-				SingleRotateWithRight(x->parent);
+				SingleRotateWithRight(T, x->parent);
 			}	
 		}
 		else {
+			p = x->parent;
+			g = p->parent; 
+			
 			// zig-zig
-			if (x == x->parent->left && x->parent == x->parent->parent->left) {
-				SingleRotateWithLeft(x->parent->parent);
-				SingleRotateWithLeft(x->parent);
-			}
-			// zag-zig
-			if (x == x->parent->left && x->parent == x->parent->parent->right) {
-				SingleRotateWithLeft(x->parent);
-				SingleRotateWithRight(x->parent); 
+			if (x == p->left && p == g->left) {
+				SingleRotateWithLeft(T, g);
+				SingleRotateWithLeft(T, p);
 			}
 			// zig-zag
-			if (x == x->parent->right && x->parent == x->parent->parent->left) {
-				SingleRotateWithRight(x->parent);
-				SingleRotateWithLeft(x->parent); 
+			if (x == p->left && p == g->right) {
+				SingleRotateWithLeft(T, p);
+				SingleRotateWithRight(T, g); 
+			}
+			// zag-zig
+			if (x == p->right && p == g->left) {
+				SingleRotateWithRight(T, p);
+				SingleRotateWithLeft(T, g); 
 			}
 			// zag-zag
-			if (x == x->parent->right && x->parent == x->parent->parent->right) {
-				SingleRotateWithRight(x->parent->parent);
-				SingleRotateWithRight(x->parent);
+			if (x == p->right && p == g->right) {
+				SingleRotateWithRight(T, g);
+				SingleRotateWithRight(T, p);
 			}
 		}
 	}
 }
 
-Position Find(TElemType e)
+Position Find(SplayTree T, TElemType e)
 {
 	while (T != NULL && T->data != e) {
 		if (e < T->data && T->left != NULL) {
@@ -68,11 +82,20 @@ Position Find(TElemType e)
 	return T;
 }
 
-void Insert(TElemType e) 
+/* get the biggest data of the tree */
+Position FindMax(SplayTree T)
+{
+	Position x = T;
+	while(x->right != NULL)
+    	x = x->right;
+  	return x;
+}
+
+void Insert(SplayTree *T, TElemType e) 
 {
 	Position node;
 	Position y = NULL;
-	Position x = T;
+	Position x = *T;
 	
 	node = malloc(sizeof(SplayNode));
 	node->data = e;
@@ -93,19 +116,52 @@ void Insert(TElemType e)
 	
 	node->parent = y;
 	if (y == NULL) {
-		T = node;
+		*T = node;
 	} else if (e < y->data) {
 		y->left = node;
 	} else {
 		y->right = node;
 	}	
-	Splay(node); 
+	Splay(T, node); 
 }
 
 
-void Delete(TElemType e);
+void Delete(SplayTree *T, TElemType e)
+{
+	SplayTree leftTree;
+	SplayTree rightTree;
+	Position node;
+	Position leftTreeMax;
+	
+	node = Find(*T, e);
+	
+	Splay(T, node);
+	
+	leftTree = (*T)->left;
+	if (leftTree != NULL) {
+		leftTree->parent = NULL;
+	}
+	
+	rightTree = (*T)->right;
+	if (rightTree != NULL) {
+		rightTree->parent = NULL;
+	}
+	
+	free(node);
+	
+	if (leftTree != NULL) {
+		leftTreeMax = FindMax(leftTree);
+		Splay(&leftTree, leftTreeMax);
+		leftTree->right = rightTree;
+		*T = leftTree;
+	}
+	else {
+		*T = rightTree;
+	}
+		
+} 
 
-void PrintTree() 
+void PrintTree(SplayTree T) 
 {
 	PrintTreeSingle(T);
 }
@@ -115,14 +171,16 @@ void PrintTreeSingle(Position x)
 	if (x != NULL) {
 		if (x->left != NULL)
 			PrintTreeSingle(x->left);
-		printf("%d ", x->data);
-		
+			
 		if (x->right != NULL) 
 			PrintTreeSingle(x->right);
+			
+		printf("%d ", x->data);
+			
 	}
 }
 
-void SingleRotateWithLeft(Position x)
+void SingleRotateWithLeft(SplayTree *T, Position x)
 {
 	Position y;
 	
@@ -134,8 +192,9 @@ void SingleRotateWithLeft(Position x)
 	}
 	y->parent = x->parent;
 	
+	// x is root of the tree 
 	if (x->parent == NULL) {
-		T = y;
+		*T = y;
 	} else if (x == x->parent->left) {
 		x->parent->left = y;
 	}
@@ -146,7 +205,7 @@ void SingleRotateWithLeft(Position x)
 	x->parent = y;
 }
 
-void SingleRotateWithRight(Position x)
+void SingleRotateWithRight(SplayTree *T, Position x)
 {
 	Position y;
 	
@@ -158,8 +217,9 @@ void SingleRotateWithRight(Position x)
 	
 	y->parent = x->parent;
 	
+	// x is root of the tree 
 	if (x->parent == NULL) {
-		T = y;
+		*T = y;
 	}
 	else if (x == x->parent->left) {
 		x->parent->left = y;

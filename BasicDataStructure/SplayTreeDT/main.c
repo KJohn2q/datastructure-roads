@@ -5,30 +5,26 @@
 int main(int argc, char *argv[]) {
 	// Ê÷µÄ¸ù 
 	SplayTree T = NULL;
+		
+	Insert(&T, 13);
 	
-//	T = MakeEmpty(T);	
-	Insert(13);
+		
+	Insert(&T, 11);		
+	Insert(&T, 14);		
+	Insert(&T, 12);	
+	Insert(&T, 17);	
+	Insert(&T, 16);	
+	Insert(&T, 20);	
+	Insert(&T, 21);
+	Insert(&T, 18);
+	Insert(&T, 15); 
 	
-	Insert(11);	
+	PrintTree(T);
 	
-	Insert(14);
+	printf("\n");	
+	Delete(&T, 18);
 	
-	
-	Insert(12);
-	
-	Insert(17);
-	
-	/*
-	Insert(16);
-	PrintTree();
-	
-	Insert(20);
-	Insert(21);
-	Insert(18);
-	Insert(15); 
-
-	PrintTree();
-	*/
+	PrintTree(T);
 	
 	return 0;
 }
