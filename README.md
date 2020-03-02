@@ -23,7 +23,8 @@
 |   二叉树(链式存储)   |    BiTree    |  完成  |
 |      二叉查找树      | SearchBiTree |  完成  |
 |        AVL树         |   AvlTree    |  完成  |
-|        伸展树        |  SplayTree   | 未完成 |
+|  伸展树（自上而下）  |  SplayTree   |  完成  |
+|  伸展树（自下而上）  | SplayTreeDT  |  完成  |
 | 哈希表（开放定址法） |   HashSep    | 未完成 |
 
 把所有排序实现一遍
