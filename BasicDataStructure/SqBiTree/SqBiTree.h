@@ -6,137 +6,137 @@
 #include <math.h>
 #include "../common.h"
 
-#define MAX_TREE_SIZE 100  // ¶þ²æÊ÷µÄ×î´ó½áµãÊý 
+#define MAX_TREE_SIZE 100  // äºŒå‰æ ‘çš„æœ€å¤§ç»“ç‚¹æ•° 
 
 typedef int TElemType;
 
 
-typedef TElemType SqBiTree[MAX_TREE_SIZE]; // 0ºÅµ¥Ôª´æ´¢¸ù½Úµã 
+typedef TElemType SqBiTree[MAX_TREE_SIZE]; // 0å·å•å…ƒå­˜å‚¨æ ¹èŠ‚ç‚¹ 
 
 typedef struct {
 	int level, order;
 } position;
 
 /*
- * ²Ù×÷½á¹û£º¹¹Ôì¿Õ¶þ²æÊ÷ 
+ * æ“ä½œç»“æžœï¼šæž„é€ ç©ºäºŒå‰æ ‘ 
  */
 Status InitTree(SqBiTree T);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷TÒÑ´æÔÚ
- * ²Ù×÷½á¹û£ºÏú»Ù¶þ²æÊ÷T 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå·²å­˜åœ¨
+ * æ“ä½œç»“æžœï¼šé”€æ¯äºŒå‰æ ‘T 
  */
 Status DestroyTree(SqBiTree T);
 
 /*
- * ÒÀ¾Ý²ãÐò±éÀú¹¹Ôì¶þ²æÊ÷T 
+ * ä¾æ®å±‚åºéåŽ†æž„é€ äºŒå‰æ ‘T 
  */ 
 Status CreateTree(SqBiTree T);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ
- * ²Ù×÷½á¹û£º½«¶þ²æÊ÷TÇåÎª¿ÕÊ÷ 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨
+ * æ“ä½œç»“æžœï¼šå°†äºŒå‰æ ‘Tæ¸…ä¸ºç©ºæ ‘ 
  */ 
 Status ClearTree(SqBiTree T); 
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ
- * ²Ù×÷½á¹û£ºÈôTÎª¿Õ¶þ²æÊ÷£¬Ôò·µ»ØTRUE£¬·ñÔòFALSE 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨
+ * æ“ä½œç»“æžœï¼šè‹¥Tä¸ºç©ºäºŒå‰æ ‘ï¼Œåˆ™è¿”å›žTRUEï¼Œå¦åˆ™FALSE 
  */ 
 Status BiTreeEmpty(SqBiTree T);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ 
- * ²Ù×÷½á¹û£º·µ»ØTµÄÉî¶È 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ 
+ * æ“ä½œç»“æžœï¼šè¿”å›žTçš„æ·±åº¦ 
  */ 
 int BiTreeDepth(SqBiTree T);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ
- * ²Ù×÷½á¹û£º·µ»ØTµÄ¸ù 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨
+ * æ“ä½œç»“æžœï¼šè¿”å›žTçš„æ ¹ 
  */ 
 Status Root(SqBiTree T, TElemType *e); 
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã 
- * ²Ù×÷½á¹û£º·µ»ØeµÄÖµ 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹ 
+ * æ“ä½œç»“æžœï¼šè¿”å›žeçš„å€¼ 
  */
 TElemType Value(SqBiTree T, position p);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã
- * ²Ù×÷½á¹û£º½áµãe¸³ÖµÎªvalue 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹
+ * æ“ä½œç»“æžœï¼šç»“ç‚¹eèµ‹å€¼ä¸ºvalue 
  */
 Status Assign(SqBiTree T, position p, TElemType value);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã
- * ²Ù×÷½á¹û£ºÈôeÊÇTµÄ·Ç¸ù½áµã£¬Ôò·µ»ØËüµÄË«Ç×£¬·ñÔò·µ»Ø¡°¿Õ ¡± 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹
+ * æ“ä½œç»“æžœï¼šè‹¥eæ˜¯Tçš„éžæ ¹ç»“ç‚¹ï¼Œåˆ™è¿”å›žå®ƒçš„åŒäº²ï¼Œå¦åˆ™è¿”å›žâ€œç©º â€ 
  */
 TElemType Parent(SqBiTree T, TElemType e);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã
- * ²Ù×÷½á¹û£º·µ»ØeµÄ×óº¢×Ó¡£ÈôeÎÞ×óº¢×Ó£¬Ôò·µ»Ø¡°¿Õ¡± 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹
+ * æ“ä½œç»“æžœï¼šè¿”å›žeçš„å·¦å­©å­ã€‚è‹¥eæ— å·¦å­©å­ï¼Œåˆ™è¿”å›žâ€œç©ºâ€ 
  */ 
 TElemType LeftChild(SqBiTree T, TElemType e);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã 
- * ²Ù×÷½á¹û£º·µ»ØeµÄÓÒº¢×Ó¡£ÈôeÎÞÓÒº¢×Ó£¬Ôò·µ»Ø¡°¿Õ¡± 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹ 
+ * æ“ä½œç»“æžœï¼šè¿”å›žeçš„å³å­©å­ã€‚è‹¥eæ— å³å­©å­ï¼Œåˆ™è¿”å›žâ€œç©ºâ€ 
  */
 TElemType RightChild(SqBiTree T, TElemType e);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã 
- * ²Ù×÷½á¹û£º·µ»ØeµÄ×óÐÖµÜ¡£ÈôeÊÇTµÄ×óº¢×Ó»òÎÞ×óÐÖµÜ£¬Ôò·µ»Ø¡°¿Õ¡± 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹ 
+ * æ“ä½œç»“æžœï¼šè¿”å›žeçš„å·¦å…„å¼Ÿã€‚è‹¥eæ˜¯Tçš„å·¦å­©å­æˆ–æ— å·¦å…„å¼Ÿï¼Œåˆ™è¿”å›žâ€œç©ºâ€ 
  */
 TElemType LeftSibling(SqBiTree T, TElemType e);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬eÊÇTÖÐÄ³¸ö½áµã
- * ²Ù×÷½á¹û£º·µ»ØeµÄÓÒÐÖµÜ¡£ÈôeÊÇTµÄÓÒº¢×Ó»òÎÞÓÒÐÖµÜ£¬Ôò·µ»Ø¡°¿Õ¡± 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼Œeæ˜¯Tä¸­æŸä¸ªç»“ç‚¹
+ * æ“ä½œç»“æžœï¼šè¿”å›žeçš„å³å…„å¼Ÿã€‚è‹¥eæ˜¯Tçš„å³å­©å­æˆ–æ— å³å…„å¼Ÿï¼Œåˆ™è¿”å›žâ€œç©ºâ€ 
  */
 TElemType RightSibling(SqBiTree T, TElemType e);
 
 /*
- * °Ñ´ÓqµÄj½Úµã¿ªÊ¼µÄ×ÓÊ÷ÒÆÎª´ÓTµÄi½Úµã¿ªÊ¼µÄ×ÓÊ÷ 
+ * æŠŠä»Žqçš„jèŠ‚ç‚¹å¼€å§‹çš„å­æ ‘ç§»ä¸ºä»ŽTçš„ièŠ‚ç‚¹å¼€å§‹çš„å­æ ‘ 
  */
 void Move(SqBiTree q, int j, SqBiTree T, int i);
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬pÖ¸ÏòTÖÐÄ³¸ö½áµã£¬LRÎª0»ò1£¬·Ç¿Õ¶þ²æÊ÷cÓëT²»Ïà½»ÇÒÓÒ×ÓÊ÷Îª¿Õ 
- * ²Ù×÷½á¹û£º¸ù¾ÝLRÎª0»ò1£¬²åÈëcÎªTÖÐp½áµãµÄ×ó»òÓÒ×ÓÊ÷¡£p½áµãµÄÔ­ÓÐ×ó»òÓÒ×ÓÊ÷Ôò³ÉÎªcµÄÓÒ×ÓÊ÷ 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼ŒpæŒ‡å‘Tä¸­æŸä¸ªç»“ç‚¹ï¼ŒLRä¸º0æˆ–1ï¼Œéžç©ºäºŒå‰æ ‘cä¸ŽTä¸ç›¸äº¤ä¸”å³å­æ ‘ä¸ºç©º 
+ * æ“ä½œç»“æžœï¼šæ ¹æ®LRä¸º0æˆ–1ï¼Œæ’å…¥cä¸ºTä¸­pç»“ç‚¹çš„å·¦æˆ–å³å­æ ‘ã€‚pç»“ç‚¹çš„åŽŸæœ‰å·¦æˆ–å³å­æ ‘åˆ™æˆä¸ºcçš„å³å­æ ‘ 
  */ 
 Status InsertChild(SqBiTree T, TElemType p, Status LR, SqBiTree c); 
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬pÖ¸ÏòTÖÐÄ³¸ö½áµã£¬LRÎª0»ò1
- * ²Ù×÷½á¹û£º¸ù¾ÝLRÎª0»ò1£¬É¾³ýTÖÐpËùÖ¸½áµãµÄ×ó»òÓÒ×ÓÊ÷ 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼ŒpæŒ‡å‘Tä¸­æŸä¸ªç»“ç‚¹ï¼ŒLRä¸º0æˆ–1
+ * æ“ä½œç»“æžœï¼šæ ¹æ®LRä¸º0æˆ–1ï¼Œåˆ é™¤Tä¸­pæ‰€æŒ‡ç»“ç‚¹çš„å·¦æˆ–å³å­æ ‘ 
  */
 Status DeleteChild(SqBiTree T, TElemType p, Status LR); 
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬VisitÊÇ¶Ô½áµã²Ù×÷µÄÓ¦ÓÃº¯Êý
- * ²Ù×÷½á¹û£ºÏÈÐò±éÀúT£¬¶ÔÃ¿¸ö½áµãµ÷ÓÃº¯ÊýVisitÒ»´ÎÇÒ½öÒ»´Î£¬Ò»µ©visit()Ê§°Ü£¬Ôò²Ù×÷Ê§°Ü 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼ŒVisitæ˜¯å¯¹ç»“ç‚¹æ“ä½œçš„åº”ç”¨å‡½æ•°
+ * æ“ä½œç»“æžœï¼šå…ˆåºéåŽ†Tï¼Œå¯¹æ¯ä¸ªç»“ç‚¹è°ƒç”¨å‡½æ•°Visitä¸€æ¬¡ä¸”ä»…ä¸€æ¬¡ï¼Œä¸€æ—¦visit()å¤±è´¥ï¼Œåˆ™æ“ä½œå¤±è´¥ 
  */
 Status PreOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬VisitÊÇ¶Ô½áµã²Ù×÷µÄÓ¦ÓÃº¯Êý
- * ²Ù×÷½á¹û£ºÖÐÐò±éÀúT£¬¶ÔÃ¿¸ö½áµãµ÷ÓÃº¯ÊýVisitÒ»´ÎÇÒ½öÒ»´Î£¬Ò»µ©visit()Ê§°Ü£¬Ôò²Ù×÷Ê§°Ü 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼ŒVisitæ˜¯å¯¹ç»“ç‚¹æ“ä½œçš„åº”ç”¨å‡½æ•°
+ * æ“ä½œç»“æžœï¼šä¸­åºéåŽ†Tï¼Œå¯¹æ¯ä¸ªç»“ç‚¹è°ƒç”¨å‡½æ•°Visitä¸€æ¬¡ä¸”ä»…ä¸€æ¬¡ï¼Œä¸€æ—¦visit()å¤±è´¥ï¼Œåˆ™æ“ä½œå¤±è´¥ 
  */
 Status InOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬VisitÊÇ¶Ô½áµã²Ù×÷µÄÓ¦ÓÃº¯Êý
- * ²Ù×÷½á¹û£ººóÐò±éÀúT£¬¶ÔÃ¿¸ö½áµãµ÷ÓÃº¯ÊýVisitÒ»´ÎÇÒ½öÒ»´Î£¬Ò»µ©visit()Ê§°Ü£¬Ôò²Ù×÷Ê§°Ü 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼ŒVisitæ˜¯å¯¹ç»“ç‚¹æ“ä½œçš„åº”ç”¨å‡½æ•°
+ * æ“ä½œç»“æžœï¼šåŽåºéåŽ†Tï¼Œå¯¹æ¯ä¸ªç»“ç‚¹è°ƒç”¨å‡½æ•°Visitä¸€æ¬¡ä¸”ä»…ä¸€æ¬¡ï¼Œä¸€æ—¦visit()å¤±è´¥ï¼Œåˆ™æ“ä½œå¤±è´¥ 
  */
 Status PostOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 
 /*
- * ³õÊ¼Ìõ¼þ£º¶þ²æÊ÷T´æÔÚ£¬VisitÊÇ¶Ô½áµã²Ù×÷µÄÓ¦ÓÃº¯Êý
- * ²Ù×÷½á¹û£º²ãÐò±éÀúT£¬¶ÔÃ¿¸ö½áµãµ÷ÓÃº¯ÊýVisitÒ»´ÎÇÒ½öÒ»´Î£¬Ò»µ©visit()Ê§°Ü£¬Ôò²Ù×÷Ê§°Ü 
+ * åˆå§‹æ¡ä»¶ï¼šäºŒå‰æ ‘Tå­˜åœ¨ï¼ŒVisitæ˜¯å¯¹ç»“ç‚¹æ“ä½œçš„åº”ç”¨å‡½æ•°
+ * æ“ä½œç»“æžœï¼šå±‚åºéåŽ†Tï¼Œå¯¹æ¯ä¸ªç»“ç‚¹è°ƒç”¨å‡½æ•°Visitä¸€æ¬¡ä¸”ä»…ä¸€æ¬¡ï¼Œä¸€æ—¦visit()å¤±è´¥ï¼Œåˆ™æ“ä½œå¤±è´¥ 
  */
 Status LevelOrderTraverse(SqBiTree T, void (Visit)(TElemType));
 

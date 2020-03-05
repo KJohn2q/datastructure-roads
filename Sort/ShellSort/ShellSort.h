@@ -7,9 +7,9 @@
 void ShellSort(int arr[], int n);
 
 /*
- * 数组遍历 
- * arr 数组
- * n  元素个数 
+ * 鏁扮粍閬嶅巻 
+ * arr 鏁扮粍
+ * n  鍏冪礌涓暟 
  */
 void ArrayTraverse(int arr[], int n);
 

@@ -16,7 +16,7 @@ typedef struct {
 } CQueue;
 
 /*
- *  ³õÊ¼»¯ 
+ *  åˆå§‹åŒ– 
  */
 Status InitQueue(CQueue *Q);
 

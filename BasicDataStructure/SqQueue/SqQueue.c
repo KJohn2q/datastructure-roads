@@ -1,7 +1,7 @@
 #include "SqQueue.h"
 
 /*
- * ³õÊ¼»¯Ë³Ğò¶ÓÁĞ 
+ * åˆå§‹åŒ–é¡ºåºé˜Ÿåˆ— 
  */
 Status InitQueue(SqQueue *Q)
 {
@@ -23,7 +23,7 @@ Status InitQueue(SqQueue *Q)
 }
 
 /*
- * Ïú»Ù 
+ * é”€æ¯ 
  */ 
 Status DestroyQueue(SqQueue *Q)
 {
@@ -40,7 +40,7 @@ Status DestroyQueue(SqQueue *Q)
 }
 
 /*
- * Çå¿Õ¶ÓÁĞ 
+ * æ¸…ç©ºé˜Ÿåˆ— 
  */
 Status ClearQueue(SqQueue *Q)
 {
@@ -54,7 +54,7 @@ Status ClearQueue(SqQueue *Q)
 }
 
 /*
- *  ÅĞ¿Õ 
+ *  åˆ¤ç©º 
  */
 Status QueueEmpty(SqQueue Q)
 {
@@ -62,7 +62,7 @@ Status QueueEmpty(SqQueue Q)
 }
 
 /*
- *  ¶ÓÁĞ³¤¶È 
+ *  é˜Ÿåˆ—é•¿åº¦ 
  */
 int QueueLength(SqQueue Q)
 {
@@ -74,7 +74,7 @@ int QueueLength(SqQueue Q)
 }
 
 /*
- *  ¶ÓÍ·ÔªËØ 
+ *  é˜Ÿå¤´å…ƒç´  
  */
 Status GetHead(SqQueue Q, QElemType *e)
 {
@@ -88,7 +88,7 @@ Status GetHead(SqQueue Q, QElemType *e)
 } 
 
 /*
- *  ²åÈëĞÂµÄ¶ÓÎ²ÔªËØ 
+ *  æ’å…¥æ–°çš„é˜Ÿå°¾å…ƒç´  
  */
 Status EnQueue(SqQueue *Q, QElemType e)
 {
@@ -114,7 +114,7 @@ Status EnQueue(SqQueue *Q, QElemType e)
 }
 
 /*
- *  É¾³ı¶ÓÍ·ÔªËØ 
+ *  åˆ é™¤é˜Ÿå¤´å…ƒç´  
  */
 Status DeQueue(SqQueue *Q, QElemType *e)
 {
@@ -134,7 +134,7 @@ Status DeQueue(SqQueue *Q, QElemType *e)
 }
 
 /*
- *  ÔªËØ±éÀú 
+ *  å…ƒç´ éå† 
  */
 Status QueueTraverse(SqQueue Q, void (Visit)(QElemType))
 {
@@ -146,7 +146,7 @@ Status QueueTraverse(SqQueue Q, void (Visit)(QElemType))
 	
 	p = Q.front;
 	
-	printf("¶ÓÁĞ±éÀú\n");
+	printf("é˜Ÿåˆ—éå†\n");
 	
 	while (p < Q.rear) {
 		Visit(Q.base[p]);
@@ -157,7 +157,7 @@ Status QueueTraverse(SqQueue Q, void (Visit)(QElemType))
 }
 
 /*
- *  Êä³öÔªËØ 
+ *  è¾“å‡ºå…ƒç´  
  */
 void Visit(QElemType data)
 {

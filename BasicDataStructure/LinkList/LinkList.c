@@ -1,7 +1,7 @@
 #include "LinkList.h"
 
 /*
- *  ³õÊ¼»¯Á´±í 
+ *  åˆå§‹åŒ–é“¾è¡¨ 
  */ 
 Status InitList(LinkList *L) 
 {
@@ -15,7 +15,7 @@ Status InitList(LinkList *L)
 } 
 
 /*
- *  ÊäÈën¸öÖµ´´½¨Á´±í 
+ *  è¾“å…¥nä¸ªå€¼åˆ›å»ºé“¾è¡¨ 
  */
 Status CreateList(LinkList L, int n)
 {
@@ -47,7 +47,7 @@ Status CreateList(LinkList L, int n)
 } 
 
 /*
- *  Ïú»ÙÁ´±í 
+ *  é”€æ¯é“¾è¡¨ 
  */ 
 Status DestroyList(LinkList *L) 
 {
@@ -63,7 +63,7 @@ Status DestroyList(LinkList *L)
 } 
 
 /*
- *  Çå¿ÕÁ´±í 
+ *  æ¸…ç©ºé“¾è¡¨ 
  */ 
 Status ClearList(LinkList L) 
 {
@@ -83,7 +83,7 @@ Status ClearList(LinkList L)
 } 
 
 /*
- *  ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ 
+ *  åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º 
  */
 Status ListEmpty(LinkList L)
 {
@@ -100,7 +100,7 @@ Status ListEmpty(LinkList L)
 }
 
 /*
- *  »ñµÃÁ´±íÖĞiÎ»ÖÃÔªËØµÄÖµ£¬¸³Öµ¸øe 
+ *  è·å¾—é“¾è¡¨ä¸­iä½ç½®å…ƒç´ çš„å€¼ï¼Œèµ‹å€¼ç»™e 
  */ 
 Status GetElem(LinkList L, int i, ElemType *e)
 {
@@ -124,7 +124,7 @@ Status GetElem(LinkList L, int i, ElemType *e)
 } 
 
 /*
- *  »ñµÃÁ´±íÖĞÓë¸ø¶¨ÖµÏàµÈµÄÔªËØµÄÎ»ÖÃ 
+ *  è·å¾—é“¾è¡¨ä¸­ä¸ç»™å®šå€¼ç›¸ç­‰çš„å…ƒç´ çš„ä½ç½® 
  */ 
 int LocateElem(LinkList L, ElemType e, Status (Compare)(ElemType, ElemType))
 {
@@ -151,7 +151,7 @@ int LocateElem(LinkList L, ElemType e, Status (Compare)(ElemType, ElemType))
 
 
 /*
- *  ²é¿´Á´±íÖĞ¸ø¶¨ÔªËØµÄÇ°Çı 
+ *  æŸ¥çœ‹é“¾è¡¨ä¸­ç»™å®šå…ƒç´ çš„å‰é©± 
  */ 
 Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e)
 {
@@ -160,7 +160,7 @@ Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e)
 	
 	p = L->next;
 	
-	/* Èç¹ûÊÇµÚÒ»¸öÔªËØ£¬ÔòÃ»ÓĞÇ°Çı */
+	/* å¦‚æœæ˜¯ç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œåˆ™æ²¡æœ‰å‰é©± */
 	if (p->data == cur_e) {
 		return ERROR;
 	}
@@ -176,7 +176,7 @@ Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e)
 }
 
 /*
- *  ²é¿´Á´±íÖĞ¸ø¶¨ÔªËØµÄºó×º 
+ *  æŸ¥çœ‹é“¾è¡¨ä¸­ç»™å®šå…ƒç´ çš„åç¼€ 
  */ 
 Status NextElem(LinkList L, ElemType cur_e, ElemType *next_e)
 {
@@ -190,7 +190,7 @@ Status NextElem(LinkList L, ElemType cur_e, ElemType *next_e)
 		++i;
 	}
 	
-	/* ×îºóÒ»¸öÔªËØÃ»ÓĞºó×º */ 
+	/* æœ€åä¸€ä¸ªå…ƒç´ æ²¡æœ‰åç¼€ */ 
 	if (p->next == NULL) {
 		return ERROR;
 	}
@@ -202,14 +202,14 @@ Status NextElem(LinkList L, ElemType cur_e, ElemType *next_e)
 }
 
 /*
- *  ÏòÁ´±í±íÖĞ²åÈëÔªËØ 
+ *  å‘é“¾è¡¨è¡¨ä¸­æ’å…¥å…ƒç´  
  */
 Status ListInsert(LinkList L, int i, ElemType e) 
 {
 	LinkList node,p;
 	int j = 0;
 	
-	// È·±£Á´±í´æÔÚ 
+	// ç¡®ä¿é“¾è¡¨å­˜åœ¨ 
     if (L == NULL) {
         return ERROR;
     }
@@ -235,7 +235,7 @@ Status ListInsert(LinkList L, int i, ElemType e)
 	return OK;
 }
 /*
- *  É¾³ıÁ´±íÖĞÖ¸¶¨ÔªËØ 
+ *  åˆ é™¤é“¾è¡¨ä¸­æŒ‡å®šå…ƒç´  
  */
 Status ListDelete(LinkList L, int  i, ElemType *e)
 {
@@ -266,7 +266,7 @@ Status ListDelete(LinkList L, int  i, ElemType *e)
 } 
 
 /*
- *  »ñµÃÁ´±íµÄ³¤¶È 
+ *  è·å¾—é“¾è¡¨çš„é•¿åº¦ 
  */
 int ListLength(LinkList L)
 {
@@ -277,7 +277,7 @@ int ListLength(LinkList L)
 		return 0;
 	}
 	
-	/* p´ÓÍ·½áµã¿ªÊ¼ */
+	/* pä»å¤´ç»“ç‚¹å¼€å§‹ */
 	p = L->next;
 	
 	while (p != NULL) {
@@ -289,7 +289,7 @@ int ListLength(LinkList L)
 }
 
 /*
- *  ±éÀúÁ´±í 
+ *  éå†é“¾è¡¨ 
  */
 void ListTraverse(LinkList L, void (Visit)(ElemType)) 
 {
@@ -311,7 +311,7 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 } 
 
 /*
- *  ±È½Ï¸ø¶¨µÄÁ½¸öÖµ ÊÇ·ñÏàµÈ 
+ *  æ¯”è¾ƒç»™å®šçš„ä¸¤ä¸ªå€¼ æ˜¯å¦ç›¸ç­‰ 
  */
 Status Compare(ElemType data, ElemType e)
 {
@@ -319,7 +319,7 @@ Status Compare(ElemType data, ElemType e)
 }
 
 /*
- *  ´òÓ¡ÔªËØµÄÖµ 
+ *  æ‰“å°å…ƒç´ çš„å€¼ 
  */
 void Visit(ElemType data)
 {
@@ -327,7 +327,7 @@ void Visit(ElemType data)
 }
 
 /*
- * Á´±í·­×ªµİ¹é²Ù×÷ 
+ * é“¾è¡¨ç¿»è½¬é€’å½’æ“ä½œ 
  */
 LinkList ListReverse(LinkList L)
 {
@@ -343,7 +343,7 @@ LinkList ListReverse(LinkList L)
 } 
 
 /*
- * Á´±í·­×ªÖ÷Àı³Ì 
+ * é“¾è¡¨ç¿»è½¬ä¸»ä¾‹ç¨‹ 
  */
 void LReverse(LinkList *L) 
 {
@@ -354,7 +354,7 @@ void LReverse(LinkList *L)
 }
 
 /*
- * µü´úÊµÏÖÁ´±í·­×ª 
+ * è¿­ä»£å®ç°é“¾è¡¨ç¿»è½¬ 
  */
 void IterationInvertList(LinkList *L)
 {

@@ -8,9 +8,9 @@ int main(int argc, char *argv[]) {
 	int len;
 	Status s;
 	
-	/*  ³õÊ¼»¯ 
+	/*  åˆå§‹åŒ– 
 	s = InitBiTree(&T);
-	printf("³õÊ¼»¯¶ş²æÊ÷%d\n", s);
+	printf("åˆå§‹åŒ–äºŒå‰æ ‘%d\n", s);
 	*/
 	s = CreateBiTree(&T);
 	printf("%d\n", s);

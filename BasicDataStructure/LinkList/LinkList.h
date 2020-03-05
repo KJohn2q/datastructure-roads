@@ -8,8 +8,8 @@
 typedef int ElemType;
 
 /* 
- * LNode ±íÊ¾Á´±í½Úµã
- * LinkList ±íÊ¾Ö¸ÏòÁ´±íµÄÖ¸Õë 
+ * LNode è¡¨ç¤ºé“¾è¡¨èŠ‚ç‚¹
+ * LinkList è¡¨ç¤ºæŒ‡å‘é“¾è¡¨çš„æŒ‡é’ˆ 
  */
 typedef struct LNode {
 	ElemType data;
@@ -17,90 +17,90 @@ typedef struct LNode {
 } LNode, * LinkList;   
 
 /*
- *  ³õÊ¼»¯Á´±í 
+ *  åˆå§‹åŒ–é“¾è¡¨ 
  */ 
 Status InitList(LinkList *L);
 
 /*
- *  ´´½¨Á´±í 
+ *  åˆ›å»ºé“¾è¡¨ 
  */ 
 Status CreateList(LinkList L, int n);
 
 /*
- *  Ïú»ÙÁ´±í 
+ *  é”€æ¯é“¾è¡¨ 
  */ 
 Status DestroyList(LinkList *L);
 
 /*
- *  Çå¿ÕÁ´±í 
+ *  æ¸…ç©ºé“¾è¡¨ 
  */
 Status ClearList(LinkList L);
 
 /*
- *  Á´±íÊÇ·ñÎª¿Õ 
+ *  é“¾è¡¨æ˜¯å¦ä¸ºç©º 
  */ 
 Status ListEmpty(LinkList L);
 
 /*
- *  Á´±íµÄ³¤¶È 
+ *  é“¾è¡¨çš„é•¿åº¦ 
  */ 
 int ListLength(LinkList L);
 
 /*
- *  »ñµÃÁ´±íÖĞiÎ»ÖÃÔªËØµÄÖµ£¬¸³Öµ¸øe 
+ *  è·å¾—é“¾è¡¨ä¸­iä½ç½®å…ƒç´ çš„å€¼ï¼Œèµ‹å€¼ç»™e 
  */ 
 Status GetElem(LinkList L, int i, ElemType *e);
 
 /*
- *  »ñµÃÁ´±íÖĞÓë¸ø¶¨ÖµÏàµÈµÄÔªËØµÄÎ»ÖÃ 
+ *  è·å¾—é“¾è¡¨ä¸­ä¸ç»™å®šå€¼ç›¸ç­‰çš„å…ƒç´ çš„ä½ç½® 
  */ 
 int LocateElem(LinkList L, ElemType e, Status (Compare)(ElemType, ElemType));
 
 /*
- *  ²é¿´Á´±íÖĞ¸ø¶¨ÔªËØµÄÇ°Çı 
+ *  æŸ¥çœ‹é“¾è¡¨ä¸­ç»™å®šå…ƒç´ çš„å‰é©± 
  */ 
 Status PriorElem(LinkList L, ElemType cur_e, ElemType *pre_e);
 
 /*
- *  ²é¿´Á´±íÖĞ¸ø¶¨ÔªËØµÄºó×º 
+ *  æŸ¥çœ‹é“¾è¡¨ä¸­ç»™å®šå…ƒç´ çš„åç¼€ 
  */ 
 Status NextElem(LinkList L, ElemType cur_e, ElemType *next_e);
 
 /*
- *  ÏòÁ´±íÖĞÖ¸¶¨Î»ÖÃ²åÈëÔªËØ 
+ *  å‘é“¾è¡¨ä¸­æŒ‡å®šä½ç½®æ’å…¥å…ƒç´  
  */
 Status ListInsert(LinkList L, int i, ElemType e);
 /*
- *  É¾³ıÁ´±íÖĞÖ¸¶¨ÔªËØ 
+ *  åˆ é™¤é“¾è¡¨ä¸­æŒ‡å®šå…ƒç´  
  */
 Status ListDelete(LinkList L, int  i, ElemType *e);
 /*
- *  ±éÀúÁ´±í 
+ *  éå†é“¾è¡¨ 
  */
 void ListTraverse(LinkList L, void (Visit)(ElemType));
 
 /*
- *  ±È½Ï¸ø¶¨µÄÁ½¸öÖµ ÊÇ·ñÏàµÈ 
+ *  æ¯”è¾ƒç»™å®šçš„ä¸¤ä¸ªå€¼ æ˜¯å¦ç›¸ç­‰ 
  */
 Status Compare(ElemType, ElemType);
 
 /*
- *  ´òÓ¡ÔªËØµÄÖµ 
+ *  æ‰“å°å…ƒç´ çš„å€¼ 
  */ 
 void Visit(ElemType data);
 
 /*
- * Á´±í·­×ª 
+ * é“¾è¡¨ç¿»è½¬ 
  */
 LinkList ListReverse(LinkList L);
 
 /*
- * Á´±í·­×ªÖ÷Àı³Ì 
+ * é“¾è¡¨ç¿»è½¬ä¸»ä¾‹ç¨‹ 
  */
 void LReverse(LinkList *L); 
 
 /*
- * µü´úÊµÏÖÁ´±í·­×ª 
+ * è¿­ä»£å®ç°é“¾è¡¨ç¿»è½¬ 
  */
 void IterationInvertList(LinkList *L); 
 

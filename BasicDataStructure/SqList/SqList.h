@@ -9,95 +9,95 @@
 typedef int ElemType;
 
 typedef struct{
-	ElemType *elem; // ÔªËØ»ùÖ· 
-	int    length;  // ÏßĞÔ±íµÄ³¤¶È 
-	int    listsize;  // ÏßĞÔ±í»ùÖ· 
+	ElemType *elem; // å…ƒç´ åŸºå€ 
+	int    length;  // çº¿æ€§è¡¨çš„é•¿åº¦ 
+	int    listsize;  // çº¿æ€§è¡¨åŸºå€ 
 }SqList;
 
 /*
- *  ¹¹ÔìÒ»¸ö¿ÕµÄÏßĞÔ±í 
+ *  æ„é€ ä¸€ä¸ªç©ºçš„çº¿æ€§è¡¨ 
  */
 Status InitList(SqList *L);
 
 /*
- *  Ïú»ÙÏßĞÔ±í 
+ *  é”€æ¯çº¿æ€§è¡¨ 
  */
 Status DestroyList(SqList *L);
 
 /*
- *  ÊäÈën¸öÊı£¬´´½¨ÏßĞÔ±í 
+ *  è¾“å…¥nä¸ªæ•°ï¼Œåˆ›å»ºçº¿æ€§è¡¨ 
  */
 Status CreateList(SqList *L, int n);
 
 /*
- *  Çå¿ÕÏßĞÔ±í 
+ *  æ¸…ç©ºçº¿æ€§è¡¨ 
  */
 Status ClearList(SqList *L);
 
 /*
- *  ÏßĞÔ±íÊÇ·ñÎª¿Õ 
+ *  çº¿æ€§è¡¨æ˜¯å¦ä¸ºç©º 
  */ 
 Status ListEmpty(SqList L);
 
 /*
- *  ÏßĞÔ±íµÄ³¤¶È 
+ *  çº¿æ€§è¡¨çš„é•¿åº¦ 
  */ 
 int ListLength(SqList L);
 
 /*
- *  ·µ»ØÏßĞÔ±íµÄÖµ 
+ *  è¿”å›çº¿æ€§è¡¨çš„å€¼ 
  */ 
 Status GetElem(SqList L, int i, ElemType *e);
 
 /*
- *  ·µ»ØµÚÒ»¸öÓë¸ø¶¨ÖµÏàµÈµÄÔªËØ 
+ *  è¿”å›ç¬¬ä¸€ä¸ªä¸ç»™å®šå€¼ç›¸ç­‰çš„å…ƒç´  
  */
 int LocateElem(SqList L, ElemType e, Status(Compare)(ElemType, ElemType));
 
 /*
- *  ·µ»Ø¸ø¶¨ÖµµÄÇ°Çı 
+ *  è¿”å›ç»™å®šå€¼çš„å‰é©± 
  */ 
 Status PriorElem(SqList L, ElemType cur_e, ElemType *pre_e);
 
 /*
- *  ·µ»Ø¸ø¶¨ÖµµÄºó¼Ì 
+ *  è¿”å›ç»™å®šå€¼çš„åç»§ 
  */
 Status NextElem(SqList L, ElemType cur_e, ElemType *next_e);
 
 
 /*
- *  ÔÚiÎ»ÖÃ²åÈëe 
+ *  åœ¨iä½ç½®æ’å…¥e 
  */ 
 Status ListInsert(SqList *L, int i, ElemType e);
 
 /*
- *  ÔÚiÎ»ÖÃÉ¾³ıÔªËØ 
+ *  åœ¨iä½ç½®åˆ é™¤å…ƒç´  
  */
 Status ListDelete(SqList *L, int i, ElemType *e);
 
 /*
- *  ±éÀú´òÓ¡ÏßĞÔ±íÖĞµÄÔªËØ 
+ *  éå†æ‰“å°çº¿æ€§è¡¨ä¸­çš„å…ƒç´  
  */ 
 void ListTraverse(SqList L, void (Visit)(ElemType));
 
 /*
- *  ±È½Ïº¯Êı 
+ *  æ¯”è¾ƒå‡½æ•° 
  */ 
 Status Compare(ElemType, ElemType);
 
 /*
- *  ´òÓ¡¸ø¶¨ÔªËØµÄÖµ 
+ *  æ‰“å°ç»™å®šå…ƒç´ çš„å€¼ 
  */ 
 void Visit(ElemType);
 
 /*
- *  È¡ A = AºÍBµÄ²¢¼¯ 
+ *  å– A = Aå’ŒBçš„å¹¶é›† 
  */
 void Union(SqList *La, SqList Lb);
 
 /*
- * ÒÑÖªÏßĞÔ±íLAºÍLBÖĞµÄÊı¾İ°´Öµ·Çµİ¼õÓĞĞòÅÅÁĞ
- * ½«LAºÍLBºÏ²¢ÎªÒ»¸öĞÂµÄÏßĞÔ±íLC£¬ÇÒLCÖĞµÄÊı¾İÔªËØÈÔ°´Öµ·Çµİ¼õÓĞĞòÅÅÁĞ 
+ * å·²çŸ¥çº¿æ€§è¡¨LAå’ŒLBä¸­çš„æ•°æ®æŒ‰å€¼éé€’å‡æœ‰åºæ’åˆ—
+ * å°†LAå’ŒLBåˆå¹¶ä¸ºä¸€ä¸ªæ–°çš„çº¿æ€§è¡¨LCï¼Œä¸”LCä¸­çš„æ•°æ®å…ƒç´ ä»æŒ‰å€¼éé€’å‡æœ‰åºæ’åˆ— 
  */
 void MergeList(SqList La, SqList Lb, SqList *Lc); 
 

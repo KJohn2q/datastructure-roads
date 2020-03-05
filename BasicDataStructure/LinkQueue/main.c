@@ -9,31 +9,31 @@ int main(int argc, char *argv[]) {
 	QElemType e;
 	
 	s = InitQueue(&Q);
-	printf("³õÊ¼»¯Á´¶ÓÁĞ%d\n", s);
+	printf("åˆå§‹åŒ–é“¾é˜Ÿåˆ—%d\n", s);
 	
 	for (i = 0; i < 10; i++) {
 		EnQueue(&Q, 5*(i+1));
 	}
 	
-	/*  Çå¿Õ²âÊÔ 
+	/*  æ¸…ç©ºæµ‹è¯• 
 	s = ClearQueue(&Q);
-	printf("Á´¶ÓÁĞÇå¿Õ%d\n", s);
+	printf("é“¾é˜Ÿåˆ—æ¸…ç©º%d\n", s);
 	*/
-	/* Ïú»Ù²âÊÔ 
+	/* é”€æ¯æµ‹è¯• 
 	s = DestroyQueue(&Q);
-	printf("Á´¶ÓÁĞÏú»Ù%d\n", s); 
+	printf("é“¾é˜Ÿåˆ—é”€æ¯%d\n", s); 
 	*/ 
-	/*  ÅĞ¿Õ²âÊÔ 
+	/*  åˆ¤ç©ºæµ‹è¯• 
 	s = QueueEmpty(Q);
-	printf("Á´¶ÓÁĞÅĞ¿Õ%d\n", s);
+	printf("é“¾é˜Ÿåˆ—åˆ¤ç©º%d\n", s);
 	*/
-	/*  É¾³ıÍ·ÔªËØ 
+	/*  åˆ é™¤å¤´å…ƒç´  
 	s = DeQueue(&Q, &e);
-	printf("Á´¶ÓÁĞÉ¾³ıÍ·ÔªËØ%d\n", e);
+	printf("é“¾é˜Ÿåˆ—åˆ é™¤å¤´å…ƒç´ %d\n", e);
 	*/
-	/*  »ñÈ¡Í·ÔªËØ 
+	/*  è·å–å¤´å…ƒç´  
 	s = GetHead(Q, &e);
-	printf("Á´¶ÓÁĞÍ·ÔªËØ%d\n", e);
+	printf("é“¾é˜Ÿåˆ—å¤´å…ƒç´ %d\n", e);
 	*/
 	QueueTraverse(Q, Visit);
 	

@@ -3,7 +3,7 @@
 #include "DuLinkList.h"
 
 /*
- *  ��ʼ�� 
+ *  初始化 
  */
 Status InitList(DuLinkList *D)
 {
@@ -21,7 +21,7 @@ Status InitList(DuLinkList *D)
 
 
 /*
- *  ���� 
+ *  销毁 
  */ 
 Status DestroyList(DuLinkList *D)
 {
@@ -41,7 +41,7 @@ Status DestroyList(DuLinkList *D)
 }
 
 /*
- *  ��� 
+ *  清空 
  */ 
 Status ClearList(DuLinkList D)
 {
@@ -65,7 +65,7 @@ Status ClearList(DuLinkList D)
 }
 
 /*
- *  �ж��Ƿ�Ϊ�� 
+ *  判断是否为空 
  */
 Status ListEmpty(DuLinkList D) 
 {
@@ -73,7 +73,7 @@ Status ListEmpty(DuLinkList D)
 }
 
 /*
- *  ˫��ѭ�������ĳ��� 
+ *  双向循环链表的长度 
  */ 
 int ListLength(DuLinkList D)
 {
@@ -95,7 +95,7 @@ int ListLength(DuLinkList D)
 }
 
 /*
- *  ȡֵ 
+ *  取值 
  */ 
 Status GetElem(DuLinkList D, int i, ElemType *e)
 {
@@ -123,7 +123,7 @@ Status GetElem(DuLinkList D, int i, ElemType *e)
 }
 
 /*
- *  λ�� 
+ *  位置 
  */ 
 int LocateElem(DuLinkList D, ElemType e, Status (Compare)(ElemType, ElemType))
 {
@@ -149,7 +149,7 @@ int LocateElem(DuLinkList D, ElemType e, Status (Compare)(ElemType, ElemType))
 }
 
 /*
- *  ǰ�� 
+ *  前驱 
  */
 Status PriorElem(DuLinkList D, ElemType cur_e, ElemType *e)
 {
@@ -161,7 +161,7 @@ Status PriorElem(DuLinkList D, ElemType cur_e, ElemType *e)
 	
 	p = D->next;
 	
-	// ��һ��Ԫ��û��ǰ�� 
+	// 第一个元素没有前驱 
 	if (p->data == cur_e) {
 		return ERROR;
 	}
@@ -182,7 +182,7 @@ Status PriorElem(DuLinkList D, ElemType cur_e, ElemType *e)
 }
 
 /*
- *  ��� 
+ *  后继 
  */
 Status NextElem(DuLinkList D, ElemType cur_e, ElemType *e)
 {
@@ -198,7 +198,7 @@ Status NextElem(DuLinkList D, ElemType cur_e, ElemType *e)
 		p = p->next;
 	}
 	
-	// ���һ��Ԫ��û�к�� 
+	// 最后一个元素没有后继 
 	if (p->next == D) {
 		return ERROR;
 	}
@@ -209,7 +209,7 @@ Status NextElem(DuLinkList D, ElemType cur_e, ElemType *e)
 }
 
 /*
- *  Ԫ�ز��� 
+ *  元素插入 
  */ 
 Status ListInsert(DuLinkList D, int i, ElemType e)
 {
@@ -239,7 +239,7 @@ Status ListInsert(DuLinkList D, int i, ElemType e)
 }
 
 /*
- *  ɾ��Ԫ�� 
+ *  删除元素 
  */ 
 Status ListDelete(DuLinkList D, int i, ElemType *e)
 {
@@ -269,7 +269,7 @@ Status ListDelete(DuLinkList D, int i, ElemType *e)
 }
 
 /*
- *  �������� 
+ *  遍历链表 
  */ 
 Status ListTraverse(DuLinkList D, void (Visit)(ElemType))
 {
@@ -292,11 +292,11 @@ Status ListTraverse(DuLinkList D, void (Visit)(ElemType))
 }
 
 /*
- *  ��ȡѭ�������е�i��Ԫ�ص�����
+ *  获取循环链表中第i个元素的引用
  *  
- *  ע��
- *  1. ��static�ĺ����ǵ�ǰ����ֻ��DuLinkList��ʹ�ã����ᱻ����ļ�����
- *  2. ������������Ϊlen,����Ҫ��ȡ��len+1��Ԫ�ص�����ʱ������������ѭ�����������Է��ص���ͷ��� 
+ *  注意
+ *  1. 加static的含义是当前函数只在DuLinkList中使用，不会被别的文件引用
+ *  2. 假设链表长度为len,且需要获取第len+1个元素的引用时，由于这里是循环链表，所以返回的是头结点 
  */
 static DuLinkList GetElemP(DuLinkList D, int i) 
 {
@@ -319,7 +319,7 @@ static DuLinkList GetElemP(DuLinkList D, int i)
 		return p;
 	}
 	
-	// ���ˣ�˵��p->next == L,��ʱ��Ҫ�ж�i�Ƿ���� 
+	// 至此，说明p->next == L,此时需要判断i是否过大 
 	if (count + 1 < i) {
 		return NULL;
 	}

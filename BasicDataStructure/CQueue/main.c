@@ -10,33 +10,33 @@ int main(int argc, char *argv[]) {
 	int i;
 	
 	s = InitQueue(&Q);
-	printf("Ñ­»·¶ÓÁĞ³õÊ¼»¯%d\n", s);
+	printf("å¾ªç¯é˜Ÿåˆ—åˆå§‹åŒ–%d\n", s);
 	
 	for (i = 0; i < 15; i++) {
 		s = EnQueue(&Q, 3 * (i + 1));
-		printf("Ñ­»·¶ÓÁĞ¶ÓÎ²²åÈëÔªËØ%d\n", s);	
+		printf("å¾ªç¯é˜Ÿåˆ—é˜Ÿå°¾æ’å…¥å…ƒç´ %d\n", s);	
 	}
 	
 	s = QueueEmpty(Q);
-	printf("Ñ­»·¶ÓÁĞÊÇ·ñÎª¿Õ%d\n", s);
+	printf("å¾ªç¯é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º%d\n", s);
 	
 	len = QueueLength(Q);
-	printf("Ñ­»·¶ÓÁĞ³¤¶È%d\n", len);
+	printf("å¾ªç¯é˜Ÿåˆ—é•¿åº¦%d\n", len);
 	
 	s = GetHead(Q, &e);
-	printf("Ñ­»·¶ÓÁĞÍ·²¿ÔªËØ%d\n", e);
+	printf("å¾ªç¯é˜Ÿåˆ—å¤´éƒ¨å…ƒç´ %d\n", e);
 	
 	s = DeQueue(&Q, &e);
-	printf("Ñ­»·¶ÓÁĞÉ¾³ıÍ·²¿ÔªËØ%d, Í·²¿ÔªËØÎª%d\n", s, e);
+	printf("å¾ªç¯é˜Ÿåˆ—åˆ é™¤å¤´éƒ¨å…ƒç´ %d, å¤´éƒ¨å…ƒç´ ä¸º%d\n", s, e);
 	
-	/*  Ñ­»·¶ÓÁĞÇå¿Õ²âÊÔ 
+	/*  å¾ªç¯é˜Ÿåˆ—æ¸…ç©ºæµ‹è¯• 
 	s = ClearQueue(&Q);
-	printf("Ñ­»·¶ÓÁĞÇå¿Õ%d\n", s);
+	printf("å¾ªç¯é˜Ÿåˆ—æ¸…ç©º%d\n", s);
 	*/
 	
-	/*  Ñ­»·¶ÓÁĞÏú»Ù²âÊÔ 
+	/*  å¾ªç¯é˜Ÿåˆ—é”€æ¯æµ‹è¯• 
 	s = DestroyQueue(&Q);
-	printf("Ñ­»·¶ÓÁĞÏú»Ù%d\n", s);
+	printf("å¾ªç¯é˜Ÿåˆ—é”€æ¯%d\n", s);
 	*/ 
 	
 	QueueTraverse(Q, Visit);

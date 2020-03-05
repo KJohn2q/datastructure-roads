@@ -1,8 +1,8 @@
 #include "SLinkList.h"
 
 /*
- *  ³õÊ¼»¯±¸ÓÃ¿Õ¼ä 
- *  ½«Ò»Î¬Êı×éspaceÖĞ¸÷·ÖÁ¿Á´³ÉÒ»¸ö±¸ÓÃÁ´±í,space[0].curÎªÍ·Ö¸Õë 
+ *  åˆå§‹åŒ–å¤‡ç”¨ç©ºé—´ 
+ *  å°†ä¸€ç»´æ•°ç»„spaceä¸­å„åˆ†é‡é“¾æˆä¸€ä¸ªå¤‡ç”¨é“¾è¡¨,space[0].curä¸ºå¤´æŒ‡é’ˆ 
  */
 void InitSpace(SLinkList space)
 {
@@ -10,12 +10,12 @@ void InitSpace(SLinkList space)
 	for (; i < MAXSIZE - 1; i++) {
 		space[i].cur = i + 1;
 	}	
-	space[i - 1].cur = 0;  // ±ß½çÎÊÌâ 
+	space[i - 1].cur = 0;  // è¾¹ç•Œé—®é¢˜ 
 } 
 
 /*
- *  ÉêÇë¿Õ¼ä 
- * Èô±¸ÓÃ¿Õ¼äÁ´±í·Ç¿Õ£¬Ôò·µ»Ø·ÖÅäµÄ½ÚµãÏÂ±ê£¬·ñÔò·µ»Ø0 
+ *  ç”³è¯·ç©ºé—´ 
+ * è‹¥å¤‡ç”¨ç©ºé—´é“¾è¡¨éç©ºï¼Œåˆ™è¿”å›åˆ†é…çš„èŠ‚ç‚¹ä¸‹æ ‡ï¼Œå¦åˆ™è¿”å›0 
  */ 
 int Malloc(SLinkList space)
 {
@@ -30,8 +30,8 @@ int Malloc(SLinkList space)
 } 
 
 /*
- *  »ØÊÕ¿Õ¼ä 
- *  ½«ÏÂ±êÎªkµÄ¿ÕÏĞ½Úµã»ØÊÕµ½±¸ÓÃÁ´±í 
+ *  å›æ”¶ç©ºé—´ 
+ *  å°†ä¸‹æ ‡ä¸ºkçš„ç©ºé—²èŠ‚ç‚¹å›æ”¶åˆ°å¤‡ç”¨é“¾è¡¨ 
  */ 
 void Free(SLinkList space, int k)
 {
@@ -40,9 +40,9 @@ void Free(SLinkList space, int k)
 }
 
 /*
- *  ³õÊ¼»¯
- *  ÏÈ³õÊ¼»¯±¸ÓÃ¿Õ¼ä£¬¶øºó´Ó±¸ÓÃ¿Õ¼äÖĞÉêÇëÍ·½áµãµÄ¿Õ¼ä£¬½ø¶øÍê³É¾²Ì¬Á´±íµÄ³õÊ¼»¯¡£
- *  ³õÊ¼»¯³É¹¦ÔòÊ¹ÓÃS´æ´¢Í·½áµãË÷Òı£¬ÇÒ·µ»ØOK£¬·ñÔò·µ»ØERROR 
+ *  åˆå§‹åŒ–
+ *  å…ˆåˆå§‹åŒ–å¤‡ç”¨ç©ºé—´ï¼Œè€Œåä»å¤‡ç”¨ç©ºé—´ä¸­ç”³è¯·å¤´ç»“ç‚¹çš„ç©ºé—´ï¼Œè¿›è€Œå®Œæˆé™æ€é“¾è¡¨çš„åˆå§‹åŒ–ã€‚
+ *  åˆå§‹åŒ–æˆåŠŸåˆ™ä½¿ç”¨Så­˜å‚¨å¤´ç»“ç‚¹ç´¢å¼•ï¼Œä¸”è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR 
  */
 Status InitList(SLinkList space, int *S)
 {
@@ -63,13 +63,13 @@ Status InitList(SLinkList space, int *S)
 }
 
 /*
- *  Ïú»Ù¾²Ì¬Á´±í 
+ *  é”€æ¯é™æ€é“¾è¡¨ 
  */
 Status DestroyList(SLinkList space, int *S) 
 {
 	int cur;
 	
-	// È·±£¾²Ì¬Á´±í´æÔÚ 
+	// ç¡®ä¿é™æ€é“¾è¡¨å­˜åœ¨ 
 	if (S == NULL || *S == 0) {
 		return ERROR;
 	}
@@ -84,8 +84,8 @@ Status DestroyList(SLinkList space, int *S)
 }
 
 /*
- *  Çå¿Õ¾²Ì¬Á´±í 
- *  ÊÍ·Å¾²Ì¬Á´±íÖĞ·ÇÍ·½áµã´¦µÄ¿Õ¼ä 
+ *  æ¸…ç©ºé™æ€é“¾è¡¨ 
+ *  é‡Šæ”¾é™æ€é“¾è¡¨ä¸­éå¤´ç»“ç‚¹å¤„çš„ç©ºé—´ 
  */
 Status ClearList(SLinkList space, int S)
 {
@@ -96,7 +96,7 @@ Status ClearList(SLinkList space, int S)
 		return ERROR;
 	}
 	
-	P = space[S].cur;  // ´ÓµÚÒ»¸ö½áµã¿ªÊ¼ 
+	P = space[S].cur;  // ä»ç¬¬ä¸€ä¸ªç»“ç‚¹å¼€å§‹ 
 	
 	while (P != 0) {
 		cur = space[P].cur;
@@ -110,7 +110,7 @@ Status ClearList(SLinkList space, int S)
 }
 
 /*
- *  ¾²Ì¬Á´±íÊÇ·ñÎª¿Õ 
+ *  é™æ€é“¾è¡¨æ˜¯å¦ä¸ºç©º 
  */ 
 Status ListEmpty(SLinkList space, int S)
 {
@@ -123,8 +123,8 @@ Status ListEmpty(SLinkList space, int S)
 } 
 
 /*
- *  ¾²Ì¬Á´±íµÄ³¤¶È 
- *  ´ÓµÚÒ»¸ö½áµã¿ªÊ¼£¬Èç¹û½áµãµÄË÷Òı²»Îª¿Õ£¬ÔòÀÛ¼Ó£¬ÇÒÖ¸ÏòÏÂÒ»¸ö½áµã 
+ *  é™æ€é“¾è¡¨çš„é•¿åº¦ 
+ *  ä»ç¬¬ä¸€ä¸ªç»“ç‚¹å¼€å§‹ï¼Œå¦‚æœç»“ç‚¹çš„ç´¢å¼•ä¸ä¸ºç©ºï¼Œåˆ™ç´¯åŠ ï¼Œä¸”æŒ‡å‘ä¸‹ä¸€ä¸ªç»“ç‚¹ 
  */
 int ListLength(SLinkList space, int S)
 {
@@ -145,13 +145,13 @@ int ListLength(SLinkList space, int S)
 } 
 
 /*
- *  È¡µÃ¾²Ì¬Á´±íÖĞµÚi¸öÔªËØµÄÖµ£¬Èç¹û´æÔÚ£¬Ôò·µ»ØOK£¬·ñÔò·µ»ØERROR 
+ *  å–å¾—é™æ€é“¾è¡¨ä¸­ç¬¬iä¸ªå…ƒç´ çš„å€¼ï¼Œå¦‚æœå­˜åœ¨ï¼Œåˆ™è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR 
  */ 
 Status GetElem(SLinkList space, int S, int i, ElemType *e)
 {
 	int j = 0;
 	
-	// ¾²Ì¬Á´±í²»Îª¿Õ 
+	// é™æ€é“¾è¡¨ä¸ä¸ºç©º 
 	if (S == 0 || space[S].cur == 0) {
 		return ERROR;
 	}
@@ -173,7 +173,7 @@ Status GetElem(SLinkList space, int S, int i, ElemType *e)
 } 
 
 /*
- *  ·µ»ØµÚÒ»¸öÓë¸ø¶¨ÖµÏàµÈµÄÔªËØ 
+ *  è¿”å›ç¬¬ä¸€ä¸ªä¸ç»™å®šå€¼ç›¸ç­‰çš„å…ƒç´  
  */
 int LocateElem(SLinkList space, int S, ElemType e, Status(Compare)(ElemType, ElemType))
 {
@@ -198,7 +198,7 @@ int LocateElem(SLinkList space, int S, ElemType e, Status(Compare)(ElemType, Ele
 }
 
 /*
- *  ·µ»Ø¸ø¶¨ÖµµÄÇ°Çı 
+ *  è¿”å›ç»™å®šå€¼çš„å‰é©± 
  */ 
 Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType *pre_e)
 {
@@ -208,15 +208,15 @@ Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType *pre_e)
 		return ERROR;
 	}
 	
-	// Ö¸ÏòµÚÒ»¸öÔªËØ 
+	// æŒ‡å‘ç¬¬ä¸€ä¸ªå…ƒç´  
 	pre = space[S].cur;
 	
-	// µÚÒ»¸öÔªËØÃ»ÓĞÇ°Çı 
+	// ç¬¬ä¸€ä¸ªå…ƒç´ æ²¡æœ‰å‰é©± 
 	if (space[pre].data == cur_e) {
 		return ERROR;
 	}
 	
-	// Ö¸ÏòµÚ¶ş¸öÔªËØ	
+	// æŒ‡å‘ç¬¬äºŒä¸ªå…ƒç´ 	
 	next = space[pre].cur;
 	
 	while (next != 0 && space[next].data != cur_e) {
@@ -234,7 +234,7 @@ Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType *pre_e)
 }
 
 /*
- *  ·µ»Ø¸ø¶¨ÖµµÄºó¼Ì 
+ *  è¿”å›ç»™å®šå€¼çš„åç»§ 
  */
 Status NextElem(SLinkList space, int S, ElemType cur_e, ElemType *next_e)
 {
@@ -251,7 +251,7 @@ Status NextElem(SLinkList space, int S, ElemType cur_e, ElemType *next_e)
 		cur = space[cur].cur;
 	}
 	
-	// ´ÓµÚÒ»¸öÔªËØ¿ªÊ¼£¬²éÕÒcur_eµÄÎ»ÖÃ£¬ÇÒ±£Ö¤¸Ã½áµãµÄºó¼Ì´æÔÚ 
+	// ä»ç¬¬ä¸€ä¸ªå…ƒç´ å¼€å§‹ï¼ŒæŸ¥æ‰¾cur_eçš„ä½ç½®ï¼Œä¸”ä¿è¯è¯¥ç»“ç‚¹çš„åç»§å­˜åœ¨ 
 	if (space[cur].cur == 0) {
 		return ERROR;
 	}
@@ -263,7 +263,7 @@ Status NextElem(SLinkList space, int S, ElemType cur_e, ElemType *next_e)
 }
 
 /*
- *  ÔÚiÎ»ÖÃ²åÈëe 
+ *  åœ¨iä½ç½®æ’å…¥e 
  */ 
 Status ListInsert(SLinkList space, int S, int i, ElemType e)
 {
@@ -296,7 +296,7 @@ Status ListInsert(SLinkList space, int S, int i, ElemType e)
 } 
 
 /*
- *  ÔÚiÎ»ÖÃÉ¾³ıÔªËØ 
+ *  åœ¨iä½ç½®åˆ é™¤å…ƒç´  
  */
 Status ListDelete(SLinkList space, int S, int i, ElemType *e)
 {
@@ -307,7 +307,7 @@ Status ListDelete(SLinkList space, int S, int i, ElemType *e)
 		return ERROR;
 	}
 	
-	// PÖ¸ÏòµÚÒ»¸öÔªËØ 
+	// PæŒ‡å‘ç¬¬ä¸€ä¸ªå…ƒç´  
 	p = S;
 	
 	while (space[p].cur != 0 && j < i - 1) {
@@ -315,7 +315,7 @@ Status ListDelete(SLinkList space, int S, int i, ElemType *e)
 		j++;
 	}
 	
-	// iÎ»ÖÃÔªËØ²»´æÔÚ 
+	// iä½ç½®å…ƒç´ ä¸å­˜åœ¨ 
 	if (space[p].cur == 0 || j > i - 1) {
 		return ERROR;
 	}
@@ -329,7 +329,7 @@ Status ListDelete(SLinkList space, int S, int i, ElemType *e)
 }
 
 /*
- *  ±éÀú´òÓ¡¾²Ì¬Á´±íÖĞµÄÔªËØ 
+ *  éå†æ‰“å°é™æ€é“¾è¡¨ä¸­çš„å…ƒç´  
  */ 
 void ListTraverse(SLinkList space, int S, void (Visit)(ElemType))
 {
@@ -350,7 +350,7 @@ void ListTraverse(SLinkList space, int S, void (Visit)(ElemType))
 }
 
 /*
- *  ±È½Ïº¯Êı 
+ *  æ¯”è¾ƒå‡½æ•° 
  */ 
 Status Compare(ElemType data, ElemType e)
 {
@@ -358,7 +358,7 @@ Status Compare(ElemType data, ElemType e)
 }
 
 /*
- *  ´òÓ¡¸ø¶¨ÔªËØµÄÖµ 
+ *  æ‰“å°ç»™å®šå…ƒç´ çš„å€¼ 
  */ 
 void Visit(ElemType data)
 {
@@ -366,18 +366,18 @@ void Visit(ElemType data)
 } 
 
 /*
- *  ÒÔÍ¼ĞÎ»¯ĞÎÊ½Êä³öµ±Ç°½á¹¹£¬½öÏŞÄÚ²¿²âÊÔÊ¹ÓÃ
+ *  ä»¥å›¾å½¢åŒ–å½¢å¼è¾“å‡ºå½“å‰ç»“æ„ï¼Œä»…é™å†…éƒ¨æµ‹è¯•ä½¿ç”¨
  */
 void PrintGraph(SLinkList space, int S) {
     int i = 0;
     
-    printf("==== ±¸ÓÃ¿Õ¼ä ====\n");
+    printf("==== å¤‡ç”¨ç©ºé—´ ====\n");
     while(i < 20) {
         printf("%2d    | %2d | %2d |\n", i, space[i].data, space[i].cur);
         i = space[i].cur;
     }
     
-    printf("==== ¾²Ì¬Á´±í ====\n");
+    printf("==== é™æ€é“¾è¡¨ ====\n");
     i = S;
     while(i>0 && i < 20) {
         printf("%2d    | %2d | %2d |\n", i, space[i].data, space[i].cur);

@@ -10,22 +10,22 @@ int main(int argc, char *argv[]) {
 	int len = 0;
 	
 	s = InitStack(&S);
-	printf("Õ»µÄ³õÊ¼»¯%d\n", s);
+	printf("æ ˆçš„åˆå§‹åŒ–%d\n", s);
 	s = StackEmpty(S);
-	printf("Õ»ÊÇ·ñÎª¿Õ%d\n", s);
+	printf("æ ˆæ˜¯å¦ä¸ºç©º%d\n", s);
 	for (i = 0; i < 10; i++) {
 		Push(&S, 5 * i);
 	}
 	/*
 	s = GetTop(S, &e);
-	printf("È¡Õ»¶¥µÄÖµ%d\n", e);
+	printf("å–æ ˆé¡¶çš„å€¼%d\n", e);
 	*/
 	
 	s = Pop(&S, &e);
-	printf("µ¯³öÕ»¶¥µÄÖµ%d\n", s);
+	printf("å¼¹å‡ºæ ˆé¡¶çš„å€¼%d\n", s);
 	
 	len = StackLength(S);
-	printf("Õ»µÄ³¤¶È%d\n", len);
+	printf("æ ˆçš„é•¿åº¦%d\n", len);
 	
 	StackTraverse(S, Visit);
 	return 0;

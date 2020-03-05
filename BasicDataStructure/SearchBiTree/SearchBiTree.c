@@ -1,7 +1,7 @@
 #include "SearchBiTree.h"
 
 /*
- * ½¨Á¢Ò»¿Ã¿ÕÊ÷ 
+ * å»ºç«‹ä¸€æ£µç©ºæ ‘ 
  */
 SearchTree MakeEmpty(SearchTree T)
 {
@@ -15,7 +15,7 @@ SearchTree MakeEmpty(SearchTree T)
 }
 
 /*
- * ÕÒµ½dataÓòÎªeµÄ½áµã 
+ * æ‰¾åˆ°dataåŸŸä¸ºeçš„ç»“ç‚¹ 
  */
 Position Find(SearchTree T, TElemType e)
 {
@@ -75,7 +75,7 @@ SearchTree Insert(SearchTree T, TElemType e)
 		else if (e > T->data) {
 			T->right = Insert(T->right, e);
 		}
-		// Èç¹ûe == T->data Ôò±íÊ¾Ê÷ÖÐÒÑ¾­ÓÐ¸ÃÔªËØ  Ê²Ã´Ò²²»×ö 
+		// å¦‚æžœe == T->data åˆ™è¡¨ç¤ºæ ‘ä¸­å·²ç»æœ‰è¯¥å…ƒç´   ä»€ä¹ˆä¹Ÿä¸åš 
 	}
 	
 	return T;
@@ -97,14 +97,14 @@ SearchTree Delete(SearchTree T, TElemType e)
 			T->right = Delete(T->right, e);
 		}
 		else if (T->left && T->right) {
-			// Èç¹ûÓÐÁ½¸öº¢×Ó½áµã£¬ÔòÑ¡ÔñÓÒ×ÓÊ÷ÖÐ×îÐ¡µÄ½áµã´úÌæ¸Ã½áµãµÄÊý¾Ý
-			// ²¢µÝ¹éµØÉ¾³ýÄÇ¸ö½áµã 
+			// å¦‚æžœæœ‰ä¸¤ä¸ªå­©å­ç»“ç‚¹ï¼Œåˆ™é€‰æ‹©å³å­æ ‘ä¸­æœ€å°çš„ç»“ç‚¹ä»£æ›¿è¯¥ç»“ç‚¹çš„æ•°æ®
+			// å¹¶é€’å½’åœ°åˆ é™¤é‚£ä¸ªç»“ç‚¹ 
 			TmpCell = FindMin(T->right);
 			T->data = TmpCell->data;
 			T->right = Delete(T->right, T->data);
 		}
 		else {
-			// Ö»ÓÐÒ»¸ö»òÃ»ÓÐº¢×Ó½áµã
+			// åªæœ‰ä¸€ä¸ªæˆ–æ²¡æœ‰å­©å­ç»“ç‚¹
 			TmpCell = T;
 			if (T->left == NULL) {
 				T = T->right;

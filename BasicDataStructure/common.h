@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <malloc.h>  /* malloc() µÈ */
-#include <malloc.h>  /* INT_MAXµÈ */
+#include <malloc.h>  /* malloc() ç­‰ */
+#include <malloc.h>  /* INT_MAXç­‰ */
 #include <string.h> 
-#include <stdlib.h> /* atoi() µÈ */
+#include <stdlib.h> /* atoi() ç­‰ */
 #include <io.h> /* eof() */
 #include <math.h> /* floor(),ceil(),abs()*/
 
@@ -14,6 +14,6 @@
 #define ERROR 0
 #define INFEASIBLE -1
 
-typedef int Status;  /* StatusÊÇº¯ÊıµÄÀàĞÍ£¬ÆäÖµÊÇº¯Êı½á¹û×´Ì¬´úÂë£¬ÈçOKµÈ */
-typedef int Boolean; /* BooleanÊÇ²¼¶ûÀàĞÍ£¬ÆäÖµÊÇTRUE»òFALSE */ 
-typedef int ElemType;  /* Êı¾İ½á¹¹ÖĞ´æ·ÅµÄÀàĞÍ */ 
+typedef int Status;  /* Statusæ˜¯å‡½æ•°çš„ç±»å‹ï¼Œå…¶å€¼æ˜¯å‡½æ•°ç»“æœçŠ¶æ€ä»£ç ï¼Œå¦‚OKç­‰ */
+typedef int Boolean; /* Booleanæ˜¯å¸ƒå°”ç±»å‹ï¼Œå…¶å€¼æ˜¯TRUEæˆ–FALSE */ 
+typedef int ElemType;  /* æ•°æ®ç»“æ„ä¸­å­˜æ”¾çš„ç±»å‹ */ 

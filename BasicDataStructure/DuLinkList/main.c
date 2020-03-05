@@ -12,36 +12,36 @@ int main(int argc, char *argv[]) {
 	int i = 0;
 	
 	s = InitList(&D);
-	printf("³õÊ¼»¯Á´±í%d\n", s);
+	printf("åˆå§‹åŒ–é“¾è¡¨%d\n", s);
 	s = ListEmpty(D);
-	printf("Á´±íÊÇ·ñÎª¿Õ%d\n", s);
+	printf("é“¾è¡¨æ˜¯å¦ä¸ºç©º%d\n", s);
 	for (i = 1; i <= 10; i++) {
 		ListInsert(D, i, i * 2);
 		ListTraverse(D, Visit);
 	}	
 	/*
 	cur = LocateElem(D, 2, Compare);	
-	printf("2ÔÚÁ´±íÖĞµÄÎ»ÖÃ%d\n", cur);
+	printf("2åœ¨é“¾è¡¨ä¸­çš„ä½ç½®%d\n", cur);
 	*/
 	/*
 	s = GetElem(D, 1, &e);
-	printf("µÚ¶ş¸öÔªËØµÄÖµ%d\n", e);
-	printf("È¡Öµ²âÊÔ%d\n", s);
+	printf("ç¬¬äºŒä¸ªå…ƒç´ çš„å€¼%d\n", e);
+	printf("å–å€¼æµ‹è¯•%d\n", s);
 	*/
 	/*
 	s = ListDelete(D, 3, &e);
-	printf("Á´±íÖĞÉ¾³ıµÄÖµ%d\n", e);
-	printf("Á´±íÔªËØ²âÊÔ%d\n", s);
+	printf("é“¾è¡¨ä¸­åˆ é™¤çš„å€¼%d\n", e);
+	printf("é“¾è¡¨å…ƒç´ æµ‹è¯•%d\n", s);
 	*/
 	/* 
 	s = PriorElem(D, 2, &e);
-	printf("Á´±íÖĞÖ¸¶¨ÔªËØµÄÇ°ÇıÎª%d\n", e);
-	printf("Á´±íÇ°Çı²âÊÔ%d\n", s);
+	printf("é“¾è¡¨ä¸­æŒ‡å®šå…ƒç´ çš„å‰é©±ä¸º%d\n", e);
+	printf("é“¾è¡¨å‰é©±æµ‹è¯•%d\n", s);
 	*/
 	/* 
 	s = NextElem(D, 10, &e);
-	printf("Á´±íÖĞÖ¸¶¨ÔªËØµÄºó¼ÌÎª%d\n", e);
-	printf("Á´±íºó¼Ì²âÊÔ%d\n", s);
+	printf("é“¾è¡¨ä¸­æŒ‡å®šå…ƒç´ çš„åç»§ä¸º%d\n", e);
+	printf("é“¾è¡¨åç»§æµ‹è¯•%d\n", s);
 	*/
 	
 //	ListTraverse(D, Visit);

@@ -7,9 +7,9 @@
 #define MAX 10
 
 /*
- * Ͱʽ����
- * ����������Ԫ�ص�ֵ��С��max
- * nΪ����������Ԫ�صĸ��� 
+ * 桶式排序
+ * 给定数组中元素的值均小于max
+ * n为给定数组中元素的个数 
  */
 void BucketSort(int arr[], int n);
 

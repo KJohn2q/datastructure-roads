@@ -12,58 +12,58 @@ typedef int QElemType;
 
 typedef struct {
 	QElemType *base;
-	int front;  // Í·Ö¸Õë£¬Èô¶ÓÁĞ²»Îª¿Õ£¬Ö¸Ïò¶ÓÁĞÍ·ÔªËØ 
-	int rear;  // Î²Ö¸Õë£¬Èô¶ÓÁĞ²»Îª¿Õ£¬Ö¸Ïò¶ÓÁĞÎ²ÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	int front;  // å¤´æŒ‡é’ˆï¼Œè‹¥é˜Ÿåˆ—ä¸ä¸ºç©ºï¼ŒæŒ‡å‘é˜Ÿåˆ—å¤´å…ƒç´  
+	int rear;  // å°¾æŒ‡é’ˆï¼Œè‹¥é˜Ÿåˆ—ä¸ä¸ºç©ºï¼ŒæŒ‡å‘é˜Ÿåˆ—å°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 	int listsize;
 } SqQueue;
 
 /*
- * ³õÊ¼»¯Ë³Ğò¶ÓÁĞ 
+ * åˆå§‹åŒ–é¡ºåºé˜Ÿåˆ— 
  */
 Status InitQueue(SqQueue *Q);
 
 /*
- * Ïú»Ù 
+ * é”€æ¯ 
  */ 
 Status DestroyQueue(SqQueue *Q);
 
 /*
- * Çå¿Õ¶ÓÁĞ 
+ * æ¸…ç©ºé˜Ÿåˆ— 
  */
 Status ClearQueue(SqQueue *Q);
 
 /*
- *  ÅĞ¿Õ 
+ *  åˆ¤ç©º 
  */
 Status QueueEmpty(SqQueue Q);
 
 /*
- *  ¶ÓÁĞ³¤¶È 
+ *  é˜Ÿåˆ—é•¿åº¦ 
  */
 int QueueLength(SqQueue Q); 
 
 /*
- *  ¶ÔÍ·ÔªËØ 
+ *  å¯¹å¤´å…ƒç´  
  */
 Status GetHead(SqQueue Q, QElemType *e); 
 
 /*
- *  ²åÈëĞÂµÄ¶ÓÎ²ÔªËØ 
+ *  æ’å…¥æ–°çš„é˜Ÿå°¾å…ƒç´  
  */
 Status EnQueue(SqQueue *Q, QElemType e);
 
 /*
- *  É¾³ı¶ÓÍ·ÔªËØ 
+ *  åˆ é™¤é˜Ÿå¤´å…ƒç´  
  */
 Status DeQueue(SqQueue *Q, QElemType *e);
 
 /*
- *  ÔªËØ±éÀú 
+ *  å…ƒç´ éå† 
  */
 Status QueueTraverse(SqQueue Q, void (Visit)(QElemType)); 
 
 /*
- *  Êä³öÔªËØ 
+ *  è¾“å‡ºå…ƒç´  
  */
 void Visit(QElemType data);
 

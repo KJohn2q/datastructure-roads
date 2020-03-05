@@ -34,7 +34,7 @@ Position SingleRotateWithRight(Position K1)
 }
 
 /*
- * Õ¹¿ª²Ù×÷
+ * å±•å¼€æ“ä½œ
  * top-down 
  */
 SplayTree Splay(Position x, TElemType e)
@@ -53,7 +53,7 @@ SplayTree Splay(Position x, TElemType e)
 				x = SingleRotateWithLeft(x);
 			if (x->left == NULL) break;
 				
-			/* Á´½ÓÓÒÊ÷ */
+			/* é“¾æŽ¥å³æ ‘ */
 			RightTreeMin->left = x;
 			RightTreeMin = x;
 			x = x->left;

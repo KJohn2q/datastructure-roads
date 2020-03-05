@@ -65,12 +65,12 @@ AvlTree Insert(AvlTree T, TElemType e)
 	}	
 	else if (e < T->data) {
 		T->left = Insert(T->left, e);
-		// Ò»¸ö½áµãµÄ×ó×ÓÊ÷ÓëÓÒ×ÓÊ÷¸ß¶È²î´óÓÚ1
-		// ÔòÊ§È¥Æ½ºâ 
+		// ä¸€ä¸ªç»“ç‚¹çš„å·¦å­æ ‘ä¸å³å­æ ‘é«˜åº¦å·®å¤§äº1
+		// åˆ™å¤±å»å¹³è¡¡ 
 		if (Height(T->left) - Height(T->right) == 2) {
 			if (e < T->left->data) {
-				// ÔÚ×óº¢×ÓµÄ×ó×ÓÊ÷²åÈë½áµã
-				// µ¥Ğı×ª
+				// åœ¨å·¦å­©å­çš„å·¦å­æ ‘æ’å…¥ç»“ç‚¹
+				// å•æ—‹è½¬
 				T = SingleRotateWithLeft(T); 
 			} 
 			else {
@@ -94,7 +94,7 @@ AvlTree Insert(AvlTree T, TElemType e)
 	return T;
 } 
 
-// É¾³ı½áµã£¨eÊÇ½áµãÖµ£©£¬·µ»Ø¸ù½áµã 
+// åˆ é™¤ç»“ç‚¹ï¼ˆeæ˜¯ç»“ç‚¹å€¼ï¼‰ï¼Œè¿”å›æ ¹ç»“ç‚¹ 
 AvlTree Delete(AvlTree T, TElemType e)
 {
 	Position p;
@@ -108,12 +108,12 @@ AvlTree Delete(AvlTree T, TElemType e)
 	return T;
 }
 
-// É¾³ı½áµã£¨pÊÇ½áµãµÄÎ»ÖÃ£©£¬·µ»Ø¸ù½áµã 
+// åˆ é™¤ç»“ç‚¹ï¼ˆpæ˜¯ç»“ç‚¹çš„ä½ç½®ï¼‰ï¼Œè¿”å›æ ¹ç»“ç‚¹ 
 AvlTree DeleteNode(AvlTree T, Position p)
 {
 	Position tepCell;
 	
-	// ¸ùÎª¿Õ »òÕßÃ»ÓĞÒªÉ¾³ıµÄ½áµã  Ö±½Ó·µ»ØNULL 
+	// æ ¹ä¸ºç©º æˆ–è€…æ²¡æœ‰è¦åˆ é™¤çš„ç»“ç‚¹  ç›´æ¥è¿”å›NULL 
 	if (T == NULL || p == NULL) {
 		return NULL;
 	}
@@ -121,7 +121,7 @@ AvlTree DeleteNode(AvlTree T, Position p)
 	if (p->data < T->data) {
 		T->left = DeleteNode(T->left, p);
 		
-		// É¾³ı½áµãºó£¬ÈôAVLÊ÷Ê§È¥Æ½ºâ£¬Ôò½øĞĞÏàÓ¦µÄµ÷½Ú 
+		// åˆ é™¤ç»“ç‚¹åï¼Œè‹¥AVLæ ‘å¤±å»å¹³è¡¡ï¼Œåˆ™è¿›è¡Œç›¸åº”çš„è°ƒèŠ‚ 
 		if (Height(T->right) - Height(T->left) == 2) {
 			tepCell = T->left;
 			
@@ -135,7 +135,7 @@ AvlTree DeleteNode(AvlTree T, Position p)
 	else if (p->data > T->data) {
 		T->right = DeleteNode(T->right, p);
 		
-		// É¾³ı½áµãºó£¬ÈôAVLÊ÷Ê§È¥Æ½ºâ£¬Ôò½øĞĞÏàÓ¦µÄµ÷½Ú 
+		// åˆ é™¤ç»“ç‚¹åï¼Œè‹¥AVLæ ‘å¤±å»å¹³è¡¡ï¼Œåˆ™è¿›è¡Œç›¸åº”çš„è°ƒèŠ‚ 
 		if ((Height(T->left) - Height(T->right)) == 2) {
 			tepCell = T->right;
 			
@@ -147,25 +147,25 @@ AvlTree DeleteNode(AvlTree T, Position p)
 		}
 	}
 	else {
-		// TÊÇ¶ÔÓ¦ÒªÉ¾³ıµÄ½áµã 
+		// Tæ˜¯å¯¹åº”è¦åˆ é™¤çš„ç»“ç‚¹ 
 		
-		// TµÄ×óÓÒº¢×Ó¶¼·Ç¿Õ
+		// Tçš„å·¦å³å­©å­éƒ½éç©º
 		if ((T->left) && (T->right)) {
 			if (Height(T->left) > Height(T->right)) {
-				// Èç¹ûTµÄ×ó×ÓÊ÷±ÈÓÒ×ÓÊ÷¸ß
-				// Ôò£¨1)ÕÒ³öTµÄ×ó×ÓÊ÷µÄ×î´ó½áµã
-				// (2) ½«¸Ã×î´ó½áµãµÄÖµ¸³¸øT
-				// (3) É¾³ı¸Ã×î´ó½áµã
-				// ²ÉÓÃÕâÖÖ·½Ê½µÄºÃ´¦ÊÇ£ºÉ¾³ı×ó×ÓÊ÷µÄ×î´ó½áµãºó£¬AVLÊ÷ÈÔÈ»ÊÇÆ½ºâµÄ 
+				// å¦‚æœTçš„å·¦å­æ ‘æ¯”å³å­æ ‘é«˜
+				// åˆ™ï¼ˆ1)æ‰¾å‡ºTçš„å·¦å­æ ‘çš„æœ€å¤§ç»“ç‚¹
+				// (2) å°†è¯¥æœ€å¤§ç»“ç‚¹çš„å€¼èµ‹ç»™T
+				// (3) åˆ é™¤è¯¥æœ€å¤§ç»“ç‚¹
+				// é‡‡ç”¨è¿™ç§æ–¹å¼çš„å¥½å¤„æ˜¯ï¼šåˆ é™¤å·¦å­æ ‘çš„æœ€å¤§ç»“ç‚¹åï¼ŒAVLæ ‘ä»ç„¶æ˜¯å¹³è¡¡çš„ 
 				tepCell = FindMax(T->left);
 				T->data = tepCell->data;
 				T->left = DeleteNode(T->left, tepCell);
 			} else {
-				// Èç¹ûTµÄ×ó×ÓÊ÷²»±ÈÓÒ×ÓÊ÷¸ß(¼´ËüÃÇÏàµÈ£¬»òÓÒ×ÓÊ÷±È×ó×ÓÊ÷¸ß1)
-				// Ôò£¨1)ÕÒ³öTµÄÓÒ×ÓÊ÷µÄ×îĞ¡½áµã
-				// (2) ½«¸Ã×î´ó½áµãµÄÖµ¸³¸øT
-				// (3) É¾³ı¸Ã×îĞ¡½áµã
-				// ²ÉÓÃÕâÖÖ·½Ê½µÄºÃ´¦ÊÇ£ºÉ¾³ıÓÒ×ÓÊ÷µÄ×îĞ¡½áµãºó£¬AVLÊ÷ÈÔÈ»ÊÇÆ½ºâµÄ 
+				// å¦‚æœTçš„å·¦å­æ ‘ä¸æ¯”å³å­æ ‘é«˜(å³å®ƒä»¬ç›¸ç­‰ï¼Œæˆ–å³å­æ ‘æ¯”å·¦å­æ ‘é«˜1)
+				// åˆ™ï¼ˆ1)æ‰¾å‡ºTçš„å³å­æ ‘çš„æœ€å°ç»“ç‚¹
+				// (2) å°†è¯¥æœ€å¤§ç»“ç‚¹çš„å€¼èµ‹ç»™T
+				// (3) åˆ é™¤è¯¥æœ€å°ç»“ç‚¹
+				// é‡‡ç”¨è¿™ç§æ–¹å¼çš„å¥½å¤„æ˜¯ï¼šåˆ é™¤å³å­æ ‘çš„æœ€å°ç»“ç‚¹åï¼ŒAVLæ ‘ä»ç„¶æ˜¯å¹³è¡¡çš„ 
 				tepCell = FindMin(T->right);
 				T->data = tepCell->data;
 				T->right = DeleteNode(T->right, tepCell);
@@ -191,7 +191,7 @@ static int Height(Position P)
 	}
 }
 
-// ×ó×ÓÊ÷µ¥Ğı×ª 
+// å·¦å­æ ‘å•æ—‹è½¬ 
 static Position SingleRotateWithLeft(Position k2)
 {
 	Position k1;

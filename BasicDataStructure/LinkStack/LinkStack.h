@@ -18,53 +18,53 @@ typedef struct LinkStack {
 }LinkStack;
 
 /*
- *  ³õÊ¼»¯ 
+ *  åˆå§‹åŒ– 
  */
 Status InitStack(LinkStack *S);
 
 /*
- *  Ïú»Ù 
+ *  é”€æ¯ 
  */ 
 Status DestroyStack(LinkStack *S);
 
 /*
- *  ÖÃ¿Õ 
+ *  ç½®ç©º 
  */
 Status ClearStack(LinkStack *S);
 
 /*
- *  ÅĞ¿Õ 
+ *  åˆ¤ç©º 
  */
 Status StackEmpty(LinkStack S);
 
 /*  
- *  Õ»µÄ³¤¶È 
+ *  æ ˆçš„é•¿åº¦ 
  */ 
 int StackLength(LinkStack S);
 
 /*
- *  ²åÈëÔªËØ 
+ *  æ’å…¥å…ƒç´  
  */
 Status Push(LinkStack *S, SElemType e);
 
 /*
- *  È¡Õ»¶¥ÔªËØ 
+ *  å–æ ˆé¡¶å…ƒç´  
  */
 Status GetTop(LinkStack S, SElemType *e);
 
 
 /*
- *  µ¯³öÕ»¶¥ÔªËØ 
+ *  å¼¹å‡ºæ ˆé¡¶å…ƒç´  
  */
 Status Pop(LinkStack *S, SElemType *e);
 
 /*
- *  Õ»µÄ±éÀú 
+ *  æ ˆçš„éå† 
  */
 Status StackTraverse(LinkStack S, void Visit(SElemType)); 
 
 /*
- *  Êä³öÔªËØ 
+ *  è¾“å‡ºå…ƒç´  
  */ 
 void Visit(SElemType data);
 

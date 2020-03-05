@@ -29,9 +29,9 @@ int main()
 	GetElem(L, 2, &e);
 	printf("%d\n", e);
 	PriorElem(L, 3, &e);
-	printf("3��ǰ��Ϊ%d\n", e);
+	printf("3的前驱为%d\n", e);
 	NextElem(L, 3, &e);
-	printf("3�ĺ�׺Ϊ%d\n", e);
+	printf("3的后缀为%d\n", e);
 	s = ListDelete(&L, 2, &e); 
 	ListTraverse(L, Visit);
 	*/

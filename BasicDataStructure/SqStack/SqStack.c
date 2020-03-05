@@ -1,7 +1,7 @@
 #include "SqStack.h"
 
 /*
- *  ³õÊ¼»¯Õ» 
+ *  åˆå§‹åŒ–æ ˆ 
  */
 Status InitStack(SqStack *S)
 {
@@ -21,7 +21,7 @@ Status InitStack(SqStack *S)
 }
 
 /*
- * Ïú»Ù 
+ * é”€æ¯ 
  */
 Status DestroyStack(SqStack *S)
 {
@@ -39,7 +39,7 @@ Status DestroyStack(SqStack *S)
 }
 
 /*
- * ÖÃ¿ÕÕ» 
+ * ç½®ç©ºæ ˆ 
  */
 Status ClearStack(SqStack* S)
 {
@@ -53,7 +53,7 @@ Status ClearStack(SqStack* S)
 
 
 /*
- * ÅĞ¶ÏÊÇ·ñÎª¿Õ 
+ * åˆ¤æ–­æ˜¯å¦ä¸ºç©º 
  */
 Status StackEmpty(SqStack S)
 {
@@ -61,7 +61,7 @@ Status StackEmpty(SqStack S)
 }
 
 /*
- * Õ»µÄ³¤¶È 
+ * æ ˆçš„é•¿åº¦ 
  */ 
 int StackLength(SqStack S)
 {
@@ -73,7 +73,7 @@ int StackLength(SqStack S)
 }
 
 /*
- * »ñÈ¡Õ»¶¥ÔªËØ 
+ * è·å–æ ˆé¡¶å…ƒç´  
  */
 Status GetTop(SqStack S, SElemType *e)
 {
@@ -87,7 +87,7 @@ Status GetTop(SqStack S, SElemType *e)
 }
 
 /*
- *  µ¯³öÕ»¶¥ÔªËØ 
+ *  å¼¹å‡ºæ ˆé¡¶å…ƒç´  
  */ 
 Status Pop(SqStack* S, SElemType *e)
 {
@@ -100,7 +100,7 @@ Status Pop(SqStack* S, SElemType *e)
 }
 
 /*
- *  ÔÚÕ»¶¥²åÈëÔªËØ 
+ *  åœ¨æ ˆé¡¶æ’å…¥å…ƒç´  
  */
 Status Push(SqStack* S, SElemType e)
 {
@@ -123,7 +123,7 @@ Status Push(SqStack* S, SElemType e)
 }
 
 /*
- *  Õ»µÄ±éÀú 
+ *  æ ˆçš„éå† 
  */ 
 Status StackTraverse(SqStack S, void Visit(SElemType))
 {
@@ -141,7 +141,7 @@ Status StackTraverse(SqStack S, void Visit(SElemType))
 }
 
 /*
- * ±éÀúº¯Êı 
+ * éå†å‡½æ•° 
  */
 void Visit(SElemType data)
 {

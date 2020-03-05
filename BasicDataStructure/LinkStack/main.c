@@ -10,28 +10,28 @@ int main(int argc, char *argv[]) {
 	SElemType e;
 	
 	s = InitStack(&S);
-	printf("³õÊ¼»¯Á´Õ»%d\n", s);
+	printf("åˆå§‹åŒ–é“¾æ ˆ%d\n", s);
 	/* 
 	s = DestroyStack(&S);
-	printf("Ïú»ÙÁ´Õ»%d\n", s);
+	printf("é”€æ¯é“¾æ ˆ%d\n", s);
 	*/
 	/*
 	s = ClearStack(&S);
-	printf("Çå¿ÕÁ´Õ»%d\n", s);
+	printf("æ¸…ç©ºé“¾æ ˆ%d\n", s);
 	*/
 	for(i = 0; i < 10; i++) {
 		Push(&S, 2*i);
 	}
 	/*
 	s = Push(&S, 5);
-	printf("²åÈëÔªËØ%d\n", s);
+	printf("æ’å…¥å…ƒç´ %d\n", s);
 	*/
 	/*
 	GetTop(S, &e);
-	printf("Õ»¶¥ÔªËØÎª%d\n", e);
+	printf("æ ˆé¡¶å…ƒç´ ä¸º%d\n", e);
 	*/
 	s = Pop(&S, &e);
-	printf("µ¯³öÕ»¶¥ÔªËØ%d,Õ»¶¥ÔªËØÎª%d\n", s, e);
+	printf("å¼¹å‡ºæ ˆé¡¶å…ƒç´ %d,æ ˆé¡¶å…ƒç´ ä¸º%d\n", s, e);
 	
 	StackTraverse(S, Visit);
 	

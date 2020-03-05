@@ -1,8 +1,8 @@
 #include "SLinkList.h"
 
 int main(int argc, char** argv) {
-	SLinkList space;  // 备用空间 
-	int S;  // 静态链表头结点索引 
+	SLinkList space;  // 澶囩敤绌洪棿 
+	int S;  // 闈欐�侀摼琛ㄥご缁撶偣绱㈠紩 
 	
 	int i;
 	ElemType e;

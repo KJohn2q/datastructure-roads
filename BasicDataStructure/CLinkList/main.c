@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 	CLinkList C = NULL;
 	Status s = 0;
 	ElemType e = 0;
-	int len = 0;  // Á´±íµÄ³¤¶È 
+	int len = 0;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ 
 	
 	InitList(&C);
 	

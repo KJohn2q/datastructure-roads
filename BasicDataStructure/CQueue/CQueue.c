@@ -32,7 +32,7 @@ Status DestroyQueue(CQueue *Q)
 
 Status ClearQueue(CQueue *Q)
 {
-	// Ñ­»·¶ÓÁĞÎª¿ÕµØÖ·»òÕßÑ­»·¶ÓÁĞÎª¿Õ 
+	// å¾ªç¯é˜Ÿåˆ—ä¸ºç©ºåœ°å€æˆ–è€…å¾ªç¯é˜Ÿåˆ—ä¸ºç©º 
 	if (Q == NULL || Q->front == Q->rear) {
 		return ERROR;
 	}
@@ -69,7 +69,7 @@ Status GetHead(CQueue Q, QElemType *e)
 
 Status EnQueue(CQueue *Q, QElemType e)
 {
-	// Ñ­»·¶ÓÁĞÎª¿ÕµØÖ·»òÕßÑ­»·¶ÓÁĞÒÑÂú 
+	// å¾ªç¯é˜Ÿåˆ—ä¸ºç©ºåœ°å€æˆ–è€…å¾ªç¯é˜Ÿåˆ—å·²æ»¡ 
 	if (Q == NULL || (Q->rear + 1) % MAXQUEUESIZE == Q->front) {
 		return ERROR;
 	}
@@ -100,7 +100,7 @@ Status QueueTraverse(CQueue Q, void (Visit)(ElemType))
 	
 	p = Q.front;
 	
-	printf("=====Ñ­»·¶ÓÁĞ±éÀú¿ªÊ¼=====\n"); 
+	printf("=====å¾ªç¯é˜Ÿåˆ—éå†å¼€å§‹=====\n"); 
 	
 	while (p != Q.rear) {
 		Visit(Q.base[p]);

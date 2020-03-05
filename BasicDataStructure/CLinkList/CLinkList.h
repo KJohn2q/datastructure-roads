@@ -11,77 +11,77 @@ typedef struct CLNode {
 } CLNode, *CLinkList;
 
 /*
- *  ³õÊ¼»¯ 
+ *  åˆå§‹åŒ– 
  */
 Status InitList(CLinkList *C);
 
 /*
- *  ´´½¨Á´±í 
+ *  åˆ›å»ºé“¾è¡¨ 
  */
 Status CreateList(CLinkList C, int n);
 
 /*
- *  Ïú»Ù 
+ *  é”€æ¯ 
  */ 
 Status DestroyList(CLinkList *C);
 
 /*
- * Çå¿Õ 
+ * æ¸…ç©º 
  */  
 Status ClearList(CLinkList C);
 
 /*
- * ÅĞ¶ÏÊÇ·ñÎª¿Õ 
+ * åˆ¤æ–­æ˜¯å¦ä¸ºç©º 
  */
 Status ListEmpty(CLinkList C);
 
 /*
- *  ¼ÆËãÁ´±íµÄ³¤¶È 
+ *  è®¡ç®—é“¾è¡¨çš„é•¿åº¦ 
  */
 int ListLength(CLinkList C);
 
 /*
- *  È¡Öµ 
+ *  å–å€¼ 
  */
 Status GetElem(CLinkList C, int i, ElemType* e); 
 
 /*
- *  ²éÕÒ 
+ *  æŸ¥æ‰¾ 
  */
 int LocateElem(CLinkList C, ElemType e, Status(Compare)(ElemType, ElemType));
 
 /*
- *  Ç°Çı 
+ *  å‰é©± 
  */
 Status PriorElem(CLinkList C, ElemType cur_e, ElemType* pre_e);
 
 /*
- *  ºó×º 
+ *  åç¼€ 
  */ 
 Status NextElem(CLinkList C, ElemType cur_e, ElemType* next_e);
 
 /*
- *  ²åÈë 
+ *  æ’å…¥ 
  */
 Status ListInsert(CLinkList C, int i, ElemType e);
 
 /*
- *  É¾³ı 
+ *  åˆ é™¤ 
  */ 
 Status ListDelete(CLinkList C, int i, ElemType* e);
 
 /*
- *  ±éÀú 
+ *  éå† 
  */ 
 void ListTraverse(CLinkList C, void(Visit)(ElemType)); 
 
 /*
- * ±È½Ïº¯Êı 
+ * æ¯”è¾ƒå‡½æ•° 
  */ 
 Status Compare(ElemType, ElemType);
 
 /*
- * ´òÓ¡Êı¾İ 
+ * æ‰“å°æ•°æ® 
  */
 void Visit(ElemType);
 

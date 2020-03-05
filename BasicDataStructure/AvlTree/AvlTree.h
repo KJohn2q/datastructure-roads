@@ -7,10 +7,10 @@
 typedef int TElemType;
 
 typedef struct AvlNode {
-	TElemType data;  // Êı¾İÓò 
-	struct AvlNode *left;  // ×ó×ÓÊ÷ 
-	struct AvlNode *right; // ÓÒ×ÓÊ÷ 
-	int height;  // ¸ß¶È 
+	TElemType data;  // æ•°æ®åŸŸ 
+	struct AvlNode *left;  // å·¦å­æ ‘ 
+	struct AvlNode *right; // å³å­æ ‘ 
+	int height;  // é«˜åº¦ 
 }AvlNode, *Position, *AvlTree;
 
 AvlTree MakeEmpty(AvlTree T);
@@ -23,15 +23,15 @@ Position FindMax(AvlTree T);
 
 AvlTree Insert(AvlTree T, TElemType e);
 
-// É¾³ı½áµã£¨eÊÇ½áµãÖµ£©£¬·µ»Ø¸ù½áµã 
+// åˆ é™¤ç»“ç‚¹ï¼ˆeæ˜¯ç»“ç‚¹å€¼ï¼‰ï¼Œè¿”å›æ ¹ç»“ç‚¹ 
 AvlTree Delete(AvlTree T, TElemType e);
 
-// É¾³ı½áµã£¨pÊÇ½áµãµÄÎ»ÖÃ£©£¬·µ»Ø¸ù½áµã 
+// åˆ é™¤ç»“ç‚¹ï¼ˆpæ˜¯ç»“ç‚¹çš„ä½ç½®ï¼‰ï¼Œè¿”å›æ ¹ç»“ç‚¹ 
 AvlTree DeleteNode(AvlTree T, Position p);
 
 static int Height(Position P);
 
-// ×ó×ÓÊ÷µ¥Ğı×ª 
+// å·¦å­æ ‘å•æ—‹è½¬ 
 static Position SingleRotateWithLeft(Position k2);
 
 static Position DoubleRotateWithLeft(Position k3);

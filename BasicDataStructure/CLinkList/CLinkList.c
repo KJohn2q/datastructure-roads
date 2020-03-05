@@ -2,7 +2,7 @@
 #include "CLinkList.h" 
 
 /*
- *  ³õÊ¼»¯ 
+ *  åˆå§‹åŒ– 
  */
 Status InitList(CLinkList *C)
 {
@@ -18,7 +18,7 @@ Status InitList(CLinkList *C)
 }
 
 /*
- *  Ïú»Ù 
+ *  é”€æ¯ 
  */ 
 Status DestroyList(CLinkList *C)
 {
@@ -40,7 +40,7 @@ Status DestroyList(CLinkList *C)
 }
 
 /*
- *  ´´½¨Ò»¸öÓĞn¸öÖµµÄÁ´±í 
+ *  åˆ›å»ºä¸€ä¸ªæœ‰nä¸ªå€¼çš„é“¾è¡¨ 
  */
 Status CreateList(CLinkList C, int n)
 {
@@ -67,7 +67,7 @@ Status CreateList(CLinkList C, int n)
 }
 
 /*
- * Çå¿Õ 
+ * æ¸…ç©º 
  */  
 Status ClearList(CLinkList C) {
 	CLinkList p = NULL,pre = NULL;
@@ -90,8 +90,8 @@ Status ClearList(CLinkList C) {
 }
 
 /*
- * ÅĞ¶ÏÊÇ·ñÎª¿Õ 
- * ÅĞ¶ÏÌõ¼ş£ºÍ·½áµãÎª¿Õ»òÕßÍ·½áµãµÄnextÓòÖ¸Ïò×ÔÉí 
+ * åˆ¤æ–­æ˜¯å¦ä¸ºç©º 
+ * åˆ¤æ–­æ¡ä»¶ï¼šå¤´ç»“ç‚¹ä¸ºç©ºæˆ–è€…å¤´ç»“ç‚¹çš„nextåŸŸæŒ‡å‘è‡ªèº« 
  */
 Status ListEmpty(CLinkList C)
 {
@@ -99,7 +99,7 @@ Status ListEmpty(CLinkList C)
 }
 
 /*
- *  ¼ÆËãÁ´±íµÄ³¤¶È 
+ *  è®¡ç®—é“¾è¡¨çš„é•¿åº¦ 
  */
 int ListLength(CLinkList C) 
 {
@@ -121,7 +121,7 @@ int ListLength(CLinkList C)
 }
 
 /*
- *  È¡Öµ 
+ *  å–å€¼ 
  */
 Status GetElem(CLinkList C, int i, ElemType* e) 
 {
@@ -149,7 +149,7 @@ Status GetElem(CLinkList C, int i, ElemType* e)
 }
 
 /*
- *  ²éÕÒ 
+ *  æŸ¥æ‰¾ 
  */
 int LocateElem(CLinkList C, ElemType e, Status(Compare)(ElemType, ElemType))
 {
@@ -174,7 +174,7 @@ int LocateElem(CLinkList C, ElemType e, Status(Compare)(ElemType, ElemType))
 }
 
 /*
- *  Ç°Çı 
+ *  å‰é©± 
  */
 Status PriorElem(CLinkList C, ElemType cur_e, ElemType* pre_e)
 {
@@ -190,7 +190,7 @@ Status PriorElem(CLinkList C, ElemType cur_e, ElemType* pre_e)
 		p = p->next;
 	}
 	
-	// µ½Í·£¬Î´ÕÒµ½Óëcur_eÏàµÈµÄÔªËØ 
+	// åˆ°å¤´ï¼Œæœªæ‰¾åˆ°ä¸cur_eç›¸ç­‰çš„å…ƒç´  
 	if (p == C) {
 		return ERROR;
 	}
@@ -200,7 +200,7 @@ Status PriorElem(CLinkList C, ElemType cur_e, ElemType* pre_e)
 }
 
 /*
- *  ºó×º 
+ *  åç¼€ 
  */ 
 Status NextElem(CLinkList C, ElemType cur_e, ElemType* next_e)
 {
@@ -225,8 +225,8 @@ Status NextElem(CLinkList C, ElemType cur_e, ElemType* next_e)
 }
 
 /*
- *  ²åÈë 
- *  ÔÚiÎ»ÖÃ´¦²åÈëÔªËØe 
+ *  æ’å…¥ 
+ *  åœ¨iä½ç½®å¤„æ’å…¥å…ƒç´ e 
  */
 Status ListInsert(CLinkList C, int i, ElemType e)
 {
@@ -244,8 +244,8 @@ Status ListInsert(CLinkList C, int i, ElemType e)
 		++j;
 	}
 	
-	// ±éÀúµ½Í·ÁË»òÃ»ÓĞÕÒµ½µÚi¸öÔªËØ
-	// ¿¼ÂÇÖ»ÓĞÍ·½áµãµÄÇé¿ö 
+	// éå†åˆ°å¤´äº†æˆ–æ²¡æœ‰æ‰¾åˆ°ç¬¬iä¸ªå…ƒç´ 
+	// è€ƒè™‘åªæœ‰å¤´ç»“ç‚¹çš„æƒ…å†µ 
 	if (p->next == C || j > i - 1) {
 		return ERROR;
 	}
@@ -264,7 +264,7 @@ Status ListInsert(CLinkList C, int i, ElemType e)
 }
 
 /*
- *  É¾³ı 
+ *  åˆ é™¤ 
  */ 
 Status ListDelete(CLinkList C, int i, ElemType* e)
 {
@@ -296,7 +296,7 @@ Status ListDelete(CLinkList C, int i, ElemType* e)
 }
 
 /*
- *  ±éÀú 
+ *  éå† 
  */ 
 void ListTraverse(CLinkList C, void(Visit)(ElemType))
 {
@@ -311,7 +311,7 @@ void ListTraverse(CLinkList C, void(Visit)(ElemType))
 } 
 
 /*
- * ±È½Ïº¯Êı 
+ * æ¯”è¾ƒå‡½æ•° 
  */ 
 Status Compare(ElemType data, ElemType e) 
 {
@@ -319,7 +319,7 @@ Status Compare(ElemType data, ElemType e)
 }
 
 /*
- * ´òÓ¡Êı¾İ 
+ * æ‰“å°æ•°æ® 
  */
 void Visit(ElemType data)
 {

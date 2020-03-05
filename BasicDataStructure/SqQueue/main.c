@@ -10,30 +10,30 @@ int main(int argc, char *argv[]) {
 	QElemType e;
 	
 	s = InitQueue(&Q);
-	printf("³õÊ¼»¯Ë³Ğò¶ÓÁĞ%d\n", s);
+	printf("åˆå§‹åŒ–é¡ºåºé˜Ÿåˆ—%d\n", s);
 	for (i = 0; i < 10; i++) {
 		EnQueue(&Q, 5*(i+1));
 	}
-	/* Ïú»Ù¶ÓÁĞ 
+	/* é”€æ¯é˜Ÿåˆ— 
 	s = DestroyQueue(&Q);
-	printf("Ïú»Ù¶ÓÁĞ²âÊÔ%d\n", s);
+	printf("é”€æ¯é˜Ÿåˆ—æµ‹è¯•%d\n", s);
 	*/ 
-	/* Çå¿Õ¶ÓÁĞ 
+	/* æ¸…ç©ºé˜Ÿåˆ— 
 	s = ClearQueue(&Q);
-	printf("Çå¿Õ¶ÓÁĞ²âÊÔ%d\n", s);
+	printf("æ¸…ç©ºé˜Ÿåˆ—æµ‹è¯•%d\n", s);
 	*/ 
 	/*
 	s = QueueEmpty(Q);
-	printf("ÅĞ¿Õ²âÊÔ%d\n", s);
+	printf("åˆ¤ç©ºæµ‹è¯•%d\n", s);
 	*/
-	/*  É¾³ı²âÊÔ 
+	/*  åˆ é™¤æµ‹è¯• 
 	s = DeQueue(&Q, &e); 
-	printf("¶ÓÁĞ¶ÓÍ·ÔªËØÉ¾³ı²âÊÔ%d\n", s);
-	printf("¶ÓÁĞÉ¾³ıµÄ¶ÓÍ·ÔªËØÎª%d\n", e);
+	printf("é˜Ÿåˆ—é˜Ÿå¤´å…ƒç´ åˆ é™¤æµ‹è¯•%d\n", s);
+	printf("é˜Ÿåˆ—åˆ é™¤çš„é˜Ÿå¤´å…ƒç´ ä¸º%d\n", e);
 	*/
-	/*  ³¤¶È²âÊÔ 
+	/*  é•¿åº¦æµ‹è¯• 
 	len = QueueLength(Q);
-	printf("¶ÓÁĞ³¤¶ÈÎª%d\n", len);
+	printf("é˜Ÿåˆ—é•¿åº¦ä¸º%d\n", len);
 	*/
 	QueueTraverse(Q, Visit);
 	

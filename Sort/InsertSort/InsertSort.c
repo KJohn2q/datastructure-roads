@@ -1,17 +1,17 @@
 #include "InsertSort.h"
 
 /*
- * �������� 
- * arr ����������
- * n �����������Ԫ�ظ��� 
+ * 插入排序 
+ * arr 待排序数组
+ * n 待排序数组的元素个数 
  */
 void InsertSort(int arr[], int n)
 {
 	int i, j;
 	int temp;
 	
-	// �ӵڶ���Ԫ�ؿ�ʼ��ʹ�õ�ǰԪ��֮ǰ������Ԫ�رȵ�ǰԪ��С
-	// ���ֱ��Լ����Ԫ�أ�������ƶ���ֱ���ҵ���ǰԪ�صĺ���λ�ý��в��� 
+	// 从第二个元素开始，使得当前元素之前的所有元素比当前元素小
+	// 发现比自己大的元素，就向后移动，直到找到当前元素的合适位置进行插入 
 	for (i = 1; i < n; i++) {
 		temp = arr[i];
 		
@@ -24,9 +24,9 @@ void InsertSort(int arr[], int n)
 }
 
 /*
- * ������� 
- * arr ����
- * n  Ԫ�ظ��� 
+ * 数组遍历 
+ * arr 数组
+ * n  元素个数 
  */
 void ArrayTraverse(int arr[], int n)
 {

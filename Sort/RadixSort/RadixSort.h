@@ -6,37 +6,37 @@
 #include <math.h>
 
 /*
- * »ùÊıÅÅĞò 
+ * åŸºæ•°æ’åº 
  */
 void RadixSort(int arr[], int n);
 
 /*
- * »ñÈ¡ÔªËØµÄÎ»Êı 
+ * è·å–å…ƒç´ çš„ä½æ•° 
  */
 int getLoopTimes(int num); 
 
 /*
- * »ñÈ¡×î´óÊı 
+ * è·å–æœ€å¤§æ•° 
  */
 int findMaxNum(int arr[], int n); 
 
 /*
- * ±éÀú
+ * éå†
  */ 
 void ArrayTraverse(int arr[], int n);
 
 /*
- * ¼ÇÂ¼Í°ÖĞÔªËØ¸öÊıµÄÊı×é³õÊ¼»¯ 
+ * è®°å½•æ¡¶ä¸­å…ƒç´ ä¸ªæ•°çš„æ•°ç»„åˆå§‹åŒ– 
  */
 void orderArrInit(int order[]);
 
 /*
- * Í°Êı×é³õÊ¼»¯ 
+ * æ¡¶æ•°ç»„åˆå§‹åŒ– 
  */ 
 void bucketsArrInit(int buckets[][20]); 
 
 /*
- * °ÑÍ°ÖĞÔªËØÒÀ´Îµ¹»ØÔ­Êı×é 
+ * æŠŠæ¡¶ä¸­å…ƒç´ ä¾æ¬¡å€’å›åŸæ•°ç»„ 
  */
 void pullBuckets(int buckets[][20], int order[], int arr[]); 
 

@@ -1,22 +1,22 @@
 #include "RadixSort.h"
 
 /*
- * »ùÊıÅÅĞò 
+ * åŸºæ•°æ’åº 
  */
 void RadixSort(int arr[], int n)
 {
-	// ÔªËØµÄÃ¿Ò»Î»·¶Î§Îª0-9£¬nÎª´ıÅÅĞòÊı×éµÄ¸öÊı 
-	// Èç¹ûn¹ı´ó£¬ÊÓÇé¿ö¶ø¶¨ÉèÖÃÊı×é´óĞ¡ 
+	// å…ƒç´ çš„æ¯ä¸€ä½èŒƒå›´ä¸º0-9ï¼Œnä¸ºå¾…æ’åºæ•°ç»„çš„ä¸ªæ•° 
+	// å¦‚æœnè¿‡å¤§ï¼Œè§†æƒ…å†µè€Œå®šè®¾ç½®æ•°ç»„å¤§å° 
 	int buckets[10][20]; 
 	int loop;
 	int i, j;
 	int divisor;
 	int s;
 	int maxNum = 0;
-	int order[10];  // Í³¼ÆÃ¿¸öÍ°ÖĞµÄÔªËØ¸öÊı 
+	int order[10];  // ç»Ÿè®¡æ¯ä¸ªæ¡¶ä¸­çš„å…ƒç´ ä¸ªæ•° 
 	
 	maxNum = findMaxNum(arr, n);
-	// »ñÈ¡Ñ­»·´ÎÊı 
+	// è·å–å¾ªç¯æ¬¡æ•° 
 	loop = getLoopTimes(maxNum);
 	
 	orderArrInit(order);
@@ -27,7 +27,7 @@ void RadixSort(int arr[], int n)
 		for (j = 0; j < n; j++) {
 			s = (arr[j] / divisor) % 10;
 			buckets[s][order[s]] = arr[j];
-			order[s]++; // ¸öÊıÀÛ¼Ó 		
+			order[s]++; // ä¸ªæ•°ç´¯åŠ  		
 		}
 		
 		pullBuckets(buckets, order, arr);		
@@ -38,7 +38,7 @@ void RadixSort(int arr[], int n)
 } 
 
 /*
- * °ÑÍ°ÖĞÔªËØÒÀ´Îµ¹»ØÔ­Êı×é 
+ * æŠŠæ¡¶ä¸­å…ƒç´ ä¾æ¬¡å€’å›åŸæ•°ç»„ 
  */
 void pullBuckets(int buckets[][20], int order[], int arr[])
 {
@@ -54,12 +54,12 @@ void pullBuckets(int buckets[][20], int order[], int arr[])
 }
 
 /*
- * Í°Êı×é³õÊ¼»¯ 
+ * æ¡¶æ•°ç»„åˆå§‹åŒ– 
  */ 
 void bucketsArrInit(int buckets[][20]) 
 {
 	int i, j;
-	// orderÊı×é³õÊ¼»¯ 
+	// orderæ•°ç»„åˆå§‹åŒ– 
 	for (i = 0; i < 10; i++) {
 		for (j = 0; j < 20; j++) {
 			buckets[i][j] = 0;
@@ -68,12 +68,12 @@ void bucketsArrInit(int buckets[][20])
 }
 
 /*
- * ¼ÇÂ¼Í°ÖĞÔªËØ¸öÊıÊı×é³õÊ¼»¯ 
+ * è®°å½•æ¡¶ä¸­å…ƒç´ ä¸ªæ•°æ•°ç»„åˆå§‹åŒ– 
  */
 void orderArrInit(int order[])
 {
 	int i;
-	// orderÊı×é³õÊ¼»¯ 
+	// orderæ•°ç»„åˆå§‹åŒ– 
 	for (i = 0; i < 10; i++) {
 		order[i] = 0;
 	}
@@ -81,7 +81,7 @@ void orderArrInit(int order[])
 
 
 /*
- * »ñÈ¡ÔªËØµÄÎ»Êı 
+ * è·å–å…ƒç´ çš„ä½æ•° 
  */
 int getLoopTimes(int num)
 {
@@ -99,12 +99,12 @@ int getLoopTimes(int num)
 }
 
 /*
- * »ñÈ¡×î´óÊı 
+ * è·å–æœ€å¤§æ•° 
  */
 int findMaxNum(int arr[], int n)
 {
 	int i;
-	int max; // ×î´óÊıµÄË÷Òı
+	int max; // æœ€å¤§æ•°çš„ç´¢å¼•
 	
 	max = 0;
 	
@@ -118,7 +118,7 @@ int findMaxNum(int arr[], int n)
 }  
 
 /*
- * ±éÀúÊı×éÔªËØ 
+ * éå†æ•°ç»„å…ƒç´  
  */
 void ArrayTraverse(int arr[], int n) {
 	int i;

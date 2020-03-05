@@ -13,96 +13,96 @@ typedef struct{
 }SLinkList[MAXSIZE];
 
 /*
- *  ³õÊ¼»¯±¸ÓÃ¿Õ¼ä 
- *  ½«Ò»Î¬Êı×éspaceÖĞ¸÷·ÖÁ¿Á´³ÉÒ»¸ö±¸ÓÃÁ´±í,space[0].curÎªÍ·Ö¸Õë 
+ *  åˆå§‹åŒ–å¤‡ç”¨ç©ºé—´ 
+ *  å°†ä¸€ç»´æ•°ç»„spaceä¸­å„åˆ†é‡é“¾æˆä¸€ä¸ªå¤‡ç”¨é“¾è¡¨,space[0].curä¸ºå¤´æŒ‡é’ˆ 
  */
 void InitSpace(SLinkList space);
 
 /*
- *  ÉêÇë¿Õ¼ä 
- * Èô±¸ÓÃ¿Õ¼äÁ´±í·Ç¿Õ£¬Ôò·µ»Ø·ÖÅäµÄ½ÚµãÏÂ±ê£¬·ñÔò·µ»Ø0 
+ *  ç”³è¯·ç©ºé—´ 
+ * è‹¥å¤‡ç”¨ç©ºé—´é“¾è¡¨éç©ºï¼Œåˆ™è¿”å›åˆ†é…çš„èŠ‚ç‚¹ä¸‹æ ‡ï¼Œå¦åˆ™è¿”å›0 
  */ 
 int Malloc(SLinkList space);
 
 /*
- *  »ØÊÕ¿Õ¼ä 
- *  ½«ÏÂ±êÎªkµÄ¿ÕÏĞ½Úµã»ØÊÕµ½±¸ÓÃÁ´±í 
+ *  å›æ”¶ç©ºé—´ 
+ *  å°†ä¸‹æ ‡ä¸ºkçš„ç©ºé—²èŠ‚ç‚¹å›æ”¶åˆ°å¤‡ç”¨é“¾è¡¨ 
  */ 
 void Free(SLinkList space, int k);
 
 /*
- *  ¹¹ÔìÒ»¸ö¿ÕµÄ¾²Ì¬Á´±í 
+ *  æ„é€ ä¸€ä¸ªç©ºçš„é™æ€é“¾è¡¨ 
  */
 Status InitList(SLinkList space, int *S);
 
 /*
- *  Ïú»Ù¾²Ì¬Á´±í 
+ *  é”€æ¯é™æ€é“¾è¡¨ 
  */
 Status DestroyList(SLinkList space, int *S);
 
 /*
- *  Çå¿Õ¾²Ì¬Á´±í 
+ *  æ¸…ç©ºé™æ€é“¾è¡¨ 
  */
 Status ClearList(SLinkList space, int S);
 
 /*
- *  ¾²Ì¬Á´±íÊÇ·ñÎª¿Õ 
+ *  é™æ€é“¾è¡¨æ˜¯å¦ä¸ºç©º 
  */ 
 Status ListEmpty(SLinkList space, int S);
 
 /*
- *  ¾²Ì¬Á´±íµÄ³¤¶È 
+ *  é™æ€é“¾è¡¨çš„é•¿åº¦ 
  */ 
 int ListLength(SLinkList space, int S);
 
 /*
- *  È¡Öµ 
+ *  å–å€¼ 
  */ 
 Status GetElem(SLinkList space, int S, int i, ElemType *e);
 
 /*
- *  ·µ»ØµÚÒ»¸öÓë¸ø¶¨ÖµÏàµÈµÄÔªËØ 
+ *  è¿”å›ç¬¬ä¸€ä¸ªä¸ç»™å®šå€¼ç›¸ç­‰çš„å…ƒç´  
  */
 int LocateElem(SLinkList space, int S, ElemType e, Status(Compare)(ElemType, ElemType));
 
 /*
- *  ·µ»Ø¸ø¶¨ÖµµÄÇ°Çı 
+ *  è¿”å›ç»™å®šå€¼çš„å‰é©± 
  */ 
 Status PriorElem(SLinkList space, int S, ElemType cur_e, ElemType *pre_e);
 
 /*
- *  ·µ»Ø¸ø¶¨ÖµµÄºó¼Ì 
+ *  è¿”å›ç»™å®šå€¼çš„åç»§ 
  */
 Status NextElem(SLinkList space, int S, ElemType cur_e, ElemType *next_e);
 
 
 /*
- *  ÔÚiÎ»ÖÃ²åÈëe 
+ *  åœ¨iä½ç½®æ’å…¥e 
  */ 
 Status ListInsert(SLinkList space, int S, int i, ElemType e);
 
 /*
- *  ÔÚiÎ»ÖÃÉ¾³ıÔªËØ 
+ *  åœ¨iä½ç½®åˆ é™¤å…ƒç´  
  */
 Status ListDelete(SLinkList space, int S, int i, ElemType *e);
 
 /*
- *  ±éÀú´òÓ¡¾²Ì¬Á´±íÖĞµÄÔªËØ 
+ *  éå†æ‰“å°é™æ€é“¾è¡¨ä¸­çš„å…ƒç´  
  */ 
 void ListTraverse(SLinkList space, int S, void (Visit)(ElemType));
 
 /*
- *  ±È½Ïº¯Êı 
+ *  æ¯”è¾ƒå‡½æ•° 
  */ 
 Status Compare(ElemType, ElemType);
 
 /*
- *  ´òÓ¡¸ø¶¨ÔªËØµÄÖµ 
+ *  æ‰“å°ç»™å®šå…ƒç´ çš„å€¼ 
  */ 
 void Visit(ElemType);
 
 /*
- *  ÒÔÍ¼ĞÎ»¯ĞÎÊ½Êä³öµ±Ç°½á¹¹£¬½öÏŞÄÚ²¿²âÊÔÊ¹ÓÃ 
+ *  ä»¥å›¾å½¢åŒ–å½¢å¼è¾“å‡ºå½“å‰ç»“æ„ï¼Œä»…é™å†…éƒ¨æµ‹è¯•ä½¿ç”¨ 
  */
 void PrintGraph(SLinkList space, int S);
 

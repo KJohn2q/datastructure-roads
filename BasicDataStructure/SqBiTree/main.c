@@ -18,48 +18,48 @@ int main(int argc, char *argv[]) {
 	position p;
 	
 	s = InitTree(T);
-	printf("³õÊ¼»¯¶ş²æÊ÷%d\n", s);
+	printf("åˆå§‹åŒ–äºŒå‰æ ‘%d\n", s);
 	
 	CreateTree(T);
 	
-	/* ¶ş²æÊ÷Éî¶È 
+	/* äºŒå‰æ ‘æ·±åº¦ 
 	len = BiTreeDepth(T);
-	printf("¶ş²æÊ÷µÄÉî¶ÈÎª%d\n", len);
+	printf("äºŒå‰æ ‘çš„æ·±åº¦ä¸º%d\n", len);
 	*/
-	/*  »ñÈ¡¸ùÔªËØ 
+	/*  è·å–æ ¹å…ƒç´  
 	s = Root(T, &e);
-	printf("»ñÈ¡¸ùÔªËØ%d, ¸ùÔªËØµÄÖµÎª%d\n", s, e);
+	printf("è·å–æ ¹å…ƒç´ %d, æ ¹å…ƒç´ çš„å€¼ä¸º%d\n", s, e);
 	*/
 	
-	/*  ¶ş²æÊ÷p½áµãµÄÖµ 
+	/*  äºŒå‰æ ‘pç»“ç‚¹çš„å€¼ 
 	p.level = 1;
 	p.order = 2;
 	e = Value(T, p);
-	printf("¶ş²æÊ÷ÖĞpÎ»ÖÃ½áµãµÄÖµÎª%d\n", e);
+	printf("äºŒå‰æ ‘ä¸­pä½ç½®ç»“ç‚¹çš„å€¼ä¸º%d\n", e);
 	*/
-	/*  ÉèÖÃ¶ş²æÊ÷ÖĞpÎ»ÖÃ½áµãµÄÖµ 
+	/*  è®¾ç½®äºŒå‰æ ‘ä¸­pä½ç½®ç»“ç‚¹çš„å€¼ 
 	p.level = 2;
 	p.order = 1;
 	s = Assign(T, p, 25);
-	printf("¶ş²æÊ÷ÖĞÉèÖÃpÎ»ÖÃ½áµãµÄÖµ%d\n", s);
+	printf("äºŒå‰æ ‘ä¸­è®¾ç½®pä½ç½®ç»“ç‚¹çš„å€¼%d\n", s);
 	*/
-	/* ²ãĞò±éÀú 
+	/* å±‚åºéå† 
 	s = LevelOrderTraverse(T, Visit);
 	printf("\n");	
-	printf("²ãĞò±éÀú%d\n", s);
+	printf("å±‚åºéå†%d\n", s);
 	*/
-	/* ÏÈĞò±éÀú 
+	/* å…ˆåºéå† 
 	s = PrelOrderTraverse(T, Visit);
 	printf("\n");	
-	printf("ÏÈĞò±éÀú%d\n", s);
+	printf("å…ˆåºéå†%d\n", s);
 	*/
-	/* ÖĞĞò±éÀú 
+	/* ä¸­åºéå† 
 	s = InOrderTraverse(T, Visit);
 	printf("\n");	
-	printf("ÖĞĞò±éÀú%d\n", s);
+	printf("ä¸­åºéå†%d\n", s);
 	*/
 	s = PostOrderTraverse(T, Visit);
 	printf("\n");	
-	printf("ºóĞò±éÀú%d\n", s);
+	printf("ååºéå†%d\n", s);
 	return 0;
 }

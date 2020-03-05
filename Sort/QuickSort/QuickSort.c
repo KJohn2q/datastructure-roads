@@ -1,26 +1,26 @@
 #include "QuickSort.h"
-#define cutoff ( 3 )  // ×îĞ¡µÄÔªËØ¸öÊı 
+#define cutoff ( 3 )  // æœ€å°çš„å…ƒç´ ä¸ªæ•° 
 
 /*
- * ¿ìËÙÅÅĞòµÄµ÷ÓÃº¯Êı 
+ * å¿«é€Ÿæ’åºçš„è°ƒç”¨å‡½æ•° 
  */ 
 void QuickSort(int arr[], int n)
 {
-	// Ö¸¶¨±»ÅÅĞòÊı×éµÄ·¶Î§leftºÍright 
+	// æŒ‡å®šè¢«æ’åºæ•°ç»„çš„èŒƒå›´leftå’Œright 
 	Qsort(arr, 0, n - 1);
 } 
 
 /*
- * È¡ÈıÊıÖĞÖµ 
- * ÖĞÖµ£º½«Í³¼Æ×ÜÌåµ±ÖĞµÄ¸÷¸ö±äÁ¿Öµ°´´óĞ¡Ë³ĞòÅÅÁĞÆğÀ´£¬
- * ĞÎ³ÉÒ»¸öÊıÁĞ£¬Î»ÓÚ±äÁ¿ÊıÁĞÖĞ¼äÎ»ÖÃµÄ±äÁ¿Öµ¾Í³ÆÎªÖĞÎ»Êı 
+ * å–ä¸‰æ•°ä¸­å€¼ 
+ * ä¸­å€¼ï¼šå°†ç»Ÿè®¡æ€»ä½“å½“ä¸­çš„å„ä¸ªå˜é‡å€¼æŒ‰å¤§å°é¡ºåºæ’åˆ—èµ·æ¥ï¼Œ
+ * å½¢æˆä¸€ä¸ªæ•°åˆ—ï¼Œä½äºå˜é‡æ•°åˆ—ä¸­é—´ä½ç½®çš„å˜é‡å€¼å°±ç§°ä¸ºä¸­ä½æ•° 
  */
 int Median3(int arr[], int left, int right)
 {
 	int center = (left + right) / 2;
 	
-	// Ê¹µÃ¸ø¶¨Èı¸öÊı°´´ÓĞ¡µ½´óµÄË³ĞòÅÅÁĞ
-	// ¼´£ºarr[left] <= arr[center] <= arr[right] 
+	// ä½¿å¾—ç»™å®šä¸‰ä¸ªæ•°æŒ‰ä»å°åˆ°å¤§çš„é¡ºåºæ’åˆ—
+	// å³ï¼šarr[left] <= arr[center] <= arr[right] 
 	if (arr[left] > arr[center]) {
 		Swap(&arr[left], &arr[center]);
 	}	
@@ -31,29 +31,29 @@ int Median3(int arr[], int left, int right)
 		Swap(&arr[center], &arr[right]);
 	}
 	
-	// ½«ÊàÅ¦Ôª·ÅÔÚright-1,rightÎ»ÖÃµÄÔªËØ±ÈÊàÅ¦Ôª´ó 
+	// å°†æ¢çº½å…ƒæ”¾åœ¨right-1,rightä½ç½®çš„å…ƒç´ æ¯”æ¢çº½å…ƒå¤§ 
 	Swap(&arr[center], &arr[right - 1]);
 	return arr[right - 1];
 } 
 
 /*
- * ¿ìËÙÅÅĞòÖ÷º¯Êı 
+ * å¿«é€Ÿæ’åºä¸»å‡½æ•° 
  */
 void Qsort(int arr[], int left, int right)
 {
 	int i, j;
-	int pivot;  // ÊàÅ¦Ôª ¸ù¾İ´Ë£¬½øĞĞ»®·Ö
+	int pivot;  // æ¢çº½å…ƒ æ ¹æ®æ­¤ï¼Œè¿›è¡Œåˆ’åˆ†
 	
 	if (left + cutoff <= right) {
 		pivot = Median3(arr, left, right);
 		i = left; j = right - 1;
 		for (; ; ) {
-			// µ±iÖ¸ÕëÖ¸ÏòµÄÔªËØĞ¡ÓÚÊàÅ¦ÔªÊ±£¬Ö±½ÓÌø¹ı 
+			// å½“iæŒ‡é’ˆæŒ‡å‘çš„å…ƒç´ å°äºæ¢çº½å…ƒæ—¶ï¼Œç›´æ¥è·³è¿‡ 
 			while (arr[++i] < pivot) {}
-			// µ±Ë÷ÒıjÖ¸ÏòµÄÔªËØ´óÓÚÊàÅ¦ÔªÊ±£¬Ö±½ÓÌø¹ı 
+			// å½“ç´¢å¼•jæŒ‡å‘çš„å…ƒç´ å¤§äºæ¢çº½å…ƒæ—¶ï¼Œç›´æ¥è·³è¿‡ 
 			while (arr[--j] > pivot) {}
 			
-			// iºÍjÒÆ¶¯Í£Ö¹£¬Èôi<j,ÔòÁ½Êı½»»» Ö±µ½iºÍj½»´íÎªÖ¹£¬É¨ÃèËùÓĞµÄÔªËØ 
+			// iå’Œjç§»åŠ¨åœæ­¢ï¼Œè‹¥i<j,åˆ™ä¸¤æ•°äº¤æ¢ ç›´åˆ°iå’Œjäº¤é”™ä¸ºæ­¢ï¼Œæ‰«ææ‰€æœ‰çš„å…ƒç´  
 			if (i < j) {
 				Swap(&arr[i], &arr[j]);
 			}
@@ -65,8 +65,8 @@ void Qsort(int arr[], int left, int right)
 	else {
 		int center = (left + right) / 2;
 	
-		// Ê¹µÃ¸ø¶¨Èı¸öÊı°´´ÓĞ¡µ½´óµÄË³ĞòÅÅÁĞ
-		// ¼´£ºarr[left] <= arr[center] <= arr[right] 
+		// ä½¿å¾—ç»™å®šä¸‰ä¸ªæ•°æŒ‰ä»å°åˆ°å¤§çš„é¡ºåºæ’åˆ—
+		// å³ï¼šarr[left] <= arr[center] <= arr[right] 
 		if (arr[left] > arr[center]) {
 			Swap(&arr[left], &arr[center]);
 		}	
@@ -86,9 +86,9 @@ void Qsort(int arr[], int left, int right)
 }
 
 /*
- *  Á½Êı½»»»
+ *  ä¸¤æ•°äº¤æ¢
  *  a = 1, b = 2
- * Ö´ĞĞ½á¹ûÎª: a = 2,b = 1 
+ * æ‰§è¡Œç»“æœä¸º: a = 2,b = 1 
  */
 void Swap(int *a, int *b) 
 {
@@ -100,7 +100,7 @@ void Swap(int *a, int *b)
 }
 
 /*
- * ±éÀúÊı×éµÄÃ¿¸öÔªËØ 
+ * éå†æ•°ç»„çš„æ¯ä¸ªå…ƒç´  
  */
 void ArrayTraverse(int arr[], int n)
 {
